@@ -1,0 +1,89 @@
+.box-data .box-data-content {
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    /* left: 7px; */
+    text-align: right;
+    font-weight: 300;
+}
+
+.tab-content {
+    overflow: inherit;
+}
+
+.box-info .box-data-title {
+    color: #00abdf;
+}
+.box-data .box-data-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.icon-actividad:before {
+    content: "\e900";
+}
+
+.resumen-table-head {
+    position: absolute;
+    min-width: 125px;
+    left: 10px;
+    white-space: nowrap;
+}
+
+.resumen-table-content {
+    margin-left: 125px;
+    margin-right: 30px;
+}
+.table-slide {
+    margin-bottom: 0;
+}
+
+.indicadores .table-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 2.3em;
+    z-index: 99;
+    top: 12px;
+    cursor: pointer;
+}
+
+.indicadores .table-controls .table-left {
+    position: absolute;
+    left: 113px;
+}
+
+.collapse-group .content-collapse-item .collapse-head a .change-icon {
+    font-size: 17px;
+    position: absolute;
+    left: -1px;
+    top: 1px;
+}
+
+.box-data .box-text-md {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 100;
+    margin-top: 8px;
+}
+
+.box-blue .box-content {
+    background: #3d73b7;
+}
+
+.box-success .box-content {
+    background: #35bdb2;
+}
+
+.box-success .box-data-title {
+    color: #35bdb2;
+}
+
+.box-blue .box-data-title {
+    color: #3d73b7;
+}
+.margin-top-10
+{
+    margin-top: 20px;
+}

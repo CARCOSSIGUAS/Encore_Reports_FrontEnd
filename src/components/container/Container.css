@@ -1,0 +1,75 @@
+.content-main {
+    padding: 10px 10px 30px 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    position: relative;
+    background: #fff;
+}
+.icon-dash-circled:before {
+    content: "\e90b";
+}
+.icon-content-main {
+    position: absolute;
+    left: 7px;
+    top: -20px;
+    font-size: 3em;
+    text-align: center;
+    line-height: 1;
+    padding: 10px 9px 10px 11px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: #fff;
+}
+.section-title-icon-content .section-title-icon {
+    margin-bottom: 3px;
+}
+h2 {
+    font-size: 20px;
+    margin-top: 3px;
+}
+h1, h2, h3, h4, h5 {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #768ea3;
+}
+.section-title-icon-content {
+    margin-left: 5px;
+}
+
+.tabHome {
+    list-style-type: none;
+    float: right;
+}
+.material-tabs {
+    text-transform: uppercase;
+}
+
+.liTabHome {
+    float: left;
+    text-align: center;
+    /* width: 5em; */
+    /* padding: 0 4px; */
+}
+
+.material-tabs a:hover, .material-tabs a.active {
+    text-decoration: none;
+    color: #722789;
+    border-bottom: 1px solid #722789;
+}
+
+.material-tabs a {
+    padding: 7px 40px 7px 0px;
+    display: inline-block;
+    margin-right: -4px;
+    width: 140px;
+    text-align: left;
+    text-decoration: none;
+    color: #768ea3;
+    border-bottom: 1px solid #768ea3;
+}
+
+.letterLong200{
+    width: 200px !important;
+}
+

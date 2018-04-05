@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'icomoon';
+  src:    url('/fonts/icomoon.eot?he9yiv');
+  src:    url('/fonts/icomoon.eot?he9yiv#iefix') format('embedded-opentype'),
+      url('/fonts/icomoon.ttf?he9yiv') format('truetype'),
+      url('/fonts/icomoon.woff?he9yiv') format('woff'),
+      url('/fonts/icomoon.svg?he9yiv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -7,15 +21,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.upper {
-  text-transform: uppercase;
-  font-size: 16px;
-  display: block;
-  padding-bottom: 15px;
-  color: #5c758a;
-  text-decoration: none;
-  margin-left: 25px;
-}
+
 
 .boxed {
   border: 1px solid green;
@@ -28,7 +34,7 @@ body {
 }
 
 .box-yellow .box-content {
-  background: #f8bf17;
+  background: #00abdf;
 }
 
 .box-data .box-content {
@@ -38,11 +44,6 @@ body {
   height: 160px;
   min-width: 232px;
   cursor: pointer;
-}
-
-.box-yellow .box-data-title {
-  color: #f8bf17 !important;
-  font-weight: bold;
 }
 
 .box-data .box-data-title {
@@ -60,6 +61,7 @@ a:hover {
 
 .line-left {
   position: relative;
+  margin-left: 10px;
   border-left: 1px solid #768ea3;
 }
 
@@ -138,7 +140,7 @@ pre code, table {
 }
 
 .box-detail-content-head-content {
-  margin-left: 235px;
+  margin-left: 150px;
   margin-right: 30px;
 }
 

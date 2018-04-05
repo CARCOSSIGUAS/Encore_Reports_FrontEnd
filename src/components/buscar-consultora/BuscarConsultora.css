@@ -1,0 +1,126 @@
+.bc-backtitle {
+    background: #9bb2c6;
+    height: 43px;
+    margin: 10px 10px 0px 10px;
+}
+
+.bc-title-text {
+    font-size: 14px;
+    color: #768ea3;
+    font-weight: 500;
+}
+
+.bc-content-body input[type=text] {
+    color: #768ea3;
+    padding-left: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+}
+
+.bc-filters {
+    font-size: 12px;
+    color: #722789;
+    font-weight: 700;
+    border-bottom: 1px solid #9bb2c6;
+    text-align: right;
+    margin: 18px 20px 0px 0px;
+}
+
+.btnSeccion {
+    width: 37px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2;
+}
+
+.btnEstado:hover, .btnEstado.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.line-height2{
+    line-height: 2;
+}
+
+.btnEstado {
+    width: 125px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.btnSaldo {
+    width: 170px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2.1;
+    vertical-align: middle;
+}
+
+.btnSegmento {
+    width: 125px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.btnPedidos {
+    width: 170px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2.1;
+    vertical-align: middle;
+}
+
+.btnBusqueda {
+    width: 170px;
+    height: 35px;
+    background: #722789;
+    color: #fff;
+    border: 0px;
+    font-size: 15px;
+    margin-top: 20px;
+    letter-spacing: 0.3px;
+}
