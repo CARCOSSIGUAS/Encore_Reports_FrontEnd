@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch, Route } from 'react-router'
 import ConsultorHeader from '../../components/header/ConsultorHeader';
 
 import Indicadores from '../../components/indicadores/Indicadores';
@@ -17,11 +16,6 @@ class Container extends Component {
                     <div class="content-main">
                         <span class="icon-content-main"><i class="icon-dash-circled"></i></span>
                         <div class="row">
-                            <Switch>
-                                <Route exact path="/" component={Indicadores} />
-                                <Route path="/indicadores" component={Indicadores} />
-                                <Route path="/ventaneta" component={VentaNeta} />
-                            </Switch>
                         </div >
                     </div >
                 </div>

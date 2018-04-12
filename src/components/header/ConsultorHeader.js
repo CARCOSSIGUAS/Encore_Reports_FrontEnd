@@ -4,15 +4,25 @@ import './ConsultorHeader.css';
 
 
 class ConsultorHeader extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
 
-        this.state={
+        this.state = {
             consultor: {
-                name: 'PATRICIA  ELIZABETH MARCHAND',
-                title: 'Executiva Nacional'
-            }
+            },
+            codConsultor: 1697,
+            periodId: 201803,
         }
+    }
+
+    componentDidMount() {
+        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&period=' + this.state.periodId)
+            .then((response) => {
+                return response.json()
+            })
+            .then((consultor) => {
+                this.setState({ consultor })
+            });
     }
 
     render() {
@@ -28,10 +38,10 @@ class ConsultorHeader extends React.Component {
                             <div class="row">
                                 <div class="col-md-4 col-sm-7 col-xs-16">
                                     <div class="text-md text-primary">
-                                        <strong>Hola, {consultor.name}</strong>
+                                        <strong>Hola, {consultor.accounts_Mongo != null ? consultor.accounts_Mongo.firstName : ""}</strong>
                                     </div>
                                     <span class="text-primary-xs">
-                                        <span>{consultor.title}</span>
+                                        <span></span>
                                     </span>
                                 </div>
                                 <div class="col-md-offset-4 col-md-4 col-sm-9">
@@ -45,7 +55,7 @@ class ConsultorHeader extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
