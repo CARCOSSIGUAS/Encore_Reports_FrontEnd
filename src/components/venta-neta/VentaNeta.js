@@ -21,13 +21,14 @@ class VentaNeta extends Component {
   }
 
   componentDidMount() {
-
     fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
-        return response.json()
+        return response.json();
       })
       .then((indicadorVentaNeta) => {
-        this.setState({ indicadorVentaNeta })
+        var rpt = indicadorVentaNeta != null && indicadorVentaNeta.length > 0 ? indicadorVentaNeta : null;
+        indicadorVentaNeta = rpt;
+        this.setState({ indicadorVentaNeta });
       });
 
       fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
@@ -35,7 +36,6 @@ class VentaNeta extends Component {
         return response.json()
       })
       .then((items) => {
-        debugger;
         this.setState({ items })
       });
   }

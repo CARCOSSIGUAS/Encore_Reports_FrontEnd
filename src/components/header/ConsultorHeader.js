@@ -16,11 +16,13 @@ class ConsultorHeader extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&period=' + this.state.periodId)
+        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
                 return response.json()
             })
             .then((consultor) => {
+                var rpt = consultor != null? consultor : null;
+                consultor = rpt;
                 this.setState({ consultor })
             });
     }

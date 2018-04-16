@@ -87,3 +87,11 @@
 {
     margin-top: 20px;
 }
+
+.box-data .box-icon {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 2.8em;
+    line-height: 1;
+}
