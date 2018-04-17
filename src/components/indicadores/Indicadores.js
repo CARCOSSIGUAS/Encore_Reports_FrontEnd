@@ -28,6 +28,8 @@ class Indicadores extends Component {
         return response.json()
       })
       .then((items) => {
+        var rpt = items != null && items.length > 0 ? items : null;
+        items = rpt;
         this.setState({ items })
       });
   }
@@ -44,7 +46,7 @@ class Indicadores extends Component {
         <ConsultorHeader />
         <div class="container">
           <div class="content-main">
-            <span class="icon-content-main"><i class="icon-dash-circled"></i></span>
+            <span class="icon-content-main"><FontAwesomeIcon icon="chart-line" /></span>
             <div class="row">
               <div role="tabpanel" class="indicadores">
                 <div class="row">
@@ -58,7 +60,7 @@ class Indicadores extends Component {
                       <span id="indicadores-breadcrumb" class="text-info mt-5"></span>
                     </div>
                   </div>
-                  <div class="col-xs-16 ">
+                  <div class="col-md-offset-5 col-md-6">
                     <div class="text-right mb-20 mt-10">
 
                       <ul class="material-tabs tabHome" role="tablist">
@@ -69,10 +71,7 @@ class Indicadores extends Component {
                           <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">Resumen</a>
                         </li>
                         <li role="presentation" class="liTabHome datareport-mobile">
-                          <a id="lnk-datareport" class="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Reportes de Cierre</a>
-                        </li>
-                        <li role="presentation" class="liTabHome">
-                          <a id="lnk-ipunicoreport" class="_pointer" data-select="tab-ipunicoreport" role="tab" data-toggle="tab">Digital</a>
+                          <a id="lnk-datareport" class="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Descargas</a>
                         </li>
                       </ul>
                     </div>
@@ -88,21 +87,21 @@ class Indicadores extends Component {
                               <div className="box-data box-yellow">
                                 <h3> <a className="box-data-title">DESEMPENHO</a> </h3>
                                 <div className="box-content" id="VentaNetaDetalle">
-                                  <div className="box-icon"><i className="icon-actividad"></i></div>
+                                  <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
                                   <div className="box-data-content">
 
                                     <div id="VentaNetaFacturacionBox">
-                                      <span className="VentaFaltanteVN stl-ind">VP: {items[0].vp}</span>
+                                      <span className="VentaFaltanteVN stl-ind">VP: {items != null ? items[0].vp : 0}</span>
                                       <div className="box-text-md">
                                         <span>
                                           <span className="MonedaVN32 stl-min">VO-T:</span>
                                         </span>
                                         <span className="box-text-sm">
-                                          <span className="VentasRestanteVN">{items[0].vot}</span>
+                                          <span className="VentasRestanteVN">{items != null ? items[0].vot : 0}</span>
                                         </span>
                                       </div>
                                       <span className="VentaMetaVN">VO-Q:</span>
-                                      <span className="VentasFdVVN3q1">{items[0].voq}</span>
+                                      <span className="VentasFdVVN3q1">{items != null ? items[0].voq : 0}</span>
                                     </div>
 
                                   </div>
