@@ -36,6 +36,7 @@ class VentaNeta extends Component {
         return response.json()
       })
       .then((items) => {
+        debugger;
         this.setState({ items })
       });
   }
@@ -48,7 +49,7 @@ class VentaNeta extends Component {
     const consultorasList = items.map((item) => {
       return <div key={item.id} className="content-collapse-item upper">
         <div className="collapse-head" role="tab">
-          <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.consultor.docIdentidad}>
+          <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.codigo}>
             <FontAwesomeIcon icon="plus-circle" />
             <span className=" change-icon">
               <i className="icon-plus-circled"></i>
@@ -65,47 +66,47 @@ class VentaNeta extends Component {
                 <div className="row">
                   <div className="col-xs-6">
                     <div>CÓDIGO: <b>{item.codigo}</b></div>
-                    <div>CUMPLEAÑOS: <b>{item.consultor.cumpleanios}</b></div>
-                    <div>ESTADO: <b></b></div>
+                    <div>CUMPLEAÑOS: <b>{item.cumpleanio}</b></div>
+                    <div>ESTADO: <b>{item.estado}</b></div>
                   </div>
                   <div className="col-xs-6">
-                    <div>NIVEL: <b className="tnormal">2</b></div>
-                    <div>GENERACIÓN: <b>{item.phone}</b></div>
-                    <div>STATUS: <b>{item.phone}</b></div>
+                    <div>NIVEL: <b className="tnormal">{item.nivel}</b></div>
+                    <div>GENERACIÓN: <b>{item.generacion}</b></div>
+                    <div>STATUS: <b>{item.status}</b></div>
                   </div>
                 </div>
               </div>
               <div className="col-sm-6 col-md-3 col-lg-3 line-left">
-                <div>VENTA PERSONAL: <b className="tnormal">2 de 6</b></div>
-                <div>VO-T: <b>228.86</b></div>
-                <div>VO-Q: <b>228.86</b></div>
+                <div>VENTA PERSONAL: <b className="tnormal">{item.ventaPersonal}</b></div>
+                <div>VO-T: <b>{item.vot}</b></div>
+                <div>VO-Q: <b>{item.voq}</b></div>
               </div>
               <div className="col-sm-6 col-md-4 col-lg-4 line-left">
-                <div>TIT CARRERA: <b>240.80</b></div>
-                <div>PERMANENCIA: <b className="tnormal">288.84</b></div>
-                <div>TIT,PAGO: <b className="tnormal">288.84</b></div>
+                <div>TIT CARRERA: <b>{item.titCarrera}</b></div>
+                <div>PERMANENCIA: <b className="tnormal">{item.permanencia}</b></div>
+                <div>TIT,PAGO: <b className="tnormal">{item.titPago}</b></div>
               </div>
             </div>
             <br />
           </div>
 
-          <div className={"collapse-body collapse navigation-primary-" + item.consultor.docIdentidad} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
+          <div className={"collapse-body collapse navigation-primary-" + item.codigo} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
             <div className="row">
               <div className="col-sm-4 col-md-4 col-lg-4">
-                <div>CÓD. PATROCINADOR: <b>0018179924</b></div>
-                <div>NOMBRE: <b>CAL. CALLE INDEPENDENCIA SIN NUMERO AA.HH PUENTE  ENTRADA DE LA PRIMERO DE MAYO  FRENTE A LA CONSULTORA MARGARITA GUEVARA CASA VERDE</b></div>
-                <div>EMAIL: <b></b></div>
-                <div>TELÉFONO: <b>1 de Agosto</b></div>
+                <div>CÓD. PATROCINADOR: <b>{item.codPatrocinador}</b></div>
+                <div>NOMBRE: <b>{item.nombrePatrocinador}</b></div>
+                <div>EMAIL: <b>{item.emailPatrocinador}</b></div>
+                <div>TELÉFONO: <b>{item.telefonoPatrocinador}</b></div>
               </div>
               <div className="col-sm-3 col-md-3 col-lg-3">
-                <div>CÓD. LIDER: <b>337</b></div>
-                <div>NOMBRE: <b>201803  </b></div>
-                <div>EMAIL: <b>201805</b></div>
-                <div>TELÉFONO: <b>Web</b></div>
+                <div>CÓD. LIDER: <b>{item.codLider}</b></div>
+                <div>NOMBRE: <b>{item.nombreLider}  </b></div>
+                <div>EMAIL: <b>{item.emailLider}</b></div>
+                <div>TELÉFONO: <b>{item.telefonoLider}</b></div>
               </div>
               <div className="col-sm-4 col-md-4 col-lg-4">
-                <div>CONSULTORES ACTIVO: <b>NO</b></div>
-                <div>LÍDERES 1A GEN: <b>NO</b></div>
+                <div>CONSULTORES ACTIVO: <b>{item.consultoresActivos}</b></div>
+                <div>LÍDERES 1A GEN: <b>{item.cantidadEmpresariosGeneracion}</b></div>
               </div>
             </div>
             <div className="row">
