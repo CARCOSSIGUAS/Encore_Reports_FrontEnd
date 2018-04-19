@@ -18,7 +18,7 @@ class Header extends React.Component {
                                 <span>  <i className="icon-menu-belcorp"></i> <small>Menú</small></span>
                             </button>
                             <div className="navbar-logo visible-xs text-center">
-                                <a href="/"><img src={require("../../images/logo-belcorp.png")} alt="Belcorp" width="45" className="hidden" /> <img src={require("../../images/logo-belcorp.svg")} alt="Belcorp" width="55" height="42" /></a>
+                                <a href="/"><img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="45" className="hidden" /> <img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="55" height="42" /></a>
                             </div>
 
                             <div className="opcion_notificaciones_movil visible-xs">
@@ -44,7 +44,7 @@ class Header extends React.Component {
                                 </ul>
 
                             </div>
-                            <a href="/" className="navbar-brand hidden-xs"><img src={require("../../images/logo-belcorp.png")} alt="Belcorp" width="40" className="hidden" /> <img src={require("../../images/logo-belcorp.svg")} alt="Belcorp" width="55" height="42" /></a>
+                            <a href="/" className="navbar-brand hidden-xs"><img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="40" className="hidden" /> <img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="55" height="42" /></a>
                         </div>
                         <div className="collapse navbar-collapse navigation-primary contenedorOpcionesNotificaciones">
                             <ul className="nav navbar-nav">
@@ -89,23 +89,6 @@ class Header extends React.Component {
                                 </li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right hidden-xs">
-                                <li >
-                                    <a role="menu" region="Principal" parent="Notificaciones" title="Notificaciones" id="lnk-prin-notificaciones" className="opcion_notificaciones" href="#" >
-                                        <span className="icono_notificaciones">
-                                            <span className="notificaciones_cantidad" data-cantidad="web">13</span>
-                                            <img src={require("../../images/icono-notificaciones.png")} alt="Notificaciones" />
-                                        </span>
-                                    </a>
-                                </li>
-                                <li >
-                                    <a role="menu" region="Principal" parent="Notificaciones Grupo" title="Notificaciones Grupo" id="lnk-prin-notificaciones-grupo" className="opcion_notificaciones" href="#" >
-                                        <span className="icono_notificacionesGrupo">
-                                            <span className="notificaciones_cantidad_grupo" data-cantidad="web" >43</span>
-                                            <img src={require("../../images/icono-notificaciones-grupo.png")} alt="Notificaciones Grupo" />
-                                        </span>
-                                    </a>
-
-                                </li>
                                 <li>
                                     <a className="link-close-session enlace_cerrarSesion" role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/HomeNew/CerrarSesion">
                                         <i role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" className="icon-logout icono_cerrar_sesion"></i>

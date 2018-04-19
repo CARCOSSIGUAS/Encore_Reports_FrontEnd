@@ -23,7 +23,7 @@ class Indicadores extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.169/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })
@@ -89,21 +89,21 @@ class Indicadores extends Component {
                                 <div className="box-content" id="VentaNetaDetalle">
                                   <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
                                   <div className="box-data-content">
-
                                     <div id="VentaNetaFacturacionBox">
-                                      <span className="VentaFaltanteVN stl-ind">VP: {items != null ? items[0].vp : 0}</span>
-                                      <div className="box-text-md">
-                                        <span>
-                                          <span className="MonedaVN32 stl-min">VO-T:</span>
-                                        </span>
+                                      <div className="box-text-md-encore">
+                                        <span className="VentaFaltanteVN stl-ind">VP:  {items != null ? items[0].vp : 0}</span>
+                                      </div>
+                                      <div className="box-text-md-encore">
                                         <span className="box-text-sm">
-                                          <span className="VentasRestanteVN">{items != null ? items[0].vot : 0}</span>
+                                          <span className="VentasRestanteVN">VO-T: {items != null ? items[0].vot : 0}</span>
                                         </span>
                                       </div>
-                                      <span className="VentaMetaVN">VO-Q:</span>
-                                      <span className="VentasFdVVN3q1">{items != null ? items[0].voq : 0}</span>
+                                      <div className="box-text-md-encore">
+                                        <span className="box-text-sm">
+                                          <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].voq : 0}</span>
+                                        </span>
+                                      </div>
                                     </div>
-
                                   </div>
                                 </div>
                               </div>

@@ -16,7 +16,7 @@ class ConsultorHeader extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
+        fetch('http://10.12.9.169/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
                 return response.json()
             })
@@ -49,11 +49,11 @@ class ConsultorHeader extends React.Component {
                                 <div class="col-md-offset-4 col-md-4 col-sm-9">
                                     <div class="main-campana">
                                         <div class="text-ws">
-                                            <span>Campanha</span> <br /> <span class="text-ws-lg ">C-06</span>
+                                            <span>Campanha</span> <br /> <span class="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
                                         </div>
                                         <div class="text-ws">
                                             <span>Cierre de Campanha</span> <br />
-                                            <span class="text-ws-lg">5 días</span>
+                                            <span class="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""} días</span>
                                         </div>
                                     </div>
                                 </div>

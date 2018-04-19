@@ -21,7 +21,7 @@ class VentaNeta extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.169/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json();
       })
@@ -31,12 +31,11 @@ class VentaNeta extends Component {
         this.setState({ indicadorVentaNeta });
       });
 
-      fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+      fetch('http://10.12.9.169/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })
       .then((items) => {
-        debugger;
         this.setState({ items })
       });
   }
@@ -47,7 +46,7 @@ class VentaNeta extends Component {
     } = this.state;
 
     const consultorasList = items.map((item) => {
-      return <div key={item.id} className="content-collapse-item upper">
+      return <div className="content-collapse-item upper">
         <div className="collapse-head" role="tab">
           <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.codigo}>
             <FontAwesomeIcon icon="plus-circle" />
