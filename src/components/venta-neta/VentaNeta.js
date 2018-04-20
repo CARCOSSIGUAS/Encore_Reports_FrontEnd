@@ -156,24 +156,24 @@ class VentaNeta extends Component {
     return (
       <section>
         <ConsultorHeader />
-        <div class="container">
-          <div class="content-main">
-            <span class="icon-content-main"><i class="icon-dash-circled"></i></span>
-            <div class="row">
+        <div className="container">
+          <div className="content-main">
+            <span className="icon-content-main"><i className="icon-dash-circled"></i></span>
+            <div className="row">
               <div>
                 <div className="col-xs-16 col-sm-14 col-xs-offset-0">
                   <div className="row">
                     <div className="col-lg-3 col-md-6 col-md-offset-1">
                       <div className="box-data box-info box-in-details">
-                        <div class="box-controls">
-                          <a class="box-prev">
+                        <div className="box-controls">
+                          <a className="box-prev">
                             <FontAwesomeIcon icon="angle-left" />
                           </a>
-                          <a class="box-next">
+                          <a className="box-next">
                             <FontAwesomeIcon icon="angle-right" />
                           </a>
                         </div>
-                        <h3 class="box-data-title text-center text-lg">
+                        <h3 className="box-data-title text-center text-lg">
                           <span id="lbl-titulo">ACTIVIDAD </span>
                         </h3>
                         <div className="box-content" id="VentaNetaDetalle">

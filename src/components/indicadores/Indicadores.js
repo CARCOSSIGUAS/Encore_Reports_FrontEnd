@@ -44,44 +44,44 @@ class Indicadores extends Component {
 
       <section>
         <ConsultorHeader />
-        <div class="container">
-          <div class="content-main">
-            <span class="icon-content-main"><FontAwesomeIcon icon="chart-line" /></span>
-            <div class="row">
-              <div role="tabpanel" class="indicadores">
-                <div class="row">
-                  <div class="container">
-                    <div class="row tuto">
+        <div className="container">
+          <div className="content-main">
+            <span className="icon-content-main"><FontAwesomeIcon icon="chart-line" /></span>
+            <div className="row">
+              <div role="tabpanel" className="indicadores">
+                <div className="row">
+                  <div className="container">
+                    <div className="row tuto">
                     </div>
                   </div>
-                  <div class="col-xs-16 col-sm-8 col-sm-offset-1">
-                    <div class="section-title-icon-content">
-                      <h2 class="section-title-icon">REVISA Y PONTE AL DÍA </h2>
-                      <span id="indicadores-breadcrumb" class="text-info mt-5"></span>
+                  <div className="col-xs-16 col-sm-8 col-sm-offset-1">
+                    <div className="section-title-icon-content">
+                      <h2 className="section-title-icon">REVISA Y PONTE AL DÍA </h2>
+                      <span id="indicadores-breadcrumb" className="text-info mt-5"></span>
                     </div>
                   </div>
-                  <div class="col-md-offset-5 col-md-6">
-                    <div class="text-right mb-20 mt-10">
+                  <div className="col-md-offset-5 col-md-6">
+                    <div className="text-right mb-20 mt-10">
 
-                      <ul class="material-tabs tabHome" role="tablist">
-                        <li role="presentation" class="active liTabHome">
-                          <a class="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">Indicadores</a>
+                      <ul className="material-tabs tabHome" role="tablist">
+                        <li role="presentation" className="active liTabHome">
+                          <a className="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">Indicadores</a>
                         </li>
-                        <li role="presentation" class="liTabHome">
+                        <li role="presentation" className="liTabHome">
                           <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">Resumen</a>
                         </li>
-                        <li role="presentation" class="liTabHome datareport-mobile">
-                          <a id="lnk-datareport" class="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Descargas</a>
+                        <li role="presentation" className="liTabHome datareport-mobile">
+                          <a id="lnk-datareport" className="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Descargas</a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <div class="tab-content">
-                  <div class="tab-pane active" role="tabpanel" id="tab-indicadores">
+                <div className="tab-content">
+                  <div className="tab-pane active" role="tabpanel" id="tab-indicadores">
                     <div id="div-contenido-indicadores">
-                      <div class="col-sm-12">
-                        <div class="col-sm-3">
+                      <div className="col-sm-12">
+                        <div className="col-sm-3">
                           <Link to={`/ventaneta`} >
                             <div className="col-lg-3 col-md-4 col-xs-8 tour-home-box-ventaneta">
                               <div className="box-data box-yellow">
@@ -110,7 +110,7 @@ class Indicadores extends Component {
                             </div>
                           </Link>
                         </div>
-                        <div class="col-sm-3">
+                        <div className="col-sm-3">
                           <div className="col-lg-3 col-md-4 col-xs-8 tour-home-box-ventaneta">
                             <div className="box-data box-blue">
                               <h3> <a className="box-data-title">GANANCIAS</a> </h3>
@@ -137,7 +137,7 @@ class Indicadores extends Component {
                             </div>
                           </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div className="col-sm-3">
                           <div className="col-lg-3 col-md-4 col-xs-8 tour-home-box-ventaneta">
                             <div className="box-data box-success">
                               <h3> <a className="box-data-title">Nuevas</a> </h3>
@@ -166,9 +166,9 @@ class Indicadores extends Component {
                         </div>
                         <div className="col-sm-offset-8 col-sm-3">
                           <div className="margin-top-10">
-                            <div class="text-right mt-30">
-                              <span class="UltimaActualizacion">Actualizado el 03/04 a las 2:30am</span>
-                              <span class="UltimaActualizacionDetalle"></span>
+                            <div className="text-right mt-30">
+                              <span className="UltimaActualizacion">Actualizado el 03/04 a las 2:30am</span>
+                              <span className="UltimaActualizacionDetalle"></span>
                             </div>
                           </div>
                         </div>

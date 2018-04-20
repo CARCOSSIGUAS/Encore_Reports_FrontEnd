@@ -117,123 +117,123 @@ class BuscarConsultora extends Component {
     render() {
 
         return (
-            <div class="container">
-                <div class="content-main margin-top30">
+            <div className="container">
+                <div className="content-main margin-top30">
                     <div className="row">
-                        <div class="bc-backtitle">
-                            <p class="bc-title">BUSCAR CONSULTORA</p>
+                        <div className="bc-backtitle">
+                            <p className="bc-title">BUSCAR CONSULTORA</p>
                         </div>
                         <div className="col-sm-12">
-                            <div class="bc-content-body">
-                                <div class="col-md-3 mt-10">
-                                    <span class="bc-title-text">Código Consultor</span><br />
-                                    <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} class="inpBusqueda clearable" />
+                            <div className="bc-content-body">
+                                <div className="col-md-3 mt-10">
+                                    <span className="bc-title-text">Código Consultor</span><br />
+                                    <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
-                                <div class="col-md-3 mt-10">
-                                    <span class="bc-title-text">Nombre Consultor</span><br />
-                                    <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} class="inpBusqueda" />
+                                <div className="col-md-3 mt-10">
+                                    <span className="bc-title-text">Nombre Consultor</span><br />
+                                    <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} className="inpBusqueda" />
                                 </div>
-                                <div class="col-md-3 mt-10">
-                                    <span class="bc-title-text">Código Patrocinador</span><br />
-                                    <input type="text" id="bc-direccion" class="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
+                                <div className="col-md-3 mt-10">
+                                    <span className="bc-title-text">Código Patrocinador</span><br />
+                                    <input type="text" id="bc-direccion" className="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
                                 </div>
 
-                                <div class="col-md-3 mt-10">
-                                    <span class="bc-title-text">Nombre Patrocinador</span><br />
-                                    <input type="text" id="bc-direccion" class="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
+                                <div className="col-md-3 mt-10">
+                                    <span className="bc-title-text">Nombre Patrocinador</span><br />
+                                    <input type="text" id="bc-direccion" className="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
                                 </div>
-                                <p class="bc-filters"><a id="lnk-filtros" href="#Filters" data-toggle="collapse"><span class="text-filtros">OCULTAR FILTROS</span></a><i class="icon-menu-down"></i></p>
-                                <div id="Filters" class="collapse in">
-                                    <div class="row">
-                                        <div class="col-md-3 margin-top30">
-                                            <span class="bc-title-text">Nivel</span><br />
-                                            <div class="RegionZonaSeccionButton">
-                                                <a id="A" class="btnSeccion" name="Nivel1" onClick={this.changeActiveButton}>1</a>
-                                                <a id="B" class="btnSeccion" name="Nivel2" onClick={this.changeActiveButton}>2</a>
-                                                <a id="C" class="btnSeccion" name="Nivel3" onClick={this.changeActiveButton}>3</a>
-                                                <a id="D" class="btnSeccion" name="Nivel4" onClick={this.changeActiveButton}>4</a>
+                                <p className="bc-filters"><a id="lnk-filtros" href="#Filters" data-toggle="collapse"><span className="text-filtros">OCULTAR FILTROS</span></a><i className="icon-menu-down"></i></p>
+                                <div id="Filters" className="collapse in">
+                                    <div className="row">
+                                        <div className="col-md-3 margin-top30">
+                                            <span className="bc-title-text">Nivel</span><br />
+                                            <div className="RegionZonaSeccionButton">
+                                                <a id="A" className="btnSeccion" name="Nivel1" onClick={this.changeActiveButton}>1</a>
+                                                <a id="B" className="btnSeccion" name="Nivel2" onClick={this.changeActiveButton}>2</a>
+                                                <a id="C" className="btnSeccion" name="Nivel3" onClick={this.changeActiveButton}>3</a>
+                                                <a id="D" className="btnSeccion" name="Nivel4" onClick={this.changeActiveButton}>4</a>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 margin-top30">
-                                            <span class="bc-title-text">Generación</span><br />
-                                            <div class="RegionZonaSeccionButton">
-                                                <a id="A" class="btnSeccion" name="Generacion1" onClick={this.changeActiveButton}>1</a>
-                                                <a id="B" class="btnSeccion" name="Generacion2" onClick={this.changeActiveButton}>2</a>
-                                                <a id="C" class="btnSeccion" name="Generacion3" onClick={this.changeActiveButton}>3</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 margin-top30">
-                                            <span class="bc-title-text">Título</span><br />
-                                            <div class="segmentoButton">
-                                                <a id="0" title="Consultor" class="btnSegmento line-height2" name="Consultor" onClick={this.changeActiveButton}>Consultor</a>
-                                                <a id="1" title="Cons. Senior" class="btnSegmento line-height2" name="ConsultorSenior" onClick={this.changeActiveButton}>Cons. Senior</a>
-                                                <a id="2" title="Cons. Especialista" class="btnSegmento line-height2" name="ConsultorEspecialista" onClick={this.changeActiveButton}>Cons. Especialista</a>
-                                                <a id="3" title="Empresario" class="btnSegmento line-height2" name="Empresario" onClick={this.changeActiveButton}>Empresario</a>
-                                                <a id="4" title="Empr. Avanzado" class="btnSegmento line-height2" name="EmpresarioAvanzado" onClick={this.changeActiveButton}>Empr. Avanzado</a>
-                                                <a id="5" title="Emp. Principal" class="btnSegmento line-height2" name="EmpresarioPrincipal" onClick={this.changeActiveButton}>Emp. Principal</a>
-                                                <a id="6" title="Executivo" class="btnSegmento line-height2" name="Executivo" onClick={this.changeActiveButton}>Executivo</a>
-                                                <a id="7" title="Exec. Prestige" class="btnSegmento line-height2" name="ExecutivoPrestige" onClick={this.changeActiveButton}>Exec. Prestige</a>
-                                                <a id="8" title="Exec. Elite" class="btnSegmento line-height2" name="ExecutivoElite" onClick={this.changeActiveButton}>Exec. Elite</a>
-                                                <a id="9" title="Exec. Premium" class="btnSegmento line-height2" name="ExecutivoPremium" onClick={this.changeActiveButton}>Exec. Premium</a>
-                                                <a id="9" title="Exec. Supreme" class="btnSegmento line-height2" name="ExecutivoSupreme" onClick={this.changeActiveButton}>Exec. Supreme</a>
-                                                <a id="9" title="Exec. Nacional" class="btnSegmento line-height2" name="ExecutivoNacional" onClick={this.changeActiveButton}>Exec. Nacional</a>
-                                                <a id="9" title="Gran Exec. Nacional" class="btnSegmento line-height2" name="GranExecutivoNacional" onClick={this.changeActiveButton}>Gran Exec. Nacional</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 margin-top30">
-                                            <span class="bc-title-text">Estatus</span><br />
-                                            <div class="segmentoButton">
-                                                <a id="1" title="Activa" class="btnSegmento line-height2" name="EstatusActiva" onClick={this.changeActiveButton}>Activa</a>
-                                                <a id="0" title="Inactiva (1)" class="btnSegmento line-height2" name="EstatusInactiva1" onClick={this.changeActiveButton}>Inactiva (1)</a>
-                                                <a id="0" title="Inactiva (2)" class="btnSegmento line-height2" name="EstatusInactiva2" onClick={this.changeActiveButton}>Inactiva (2)</a>
-                                                <a id="0" title="Inactiva (3)" class="btnSegmento line-height2" name="EstatusInactiva3" onClick={this.changeActiveButton}>Inactiva (3)</a>
-                                                <a id="0" title="Inactiva (4)" class="btnSegmento line-height2" name="EstatusInactiva4" onClick={this.changeActiveButton}>Inactiva (4)</a>
-                                                <a id="0" title="Inactiva (5)" class="btnSegmento line-height2" name="EstatusInactiva5" onClick={this.changeActiveButton}>Inactiva (5)</a>
-                                                <a id="0" title="Inactiva (6)" class="btnSegmento line-height2" name="EstatusInactiva6" onClick={this.changeActiveButton}>Inactiva (6)</a>
-                                                <a id="0" title="Inactiva (7)" class="btnSegmento line-height2" name="EstatusInactiva7" onClick={this.changeActiveButton}>Inactiva (7)</a>
-                                                <a id="0" title="Posible Egreso" class="btnSegmento line-height2" name="EstatusPosibleEgreso" onClick={this.changeActiveButton}>Posible Egreso</a>
-                                                <a id="0" title="Cadastra" class="btnSegmento line-height2" name="EstatusCadastra" onClick={this.changeActiveButton}>Cadastra</a>
+                                        <div className="col-md-8 margin-top30">
+                                            <span className="bc-title-text">Generación</span><br />
+                                            <div className="RegionZonaSeccionButton">
+                                                <a id="A" className="btnSeccion" name="Generacion1" onClick={this.changeActiveButton}>1</a>
+                                                <a id="B" className="btnSeccion" name="Generacion2" onClick={this.changeActiveButton}>2</a>
+                                                <a id="C" className="btnSeccion" name="Generacion3" onClick={this.changeActiveButton}>3</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div class="col-md-2 mt-10">
-                                            <span class="bc-title-text">Fecha ingreso</span><br />
-                                            <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} class="inpBusquedaM clearable" />
-                                        </div>
-                                        <div class="col-md-2 mt-10">
-                                            <span class="bc-title-text">Hasta</span><br />
-                                            <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} class="inpBusquedaM clearable" />
-                                        </div>
-                                        <div class="col-md-2 mt-10 margin-lef10">
-                                            <span class="bc-title-text">Venta Personal</span><br />
-                                            <input type="text" id="bc-documento" class="inpBusquedaM" />
-                                        </div>
-                                        <div class="col-md-2 mt-10">
-                                            <span class="bc-title-text">Hasta</span><br />
-                                            <input type="text" id="bc-documento" class="inpBusquedaM" />
+                                        <div className="col-md-8 margin-top30">
+                                            <span className="bc-title-text">Título</span><br />
+                                            <div className="segmentoButton">
+                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="Consultor" onClick={this.changeActiveButton}>Consultor</a>
+                                                <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="ConsultorSenior" onClick={this.changeActiveButton}>Cons. Senior</a>
+                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="ConsultorEspecialista" onClick={this.changeActiveButton}>Cons. Especialista</a>
+                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="Empresario" onClick={this.changeActiveButton}>Empresario</a>
+                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="EmpresarioAvanzado" onClick={this.changeActiveButton}>Empr. Avanzado</a>
+                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="EmpresarioPrincipal" onClick={this.changeActiveButton}>Emp. Principal</a>
+                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="Executivo" onClick={this.changeActiveButton}>Executivo</a>
+                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="ExecutivoPrestige" onClick={this.changeActiveButton}>Exec. Prestige</a>
+                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="ExecutivoElite" onClick={this.changeActiveButton}>Exec. Elite</a>
+                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="ExecutivoPremium" onClick={this.changeActiveButton}>Exec. Premium</a>
+                                                <a id="9" title="Exec. Supreme" className="btnSegmento line-height2" name="ExecutivoSupreme" onClick={this.changeActiveButton}>Exec. Supreme</a>
+                                                <a id="9" title="Exec. Nacional" className="btnSegmento line-height2" name="ExecutivoNacional" onClick={this.changeActiveButton}>Exec. Nacional</a>
+                                                <a id="9" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="GranExecutivoNacional" onClick={this.changeActiveButton}>Gran Exec. Nacional</a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2 mt-10">
-                                                <span class="bc-title-text">Venta Organización</span><br />
-                                                <input type="text" id="bc-direccion" class="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
+                                        <div className="col-md-8 margin-top30">
+                                            <span className="bc-title-text">Estatus</span><br />
+                                            <div className="segmentoButton">
+                                                <a id="1" title="Activa" className="btnSegmento line-height2" name="EstatusActiva" onClick={this.changeActiveButton}>Activa</a>
+                                                <a id="0" title="Inactiva (1)" className="btnSegmento line-height2" name="EstatusInactiva1" onClick={this.changeActiveButton}>Inactiva (1)</a>
+                                                <a id="0" title="Inactiva (2)" className="btnSegmento line-height2" name="EstatusInactiva2" onClick={this.changeActiveButton}>Inactiva (2)</a>
+                                                <a id="0" title="Inactiva (3)" className="btnSegmento line-height2" name="EstatusInactiva3" onClick={this.changeActiveButton}>Inactiva (3)</a>
+                                                <a id="0" title="Inactiva (4)" className="btnSegmento line-height2" name="EstatusInactiva4" onClick={this.changeActiveButton}>Inactiva (4)</a>
+                                                <a id="0" title="Inactiva (5)" className="btnSegmento line-height2" name="EstatusInactiva5" onClick={this.changeActiveButton}>Inactiva (5)</a>
+                                                <a id="0" title="Inactiva (6)" className="btnSegmento line-height2" name="EstatusInactiva6" onClick={this.changeActiveButton}>Inactiva (6)</a>
+                                                <a id="0" title="Inactiva (7)" className="btnSegmento line-height2" name="EstatusInactiva7" onClick={this.changeActiveButton}>Inactiva (7)</a>
+                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="EstatusPosibleEgreso" onClick={this.changeActiveButton}>Posible Egreso</a>
+                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="EstatusCadastra" onClick={this.changeActiveButton}>Cadastra</a>
                                             </div>
-                                            <div class="col-md-2 mt-10">
-                                                <span class="bc-title-text">Hasta</span><br />
-                                                <input type="text" id="bc-direccion" class="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-2 mt-10">
+                                            <span className="bc-title-text">Fecha ingreso</span><br />
+                                            <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusquedaM clearable" />
+                                        </div>
+                                        <div className="col-md-2 mt-10">
+                                            <span className="bc-title-text">Hasta</span><br />
+                                            <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusquedaM clearable" />
+                                        </div>
+                                        <div className="col-md-2 mt-10 margin-lef10">
+                                            <span className="bc-title-text">Venta Personal</span><br />
+                                            <input type="text" id="bc-documento" className="inpBusquedaM" />
+                                        </div>
+                                        <div className="col-md-2 mt-10">
+                                            <span className="bc-title-text">Hasta</span><br />
+                                            <input type="text" id="bc-documento" className="inpBusquedaM" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group">
+                                            <div className="col-md-2 mt-10">
+                                                <span className="bc-title-text">Venta Organización</span><br />
+                                                <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
+                                            </div>
+                                            <div className="col-md-2 mt-10">
+                                                <span className="bc-title-text">Hasta</span><br />
+                                                <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="row margin-bottom20">
-                                    <div class="col-sm-4">
-                                        <button type="button" class="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  &nbsp;BUSCAR</button><br />
+                                    <div className="col-sm-4">
+                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  &nbsp;BUSCAR</button><br />
                                     </div>
                                 </div>
                             </div>
