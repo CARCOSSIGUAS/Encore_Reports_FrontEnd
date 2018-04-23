@@ -1,16 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './ConsultorHeader.css';
-
-
 
 class ConsultorHeader extends React.Component {
     constructor(props) {
         super(props)
+        
+        const { user } = this.props; 
 
         this.state = {
-            consultor: {
-            },
-            codConsultor: 1697,
+            consultor: {},
+            codConsultor: user.accountID,
             periodId: 201803,
         }
     }
@@ -18,6 +18,9 @@ class ConsultorHeader extends React.Component {
     componentDidMount() {
         fetch('http://10.12.9.169/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
+                  if (!response.ok) { 
+                return Promise.reject(response.statusText);
+            }
                 return response.json()
             })
             .then((consultor) => {
@@ -67,5 +70,12 @@ class ConsultorHeader extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    const { user } = state.authentication;
+    return {
+        user
+    };
+}
 
-export default ConsultorHeader;
+const ConsultorHeaderPage = connect(mapStateToProps)(ConsultorHeader);
+export default ConsultorHeaderPage;
