@@ -49,11 +49,7 @@ class Footer extends React.Component {
                                         </a><br />
                                     </div>
                                 </div>
-                                <div id="content_legal">
-                                </div>
                             </div>
-                        </div>
-                        <div className="col-xs-16 col-sm-14 col-sm-offset-1">
                         </div>
                     </div>
                 </div>

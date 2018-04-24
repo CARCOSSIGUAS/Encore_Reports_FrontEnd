@@ -3,6 +3,7 @@ import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import ConsultorHeader from '../../components/header/ConsultorHeader';
 import { faCheckSquare, faCoffee, faPlusCircle } from '@fortawesome/fontawesome-free-solid'
+import { PacmanLoader } from 'react-spinners';
 import './VentaNeta.css';
 
 fontawesome.library.add(faCheckSquare, faCoffee, faPlusCircle);
@@ -16,7 +17,9 @@ class VentaNeta extends Component {
       codConsultor: 1697,
       periodId: 201803,
       indicadorVentaNeta: [{}],
-      items: []
+      items: [],
+      loading: true,
+      activaClass: 'active'
     };
   }
 
@@ -31,12 +34,12 @@ class VentaNeta extends Component {
         this.setState({ indicadorVentaNeta });
       });
 
-      fetch('http://10.12.9.169/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.169/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })
       .then((items) => {
-        this.setState({ items })
+        this.setState({ activaClass: 'inactive', items: items });
       });
   }
 
@@ -155,6 +158,15 @@ class VentaNeta extends Component {
 
     return (
       <section>
+        <div className={'sweet-loading ' + this.state.activaClass}>
+          <div className="loader-pacman">
+            <PacmanLoader
+              color={'rgb(189, 16, 224)'}
+              loading={this.state.loading}
+              className="loader-pacman"
+            />
+          </div>
+        </div>
         <ConsultorHeader />
         <div className="container">
           <div className="content-main">

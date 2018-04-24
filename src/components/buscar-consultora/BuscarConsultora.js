@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-
 import GridConsultora from '../../components/buscar-consultora/GridConsultora';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
+import { PacmanLoader } from 'react-spinners';
 
 import './BuscarConsultora.css';
 
@@ -44,9 +43,8 @@ class BuscarConsultora extends Component {
                 Generacion2: false,
                 Generacion3: false,
             },
-
-            items: []
-
+            items: [],
+            activaClass: 'inactive'
         };
         this.onBuscar = this.onBuscar.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -83,6 +81,7 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar() {
+        this.setState({ activaClass: 'active' });
         let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
             "&CodConsultoraSearched=" + this.state.filtro.CodConsultoraSearched +
             "&NombreConsultora=" + this.state.filtro.NombreConsultora +
@@ -109,7 +108,7 @@ class BuscarConsultora extends Component {
                 return response.json()
             })
             .then((items) => {
-                this.setState({ items });
+                this.setState({ activaClass: 'inactive', items: items });
             });
     }
 
@@ -118,6 +117,15 @@ class BuscarConsultora extends Component {
 
         return (
             <div className="container">
+                <div className={'sweet-loading ' + this.state.activaClass}>
+                    <div className="loader-pacman">
+                        <PacmanLoader
+                            color={'rgb(189, 16, 224)'}
+                            loading={this.state.loading}
+                            className="loader-pacman"
+                        />
+                    </div>
+                </div>
                 <div className="content-main margin-top30">
                     <div className="row">
                         <div className="bc-backtitle">
