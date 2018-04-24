@@ -44,51 +44,26 @@ class Header extends React.Component {
                                     </li>
                                 </ul>
                             </li>
-                            <li className="close-session visible-xs">
-                                <a role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/HomeNew/CerrarSesion">
-                                    <span className="hidden-md hidden-sm">Cerrar Sesión</span>
-                                    <FontAwesomeIcon icon={["fab", "sign-in-alt"]} />
-                                </a>
-                            </li>
                             <li className="hidden-sm" className="_pointer" title="Inicio" id="lnk-prin-inicio">
                                 <Link to={`/buscarConsultora`} >
                                     Buscar Consultora
                                     </Link>
-<<<<<<< HEAD
                             </li>
                         </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul className="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#" title="Notificaciones">
-                                    <span className="icono_notificaciones">
-                                    </span>
+                                <a className="link-close-session enlace_cerrarSesion" role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/Login">
+                                    <span className="text-close-session">Cerrar<br />Sesión</span>
                                 </a>
                             </li>
                         </ul>
-=======
-                                </li>
-                            </ul>
-                            <ul className="nav navbar-nav navbar-right hidden-xs">
-                                <li>
-                                    <a className="link-close-session enlace_cerrarSesion" role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/Login">
-                                        <i role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" className="icon-logout icono_cerrar_sesion"></i>
-                                        <span className="text-close-session hidden-sm">Cerrar<br />Sesión</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <span className="close-menu visible-xs toogle-menu">
-                                <a data-toggle="collapse" data-target=".navigation-primary"><i className="icon-aspa" ></i></a>
-                            </span>
-                        </div>
->>>>>>> 4c56ce53311b0952130109d4773d7d71c723eba7
-
+                        <span className="close-menu visible-xs toogle-menu">
+                            <a data-toggle="collapse" data-target=".navigation-primary"><i className="icon-aspa" ></i></a>
+                        </span>
                     </div>
                 </nav>
-            </header>
+            </header >
         );
     }
 }
-
-
 export default Header;

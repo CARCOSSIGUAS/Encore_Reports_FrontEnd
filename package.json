@@ -13,13 +13,10 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
-<<<<<<< HEAD
-    "react-spinners": "^0.3.2"
-=======
+    "react-spinners": "^0.3.2",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
->>>>>>> 4c56ce53311b0952130109d4773d7d71c723eba7
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,7 +1,13 @@
+.enlace_cerrarSesion{
+    height: 20px;
+}
 .container-fluid{
     margin: 0px 100px;
 }
-
+.text-close-session{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
 .navbar-header-margin{
     margin-right: 5px !important;
     margin-left: 5px !important;
@@ -70,10 +76,7 @@ body {
 }
 
 .navbar-right li a {
-    padding-left: 15px;
-    padding-right: 15px;
     line-height: 1;
-    font-size: 20px;
     position: relative;
 }
 
