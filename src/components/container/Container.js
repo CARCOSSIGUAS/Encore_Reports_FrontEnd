@@ -12,10 +12,10 @@ class Container extends Component {
         return (
             <section>
                 <ConsultorHeader />
-                <div class="container">
-                    <div class="content-main">
-                        <span class="icon-content-main"><i class="icon-dash-circled"></i></span>
-                        <div class="row">
+                <div className="container">
+                    <div className="content-main">
+                        <span className="icon-content-main"><i className="icon-dash-circled"></i></span>
+                        <div className="row">
                         </div >
                     </div >
                 </div>

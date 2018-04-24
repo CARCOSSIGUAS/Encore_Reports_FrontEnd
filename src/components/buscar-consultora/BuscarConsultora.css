@@ -41,7 +41,11 @@
     line-height: 2;
 }
 
-.btnSeccion:hover, .btnSeccion.active {
+.btnSeccion:hover{
+    cursor: pointer;
+}
+
+.btnSeccion.active {
     text-decoration: none;
     background-color: #722789;
     border: 1px solid #722789;
@@ -49,7 +53,11 @@
     cursor: pointer;
 }
 
-.btnEstado:hover, .btnEstado.active {
+.btnEstado:hover{
+    cursor: pointer;
+}
+
+.btnEstado.active {
     text-decoration: none;
     background-color: #722789;
     border: 1px solid #722789;
@@ -117,7 +125,12 @@
     vertical-align: middle;
 }
 
-.btnSegmento:hover, .btnSegmento.active {
+.btnSegmento:hover
+{
+    cursor: pointer;
+}
+
+.btnSegmento.active {
     text-decoration: none;
     background-color: #722789;
     border: 1px solid #722789;
@@ -211,6 +224,11 @@ a {
     height:20px;
 }
 
+
+.margin-top30{
+    margin-top: 30px;
+}
+
 .tab-head .order-by-content .form-control {
     display: inline-block;
     width: 280px;
@@ -220,7 +238,10 @@ a {
     padding-top: 5px;
     margin-bottom: -5px;
 }
-
+.btnSeccion a:active{
+    background-color: #722789;
+    border: 1px solid #722789;
+}
 @media screen and (min-width: 1199px)
 {
     .inpBusqueda {
@@ -228,8 +249,18 @@ a {
         height: 30px;
     }
 
+
+    .inpBusquedaM {
+        width: 180px;
+        height: 25px;
+    }
+
     .inpBusquedaC {
         width: 250px;
         height: 30px;
     }
+}
+.margin-lef10
+{
+    margin-left: 10px;
 }

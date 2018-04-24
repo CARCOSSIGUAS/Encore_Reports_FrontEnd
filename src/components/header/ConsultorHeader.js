@@ -16,7 +16,7 @@ class ConsultorHeader extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
+        fetch('http://10.12.9.169/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
                   if (!response.ok) { 
                 return Promise.reject(response.statusText);
@@ -36,27 +36,27 @@ class ConsultorHeader extends React.Component {
         } = this.state;
 
         return (
-            <div class="main-header main-header-mobile">
-                <div class="container" id="main-header-container">
-                    <div class="row content-main-indicadores">
-                        <div class="col-xs-16 col-lg-15 col-lg-offset-1">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-7 col-xs-16">
-                                    <div class="text-md text-primary">
+            <div className="main-header main-header-mobile">
+                <div className="container" id="main-header-container">
+                    <div className="row content-main-indicadores">
+                        <div className="col-xs-16 col-lg-15 col-lg-offset-1">
+                            <div className="row">
+                                <div className="col-md-4 col-sm-7 col-xs-16">
+                                    <div className="text-md text-primary">
                                         <strong>Hola, {consultor.accounts_Mongo != null ? consultor.accounts_Mongo.firstName : ""}</strong>
                                     </div>
-                                    <span class="text-primary-xs">
+                                    <span className="text-primary-xs">
                                         <span></span>
                                     </span>
                                 </div>
-                                <div class="col-md-offset-4 col-md-4 col-sm-9">
-                                    <div class="main-campana">
-                                        <div class="text-ws">
-                                            <span>Campanha</span> <br /> <span class="text-ws-lg ">C-06</span>
+                                <div className="col-md-offset-4 col-md-4 col-sm-9">
+                                    <div className="main-campana">
+                                        <div className="text-ws">
+                                            <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
                                         </div>
-                                        <div class="text-ws">
+                                        <div className="text-ws">
                                             <span>Cierre de Campanha</span> <br />
-                                            <span class="text-ws-lg">5 días</span>
+                                            <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""} días</span>
                                         </div>
                                     </div>
                                 </div>

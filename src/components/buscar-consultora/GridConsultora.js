@@ -11,8 +11,8 @@ class GridConsultora extends Component {
     }
 
     render() {
-        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item) => {
-            return <div key={item.id} className="content-collapse-item upper">
+        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item,index) => {
+            return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.accountNumber}>
                         <FontAwesomeIcon icon="plus-circle" />
@@ -24,7 +24,7 @@ class GridConsultora extends Component {
                         </span>
                     </a>
                     <br />
-                    <span className="num-collapse"> <b>1</b></span>
+                    <span className="num-collapse"> <b>{index + 1}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-sm-10 col-md-4 col-lg-4 line-left">
@@ -32,24 +32,24 @@ class GridConsultora extends Component {
                                     <div className="col-xs-6">
                                         <div>CÓDIGO: <b>{item.accountID}</b></div>
                                         <div>CUMPLEAÑOS: <b>{item.enrollmentDateUTC}</b></div>
-                                        <div>ESTADO: <b></b></div>
+                                        <div>ESTADO: <b>{item.state}</b></div>
                                     </div>
                                     <div className="col-xs-6">
-                                        <div>NIVEL: <b className="tnormal"></b></div>
-                                        <div>GENERACIÓN: <b></b></div>
-                                        <div>STATUS: <b></b></div>
+                                        <div>NIVEL: <b className="tnormal">{item.level}</b></div>
+                                        <div>GENERACIÓN: <b>{item.generation}</b></div>
+                                        <div>STATUS: <b>{item.activity}</b></div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-6 col-md-3 col-lg-3 line-left">
                                 <div>VENTA PERSONAL: <b className="tnormal"></b></div>
-                                <div>VO-T: <b></b></div>
-                                <div>VO-Q: <b></b></div>
+                                <div>VO-T: <b>{item.pqv}</b></div>
+                                <div>VO-Q: <b>{item.dqvt}</b></div>
                             </div>
                             <div className="col-sm-6 col-md-4 col-lg-4 line-left">
-                                <div>TIT CARRERA: <b></b></div>
+                                <div>TIT CARRERA: <b>{item.careerTitle_Des}</b></div>
                                 <div>PERMANENCIA: <b className="tnormal"></b></div>
-                                <div>TIT,PAGO: <b className="tnormal"></b></div>
+                                <div>TIT,PAGO: <b className="tnormal">{item.paidAsCurrentMonth_Des}</b></div>
                             </div>
                         </div>
                         <br />
@@ -58,14 +58,14 @@ class GridConsultora extends Component {
                     <div className={"collapse-body collapse navigation-primary-" + item.accountNumber} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
                         <div className="row">
                             <div className="col-sm-4 col-md-4 col-lg-4">
-                                <div>CÓD. PATROCINADOR: <b></b></div>
-                                <div>NOMBRE: <b></b></div>
+                                <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
+                                <div>NOMBRE: <b>{item.sponsorName}</b></div>
                                 <div>EMAIL: <b></b></div>
                                 <div>TELÉFONO: <b></b></div>
                             </div>
                             <div className="col-sm-3 col-md-3 col-lg-3">
-                                <div>CÓD. LIDER: <b>337</b></div>
-                                <div>NOMBRE: <b> </b></div>
+                                <div>CÓD. LIDER: <b></b></div>
+                                <div>NOMBRE: <b></b></div>
                                 <div>EMAIL: <b></b></div>
                                 <div>TELÉFONO: <b></b></div>
                             </div>
@@ -74,45 +74,6 @@ class GridConsultora extends Component {
                                 <div>LÍDERES 1A GEN: <b>NO</b></div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-lg-10">
-                                <div className="box-detail-content-head-content-details">
-                                    <div className="table-responsive table-scroll table-mobile-slide2">
-                                        <table className="table table-middle text-center table-no-border mb-10 table-2 tb-carrousel">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="MERLY CRISTINA OROZCO ROJAS DE PORTELLA">A</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="PAOLA SALVO GIRON">B</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="ZOILA ANGELA HUAMAN CHAVEZ">C</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="HILDA ROSA RUIZ LLONTOP">D</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="SILVIA LILIANA TASAYCO DE ANCAJIMA">E</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="ISABEL IRIS CHUMBES LA ROSA SANCHEZ">F</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="FLOR DE MARIA DE MARIA WIDDUP ESPINOZA">G</a>
-                                                    </td>
-                                                    <td>
-                                                        <a className="zone-circle-details nodo " nivel="S" title="KATHERINE DAYANA  AQUIJE AREVALO">H</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -120,24 +81,24 @@ class GridConsultora extends Component {
         });
 
         return (<div className="content-results">
-            <div class="tab-head">
-                <div class="col-sm-12">
-                    <div class="col-sm-3 col-md-2">
-                        <div class="files-export text-center">
-                            <a class="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
+            <div className="tab-head">
+                <div className="col-sm-12">
+                    <div className="col-sm-3 col-md-2">
+                        <div className="files-export text-center">
+                            <a className="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
                         </div>
                     </div>
-                    <div class="col-sm-13 col-md-5">
-                        <div class="upper mt-15 text-md text-center">
-                            <div class="upper mt-15 text-sm text-center">
+                    <div className="col-sm-13 col-md-5">
+                        <div className="upper mt-15 text-md text-center">
+                            <div className="upper mt-15 text-sm text-center">
                                 <b> 1 - 15</b> de <b>{this.props.data != null ? this.props.data.numPage : 0} </b>Consultoras
                                 </div>
                         </div>
                     </div>
-                    <div class="col-sm-16 col-md-5">
-                        <div class="order-by-content">
+                    <div className="col-sm-16 col-md-5">
+                        <div className="order-by-content">
                             Ordenar por:
-                                <select class="form-control input-sm">
+                                <select className="form-control input-sm">
                                 <option value="1">Nombre, Apellido</option>
                                 <option value="2">Apellido, Nombre</option>
                                 <option value="3">Saldo / Nombre Consultora</option>
@@ -152,6 +113,19 @@ class GridConsultora extends Component {
                         {consultorasList}
                     </div>
                 </div>
+            </div>
+            <div id="contentPaginacion" className={this.props.data.accountsInformationDTO == null ? "float-pagination-left hidden-pagination" : "float-pagination-left visible-pagination"}>
+                <nav>
+                    <ul id="pagBuscarConsultora" paginaactual="1" cantregistros="7929" className="pagination pagination-sm">
+                        <li className="active"><a className="_pointer" title="Current page is 1">1</a></li>
+                        <li><a className="_pointer" title="Go to page 2">2</a></li>
+                        <li><a className="_pointer" title="Go to page 3">3</a></li>
+                        <li><a className="_pointer" title="Go to page 4">4</a></li>
+                        <li><a className="_pointer" title="Go to page 5">5</a></li>
+                        <li><a className="_pointer" title="Go to next page">&gt;</a></li>
+                        <li><a className="_pointer" title="Go to last page">&gt;&gt;</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>);
     }

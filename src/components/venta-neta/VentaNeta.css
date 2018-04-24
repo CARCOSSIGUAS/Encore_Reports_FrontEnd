@@ -197,3 +197,35 @@
     font-weight: 100;
     margin-top: 8px;
 }
+
+.sweet-loading{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(164, 181, 196, 0.8);
+    -moz-transition: all 250ms linear;
+    -o-transition: all 250ms linear;
+    -webkit-transition: all 250ms linear;
+    transition: all 250ms linear; 
+}
+.sweet-loading.active{
+    visibility: visible;
+}
+
+.sweet-loading.inactive{
+    visibility: hidden;
+}
+
+.loader-pacman{
+    top: 30em;
+    width: 10em;
+    height: 10em;
+    margin: 0 auto;
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+}
