@@ -66,6 +66,22 @@ class Header extends React.Component {
                                 </a>
                             </li>
                         </ul>
+=======
+                                </li>
+                            </ul>
+                            <ul className="nav navbar-nav navbar-right hidden-xs">
+                                <li>
+                                    <a className="link-close-session enlace_cerrarSesion" role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/Login">
+                                        <i role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" className="icon-logout icono_cerrar_sesion"></i>
+                                        <span className="text-close-session hidden-sm">Cerrar<br />Sesión</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <span className="close-menu visible-xs toogle-menu">
+                                <a data-toggle="collapse" data-target=".navigation-primary"><i className="icon-aspa" ></i></a>
+                            </span>
+                        </div>
+>>>>>>> 4c56ce53311b0952130109d4773d7d71c723eba7
 
                     </div>
                 </nav>
