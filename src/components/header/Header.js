@@ -54,6 +54,7 @@ class Header extends React.Component {
                                 <Link to={`/buscarConsultora`} >
                                     Buscar Consultora
                                     </Link>
+<<<<<<< HEAD
                             </li>
                         </ul>
 
