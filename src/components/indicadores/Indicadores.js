@@ -181,6 +181,6 @@ function mapStateToProps(state) {
   };
 }
 
-const Indicadores = connect(mapStateToProps)(Indicadores);
+const IndicadoresPage = connect(mapStateToProps)(Indicadores);
 
-export default Indicadores;
+export default IndicadoresPage;
