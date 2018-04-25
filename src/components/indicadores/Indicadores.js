@@ -23,7 +23,7 @@ class Indicadores extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.12.9.169/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })
@@ -73,7 +73,7 @@ class Indicadores extends Component {
                   <div className="tab-pane active" role="tabpanel" id="tab-indicadores">
                     <div className="col-sm-12">
                       <div className="col-lg-3 col-md-4 col-xs-12">
-                        <Link to={`/ventaneta`} >
+                        {/* <Link to={`/ventaneta`} > */}
                           <div className="box-data box-yellow">
                             <h3> <a className="box-data-title">DESEMPENHO</a> </h3>
                             <div className="box-content" id="VentaNetaDetalle">
@@ -97,9 +97,9 @@ class Indicadores extends Component {
                               </div>
                             </div>
                           </div>
-                        </Link>
+                        {/* </Link> */}
                       </div>
-                      <div className="col-lg-3 col-md-4 col-xs-12">
+                      {/* <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-blue">
                           <h3> <a className="box-data-title">GANANCIAS</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
@@ -147,7 +147,7 @@ class Indicadores extends Component {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="col-sm-12">
                       <div className="col-sm-offset-8 col-sm-3">

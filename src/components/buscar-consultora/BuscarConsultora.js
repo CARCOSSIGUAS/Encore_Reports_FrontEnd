@@ -101,7 +101,7 @@ class BuscarConsultora extends Component {
             "&LeftBower=" + this.state.filtro.LeftBower +
             "&RigthBower=" + this.state.filtro.RigthBower;
 
-        fetch('http://10.12.9.169/api/report/GetAccountsFilterPaginated/?' + params, {
+        fetch('http://10.12.9.83:3391/api/report/GetAccountsFilterPaginated/?' + params, {
 
         })
             .then((response) => {
@@ -133,20 +133,20 @@ class BuscarConsultora extends Component {
                         </div>
                         <div className="col-sm-12">
                             <div className="bc-content-body">
-                                <div className="col-md-3 mt-10">
+                                <div className="col-md-3">
                                     <span className="bc-title-text">Código Consultor</span><br />
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
-                                <div className="col-md-3 mt-10">
+                                <div className="col-md-3">
                                     <span className="bc-title-text">Nombre Consultor</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} className="inpBusqueda" />
                                 </div>
-                                <div className="col-md-3 mt-10">
+                                <div className="col-md-3">
                                     <span className="bc-title-text">Código Patrocinador</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
                                 </div>
 
-                                <div className="col-md-3 mt-10">
+                                <div className="col-md-3">
                                     <span className="bc-title-text">Nombre Patrocinador</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
                                 </div>
@@ -209,30 +209,30 @@ class BuscarConsultora extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-2 mt-10">
+                                        <div className="col-md-2">
                                             <span className="bc-title-text">Fecha ingreso</span><br />
                                             <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusquedaM clearable" />
                                         </div>
-                                        <div className="col-md-2 mt-10">
+                                        <div className="col-md-2">
                                             <span className="bc-title-text">Hasta</span><br />
                                             <input type="text" id="bc-codigo" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusquedaM clearable" />
                                         </div>
-                                        <div className="col-md-2 mt-10 margin-lef10">
+                                        <div className="col-md-2 margin-lef10">
                                             <span className="bc-title-text">Venta Personal</span><br />
                                             <input type="text" id="bc-documento" className="inpBusquedaM" />
                                         </div>
-                                        <div className="col-md-2 mt-10">
+                                        <div className="col-md-2">
                                             <span className="bc-title-text">Hasta</span><br />
                                             <input type="text" id="bc-documento" className="inpBusquedaM" />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="form-group">
-                                            <div className="col-md-2 mt-10">
+                                            <div className="col-md-2">
                                                 <span className="bc-title-text">Venta Organización</span><br />
                                                 <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
                                             </div>
-                                            <div className="col-md-2 mt-10">
+                                            <div className="col-md-2">
                                                 <span className="bc-title-text">Hasta</span><br />
                                                 <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
                                             </div>

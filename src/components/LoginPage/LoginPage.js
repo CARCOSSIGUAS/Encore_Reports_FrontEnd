@@ -31,8 +31,8 @@ class LoginPage extends React.Component {
         return (
             
             <section>
-                <div class="container">
-                    <div class="content-main">
+                <div className="container">
+                    <div className="content-main">
                             <div>
                                 <h1>Logout</h1>
                                 <span>Try logging in from Encore</span>
