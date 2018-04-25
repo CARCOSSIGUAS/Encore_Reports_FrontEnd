@@ -214,6 +214,9 @@
 }
 .sweet-loading.active{
     visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+    position: fixed;
 }
 
 .sweet-loading.inactive{
