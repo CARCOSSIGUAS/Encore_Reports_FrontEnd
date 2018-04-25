@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ConsultorHeader from '../../components/header/ConsultorHeader';
 import './Indicadores.css';
@@ -10,13 +11,16 @@ import Container from '../../components/container/Container';
 class Indicadores extends Component {
   constructor(props) {
     super(props)
+
+    const { user } = this.props; 
+
     this.state = {
       indicadorVentaNeta: {
         falta: 9364686,
         meta: 35096392,
         vas: 25731706
       },
-      codConsultor: 1697,
+      codConsultor: user.accountID,
       periodId: 201803,
       items: [{}]
     };
@@ -75,7 +79,7 @@ class Indicadores extends Component {
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <Link to={`/ventaneta`} >
                           <div className="box-data box-yellow">
-                            <h3> <a className="box-data-title">DESEMPENHO</a> </h3>
+                            <h3 className="box-data-title"><a className="box-data-title">DESEMPENHO</a> </h3>
                             <div className="box-content" id="VentaNetaDetalle">
                               <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
                               <div className="box-data-content">
@@ -169,5 +173,14 @@ class Indicadores extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const { user } = state.authentication;
+  return {
+      user
+  };
+}
+
+const Indicadores = connect(mapStateToProps)(Indicadores);
 
 export default Indicadores;
