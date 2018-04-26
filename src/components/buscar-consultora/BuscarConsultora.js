@@ -66,6 +66,7 @@ class BuscarConsultora extends Component {
     changeActiveButton(event) {
         const target = event.target;
         const name = target.name;
+        // Evitar el uso de var, solo usar const y let
         var isActive = false;
 
         if (target.className.indexOf("active") > -1) {
