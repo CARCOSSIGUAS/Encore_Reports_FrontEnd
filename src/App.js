@@ -20,6 +20,10 @@ class App extends React.Component {
 
   }
 
+  // Usar el BrowserRouter del paquete react-router-dom
+  // Corregir indentacion
+  // Tener cuidado con las mayusculas en la URL de "Login"
+  
   render() {
     return (
       <div>
