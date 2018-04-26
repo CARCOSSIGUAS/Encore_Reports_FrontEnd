@@ -12,14 +12,27 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            activeSelected: ""
+            activeSelected: "",
+            activeReporte: 'hidden-reporte'
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.onMostrarReporte = this.onMostrarReporte.bind(this);
     }
 
+    onMostrarReporte (){
+        this.setState({
+            activeReporte: 'active-reporte'
+        })
+    }
+
+    onCloseReporte(){
+        this.setState({
+            activeReporte: 'hidden-reporte'
+        })
+    }
     handleInputChange(event) {
-        debugger;
+        
         const target = event.target.parentElement;
         const name = target.id;
         this.setState({ activeSelected: name });
@@ -46,25 +59,16 @@ class Header extends Component {
                                     </Link>
                                 </li>
                                 <li className="dropdown">
-                                    <a className="dropdown-toggle _pointer" data-toggle="dropdown" role="menu" region="Principal" parent="Reportes" title="Reportes" id="lnk-prin-reportes">Reportes <FontAwesomeIcon icon="angle-down" className="icono_flechaDesglegarMenu" /></a>
-                                    <ul className="dropdown-menu multi-level tnormal">
+                                    <a className="dropdown-toggle _pointer" data-toggle="dropdown" role="menu" region="Principal" parent="Reportes" title="Reportes" id="lnk-prin-reportes">Reportes <FontAwesomeIcon icon="angle-down" className="icono_flechaDesglegarMenu" onClick={this.onMostrarReporte} onFocusOut={this.onCloseReporte} /></a>
+                                    <ul className={"dropdown-menu multi-level tnormal "+this.state.activeReporte} >
                                         <li>
-                                            <a className="_pointer" href="/HomeNew/Index/DataReport" role="menu" region="Principal" parent="Reportes" title="Reportes de Cierre" id="lnk-prin-reportes-de-cierre">Reportes de Cierre</a>
+                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Reportes de Cierre" id="lnk-prin-reportes-de-cierre">Reporte de Desempeño</a>
                                         </li>
                                         <li>
-                                            <a className="_pointer" href="/Reportes/Pedidos" role="menu" region="Principal" parent="Reportes" title="Bolsa de Pedidos" id="lnk-prin-bolsa-de-pedidos">Bolsa de Pedidos</a>
+                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Bolsa de Pedidos" id="lnk-prin-bolsa-de-pedidos">Reporte de Ganancia</a>
                                         </li>
                                         <li>
-                                            <a className="_pointer" href="/Reportes/PedidoWeb" role="menu" region="Principal" parent="Reportes" title="Pedido Web" id="lnk-prin-pedido-web">Pedido Web</a>
-                                        </li>
-                                        <li>
-                                            <a className="_pointer" href="/Reportes/Cobranzas" role="menu" region="Principal" parent="Reportes" title="Cobranzas" id="lnk-prin-cobranzas">Cobranzas</a>
-                                        </li>
-                                        <li>
-                                            <a className="_pointer" href="/Reportes/Flexipago" role="menu" region="Principal" parent="Reportes" title="Flexipago" id="lnk-prin-flexipago">Flexipago</a>
-                                        </li>
-                                        <li>
-                                            <a className="_pointer" href="/Reportes/ReporteZonificacion" role="menu" region="Principal" parent="Reportes" title="Reporte Rezonificación" id="lnk-prin-reporte-rezonificación">Reporte Rezonificación</a>
+                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Pedido Web" id="lnk-prin-pedido-web">Reporte de Nuevas</a>
                                         </li>
                                     </ul>
                                 </li>

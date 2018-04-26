@@ -194,3 +194,12 @@ b, strong {
         line-height: 1.42857143;
     }
 }
+
+
+.hidden-reporte{
+    display: none;
+}   
+
+.active-reporte{
+    display: block;
+}   

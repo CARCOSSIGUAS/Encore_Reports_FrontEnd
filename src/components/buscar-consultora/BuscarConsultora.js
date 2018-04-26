@@ -126,19 +126,11 @@ class BuscarConsultora extends Component {
         let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
             "&CodConsultoraSearched=" + this.state.filtro.CodConsultoraSearched +
             "&NombreConsultora=" + this.state.filtro.NombreConsultora +
-            "&DireccionConsultora=" + this.state.filtro.DireccionConsultora +
+            "&CodPatrocinador=" + this.state.filtro.CodPatrocinador +
+            "&NombrePatrocinador=" + this.state.filtro.NombrePatrocinador +
             "&Period=" + this.state.filtro.Period +
             "&NumeroPagina=" + this.state.filtro.NumeroPagina +
-            "&NumeroRegistros=" + this.state.filtro.NumeroRegistros +
-            "&TituloPago=" + this.state.filtro.TituloPago +
-            "&TituloCarrera=" + this.state.filtro.TituloCarrera +
-            "&Estado=" + this.state.filtro.Estado +
-            "&DataCadastro=" + this.state.filtro.DataCadastro +
-            "&VentaPersonal=" + this.state.filtro.VentaPersonal +
-            "&Nivel=" + this.state.filtro.Nivel +
-            "&Generation=" + this.state.filtro.Generation +
-            "&VOT=" + this.state.filtro.VOT +
-            "&VOQ=" + this.state.filtro.VOQ;
+            "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
 
         fetch('http://10.12.9.83:3391/api/report/GetAccountsFilterPaginated/?' + params, {
 
@@ -187,7 +179,7 @@ class BuscarConsultora extends Component {
                                 </div>
                                 <div className="col-md-3">
                                     <span className="bc-title-text">Nombre Consultor</span><br />
-                                    <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} className="inpBusqueda" />
+                                    <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
                                     <span className="bc-title-text">Código Patrocinador</span><br />
