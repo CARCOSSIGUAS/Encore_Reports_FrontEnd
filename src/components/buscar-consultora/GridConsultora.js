@@ -8,23 +8,40 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 class GridConsultora extends Component {
     constructor(props) {
         super(props);
+
+        this.state={
+            activeInformationAccount: ''
+        }
+
+        this.activaPanelAccount = this.activaPanelAccount.bind(this);
+    }
+
+
+    activaPanelAccount(event){
+        debugger;
+        const target = event.target;
+        const name = target.id;
+        this.setState({
+            activeInformationAccount:name
+        })
+        
     }
 
     render() {
         const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item,index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
-                    <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.accountNumber}>
+                    <a className="tituloConsultoraMargin" >
                         <FontAwesomeIcon icon="plus-circle" />
                         <span className=" change-icon">
                             <i className="icon-plus-circled"></i>
                         </span>
-                        <span className="upper tituloConsultoraMargin">
-                            {item.firstName} {item.middleName} {item.lastName}
+                        <span className="upper tituloConsultoraMargin" id={"account" + index} onClick={this.activaPanelAccount}>
+                            {item.accountName}
                         </span>
                     </a>
                     <br />
-                    <span className="num-collapse"> <b>{index + 1}</b></span>
+                    <span> <b>{index + 1}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-sm-10 col-md-4 col-lg-4 line-left">
@@ -55,7 +72,7 @@ class GridConsultora extends Component {
                         <br />
                     </div>
 
-                    <div className={"collapse-body collapse navigation-primary-" + item.accountNumber} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
+                    <div  className={this.state.activeInformationAccount == "account"+index ?"active-accountDetal":"inactive-accountDetal"} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
                         <div className="row">
                             <div className="col-sm-4 col-md-4 col-lg-4">
                                 <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
@@ -83,12 +100,12 @@ class GridConsultora extends Component {
         return (<div className="content-results">
             <div className="tab-head">
                 <div className="col-sm-12">
-                    <div className="col-sm-3 col-md-2">
+                    {/* <div className="col-sm-3 col-md-2">
                         <div className="files-export text-center">
                             <a className="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
                         </div>
-                    </div>
-                    <div className="col-sm-13 col-md-5">
+                    </div> */}
+                    <div className="col-offset-md-2 col-sm-13 col-md-5">
                         <div className="upper mt-15 text-md text-center">
                             <div className="upper mt-15 text-sm text-center">
                                 <b> 1 - 15</b> de <b>{this.props.data != null ? this.props.data.numPage : 0} </b>Consultoras

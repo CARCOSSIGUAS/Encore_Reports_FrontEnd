@@ -12,7 +12,7 @@ class Indicadores extends Component {
   constructor(props) {
     super(props)
 
-    const { user } = this.props; 
+    const { user } = this.props;
 
     this.state = {
       indicadorVentaNeta: {
@@ -78,50 +78,50 @@ class Indicadores extends Component {
                     <div className="col-sm-12">
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         {/* <Link to={`/ventaneta`} > */}
-                          <div className="box-data box-yellow">
-                            <h3 className="box-data-title"><a className="box-data-title">DESEMPENHO</a> </h3>
-                            <div className="box-content" id="VentaNetaDetalle">
-                              <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
-                              <div className="box-data-content">
-                                <div id="VentaNetaFacturacionBox">
-                                  <div className="box-text-md-encore">
-                                    <span className="VentaFaltanteVN stl-ind">VP:  {items != null ? items[0].vp : 0}</span>
-                                  </div>
-                                  <div className="box-text-md-encore">
-                                    <span className="box-text-sm">
-                                      <span className="VentasRestanteVN">VO-T: {items != null ? items[0].vot : 0}</span>
-                                    </span>
-                                  </div>
-                                  <div className="box-text-md-encore">
-                                    <span className="box-text-sm">
-                                      <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].voq : 0}</span>
-                                    </span>
-                                  </div>
+                        <div className="box-data box-yellow">
+                          <h3 className="box-data-title"><a className="box-data-title">DESEMPENHO</a> </h3>
+                          <div className="box-content" id="VentaNetaDetalle">
+                            <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
+                            <div className="box-data-content">
+                              <div id="VentaNetaFacturacionBox">
+                                <div className="box-text-md-encore">
+                                  <span className="VentaFaltanteVN stl-ind">VP:  {items != null ? items[0].vp : 0}</span>
+                                </div>
+                                <div className="box-text-md-encore">
+                                  <span className="box-text-sm">
+                                    <span className="VentasRestanteVN">VO-T: {items != null ? items[0].vot : 0}</span>
+                                  </span>
+                                </div>
+                                <div className="box-text-md-encore">
+                                  <span className="box-text-sm">
+                                    <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].voq : 0}</span>
+                                  </span>
                                 </div>
                               </div>
                             </div>
                           </div>
+                        </div>
                         {/* </Link> */}
                       </div>
-                      {/* <div className="col-lg-3 col-md-4 col-xs-12">
+                      <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-blue">
-                          <h3> <a className="box-data-title">GANANCIAS</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">GANANCIAS</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                             <div className="box-icon"><i className="icon-actividad"></i></div>
                             <div className="box-data-content">
 
                               <div id="VentaNetaFacturacionBox">
-                                <span className="VentaFaltanteVN stl-ind">VP: 1404</span>
+                                <span className="VentaFaltanteVN stl-ind"></span>
                                 <div className="box-text-md">
                                   <span>
-                                    <span className="MonedaVN32 stl-min">VO-T:</span>
+                                    <span className="MonedaVN32 stl-min"></span>
                                   </span>
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">{indicadorVentaNeta.falta}</span>
+                                    <span className="VentasRestanteVN"></span>
                                   </span>
                                 </div>
-                                <span className="VentaMetaVN">VO-Q:</span>
-                                <span className="VentasFdVVN3q1">{indicadorVentaNeta.meta}</span>
+                                <span className="VentaMetaVN"></span>
+                                <span className="VentasFdVVN3q1"></span>
                               </div>
 
                             </div>
@@ -130,28 +130,27 @@ class Indicadores extends Component {
                       </div>
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-success">
-                          <h3> <a className="box-data-title">Nuevas</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">Nuevas</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                             <div className="box-icon"><i className="icon-actividad"></i></div>
                             <div className="box-data-content">
                               <div id="VentaNetaFacturacionBox">
-                                <span className="VentaFaltanteVN stl-ind">VP: 1404</span>
+                                <span className="VentaFaltanteVN stl-ind"></span>
                                 <div className="box-text-md">
                                   <span>
-                                    <span className="MonedaVN32 stl-min">VO-T:</span>
+                                    <span className="MonedaVN32 stl-min"></span>
                                   </span>
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">{indicadorVentaNeta.falta}</span>
+                                    <span className="VentasRestanteVN"></span>
                                   </span>
                                 </div>
-                                <span className="VentaMetaVN">VO-Q:</span>
-                                <span className="VentasFdVVN3q1">{indicadorVentaNeta.meta}</span>
+                                <span className="VentaMetaVN"></span>
+                                <span className="VentasFdVVN3q1"></span>
                               </div>
-
                             </div>
                           </div>
                         </div>
-                      </div> */}
+                      </div>
                     </div>
                     <div className="col-sm-12">
                       <div className="col-sm-offset-8 col-sm-3">
@@ -177,7 +176,7 @@ class Indicadores extends Component {
 function mapStateToProps(state) {
   const { user } = state.authentication;
   return {
-      user
+    user
   };
 }
 

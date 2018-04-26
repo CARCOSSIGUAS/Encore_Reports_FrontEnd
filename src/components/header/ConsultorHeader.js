@@ -46,17 +46,17 @@ class ConsultorHeader extends React.Component {
                                         <strong>Hola, {consultor.accounts_Mongo != null ? consultor.accounts_Mongo.firstName : ""}</strong>
                                     </div>
                                     <span className="text-primary-xs">
-                                        <span></span>
+                                        <span>{consultor != null ? consultor.careerTitle_Des : ""}</span>
                                     </span>
                                 </div>
-                                <div className="col-md-offset-4 col-md-4 col-sm-9">
+                                <div className="col-md-offset-3 col-md-5 col-sm-8">
                                     <div className="main-campana">
                                         <div className="text-ws">
                                             <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
                                         </div>
                                         <div className="text-ws">
                                             <span>Cierre de Campanha</span> <br />
-                                            <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""} días</span>
+                                            <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""}</span>
                                         </div>
                                     </div>
                                 </div>

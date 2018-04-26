@@ -1,3 +1,12 @@
+.activeFilter{
+    display:block;
+}
+
+.activeFilterHidden{
+    display:none;
+}
+
+
 .bc-backtitle {
     background: #9bb2c6;
     height: 43px;
