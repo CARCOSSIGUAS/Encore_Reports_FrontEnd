@@ -107,7 +107,7 @@ class Indicadores extends Component {
                         <div className="box-data box-blue">
                           <h3 className="box-data-title"> <a className="box-data-title">GANANCIAS</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
-                            <div className="box-icon"><i className="icon-actividad"></i></div>
+                          <div className="box-icon"><FontAwesomeIcon icon="dollar-sign" /></div>
                             <div className="box-data-content">
 
                               <div id="VentaNetaFacturacionBox">
@@ -132,7 +132,7 @@ class Indicadores extends Component {
                         <div className="box-data box-success">
                           <h3 className="box-data-title"> <a className="box-data-title">Nuevas</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
-                            <div className="box-icon"><i className="icon-actividad"></i></div>
+                          <div className="box-icon"><FontAwesomeIcon icon="user-plus" /></div>
                             <div className="box-data-content">
                               <div id="VentaNetaFacturacionBox">
                                 <span className="VentaFaltanteVN stl-ind"></span>

@@ -72,6 +72,8 @@ class BuscarConsultora extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.changeActiveButton = this.changeActiveButton.bind(this);
         this.filterOpen = this.filterOpen.bind(this);
+        this.changeNivelActive = this.changeNivelActive.bind(this);
+        
     }
     onChange = (value) => {
         this.setState({
@@ -102,10 +104,29 @@ class BuscarConsultora extends Component {
         });
     }
 
+    changeNivelActive() {
+        debugger;
+        const target = event.target;
+        const name = target.name;
+        const nivel = this.filtro.Nivel;
+        if (nivel.indexOf(name) > 0) {
+            nivel = nivel.replace(name, '');
+        }
+        else {
+            nivel += name + ',';
+        }
+        nivel += name + ',';
+        this.state.filtro.Nivel = nivel;
+        this.setState({
+            filtro: this.state.filtro
+        });
+
+    }
+
     changeActiveButton(event) {
         const target = event.target;
         const name = target.name;
-        var isActive = false;
+        const isActive = false;
 
         if (target.className.indexOf("active") > -1) {
             target.className = target.className.replace("active", "");
@@ -196,10 +217,10 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-3 margin-top30">
                                             <span className="bc-title-text">Nivel</span><br />
                                             <div className="RegionZonaSeccionButton">
-                                                <a id="A" className="btnSeccion" name="Nivel1" onClick={this.changeActiveButton}>1</a>
-                                                <a id="B" className="btnSeccion" name="Nivel2" onClick={this.changeActiveButton}>2</a>
-                                                <a id="C" className="btnSeccion" name="Nivel3" onClick={this.changeActiveButton}>3</a>
-                                                <a id="D" className="btnSeccion" name="Nivel4" onClick={this.changeActiveButton}>4</a>
+                                                <a id="A" className="btnSeccion" name="1" onClick={this.changeNivelActive}>1</a>
+                                                <a id="B" className="btnSeccion" name="2" onClick={this.changeNivelActive}>2</a>
+                                                <a id="C" className="btnSeccion" name="3" onClick={this.changeNivelActive}>3</a>
+                                                <a id="D" className="btnSeccion" name="4" onClick={this.changeNivelActive}>4</a>
                                             </div>
                                         </div>
                                         <div className="col-md-8 margin-top30">
