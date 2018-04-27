@@ -21,6 +21,8 @@ class VentaNeta extends Component {
   }
 
   componentDidMount() {
+    // Se podrian manejar las llamadas desde un action, ademas de centralizar la URL de la API en un solo archivo
+    // por si se necesita actualizar la API solo se modificaria en un solo lugar
     fetch('http://10.12.9.169/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json();
@@ -45,6 +47,7 @@ class VentaNeta extends Component {
       indicadorVentaNeta, items
     } = this.state;
 
+    // Se podria extrar en otro componente para reducir las lineas de este archivo y mejorar la legibilidad
     const consultorasList = items.map((item) => {
       return <div className="content-collapse-item upper">
         <div className="collapse-head" role="tab">
