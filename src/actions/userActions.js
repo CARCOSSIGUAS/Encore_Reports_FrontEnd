@@ -18,6 +18,8 @@ export function login(token) {
             });
     };
 
+    // Estas dos funciones deben estar afuera no hay necesidad de crearlas dentro de este scope
+    
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
