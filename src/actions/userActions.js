@@ -14,6 +14,7 @@ export function login(token) {
                 }
             ).catch(error => 
             {
+                // Se debe mostrar el error al usuario, sino solo se mostrara en la consola sin feedback para el usuario
                 throw(error);
             });
     };
