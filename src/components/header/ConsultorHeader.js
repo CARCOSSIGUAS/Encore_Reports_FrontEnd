@@ -16,6 +16,7 @@ class ConsultorHeader extends React.Component {
     }
 
     componentDidMount() {
+        // extrar a un action
         fetch('http://10.12.9.169/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
                   if (!response.ok) { 
