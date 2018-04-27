@@ -6,6 +6,7 @@ import './GridConsultora.css';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 class GridConsultora extends Component {
+    // se puede omitir el constructor en este caso
     constructor(props) {
         super(props);
     }
