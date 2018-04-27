@@ -48,10 +48,14 @@ class BuscarConsultora extends Component {
             items: []
 
         };
+        //se puede usar onBuscar = () => {} para evitar hacer el bind
         this.onBuscar = this.onBuscar.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.changeActiveButton = this.changeActiveButton.bind(this);
     }
+    
+    // el ejemplo seria asi, se invocaria de la misma forma this.onBuscar
+    //onBuscar = () => { ... }
 
     handleInputChange(event) {
         const target = event.target;
@@ -103,6 +107,7 @@ class BuscarConsultora extends Component {
             "&LeftBower=" + this.state.filtro.LeftBower +
             "&RigthBower=" + this.state.filtro.RigthBower;
 
+        //extrar a un action 
         fetch('http://10.12.9.169/api/report/GetAccountsFilterPaginated/?' + params, {
 
         })
@@ -243,6 +248,7 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         <div id="div-contenido-buscar-consultora">
+                            {/*  se podria usar un nombre mas descriptivo en lugar de usar 'data' */}
                             <GridConsultora data={this.state.items} />
                         </div>
                     </div>
