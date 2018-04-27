@@ -23,6 +23,7 @@ class Indicadores extends Component {
   }
 
   componentDidMount() {
+    // Lo mismo se podria usar un action y extrar la URL en un archivo comoun
     fetch('http://10.12.9.169/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
