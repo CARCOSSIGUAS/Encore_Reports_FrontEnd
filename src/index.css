@@ -9,9 +9,6 @@
   font-style: normal;
 }
 
-
-
-
 body {
   margin: 0;
   padding: 0;
@@ -20,8 +17,6 @@ body {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
-
-
 
 .boxed {
   border: 1px solid green;

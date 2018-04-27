@@ -5,8 +5,8 @@ import './ConsultorHeader.css';
 class ConsultorHeader extends React.Component {
     constructor(props) {
         super(props)
-        
-        const { user } = this.props; 
+
+        const { user } = this.props;
 
         this.state = {
             consultor: {},
@@ -19,13 +19,13 @@ class ConsultorHeader extends React.Component {
         // extrar a un action
         fetch('http://10.12.9.169/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
             .then((response) => {
-                  if (!response.ok) { 
-                return Promise.reject(response.statusText);
-            }
+                if (!response.ok) {
+                    return Promise.reject(response.statusText);
+                }
                 return response.json()
             })
             .then((consultor) => {
-                var rpt = consultor != null? consultor : null;
+                var rpt = consultor != null ? consultor : null;
                 consultor = rpt;
                 this.setState({ consultor })
             });
@@ -53,11 +53,11 @@ class ConsultorHeader extends React.Component {
                                 <div className="col-md-offset-4 col-md-4 col-sm-9">
                                     <div className="main-campana">
                                         <div className="text-ws">
-                                            <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
+                                            <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor != null ? consultor.periodDescription : ""}</span>
                                         </div>
                                         <div className="text-ws">
                                             <span>Cierre de Campanha</span> <br />
-                                            <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""} días</span>
+                                            <span className="text-ws-lg">{consultor != null ? consultor.cantFinalPeriodo : ""} días</span>
                                         </div>
                                     </div>
                                 </div>

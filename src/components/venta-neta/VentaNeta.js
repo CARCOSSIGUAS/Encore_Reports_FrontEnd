@@ -33,7 +33,7 @@ class VentaNeta extends Component {
         this.setState({ indicadorVentaNeta });
       });
 
-      fetch('http://10.12.9.169/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.169/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })

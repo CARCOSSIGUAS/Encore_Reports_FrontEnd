@@ -13,7 +13,7 @@ class GridConsultora extends Component {
 
     render() {
         //extrar en otro componente
-        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item,index) => {
+        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item, index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a data-toggle="collapse" data-parent="#accordion-box-detalle" aria-expanded="true" aria-controls="1" className="tituloConsultoraMargin" data-target={".navigation-primary-" + item.accountNumber}>

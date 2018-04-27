@@ -53,7 +53,7 @@ class BuscarConsultora extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.changeActiveButton = this.changeActiveButton.bind(this);
     }
-    
+
     // el ejemplo seria asi, se invocaria de la misma forma this.onBuscar
     //onBuscar = () => { ... }
 
@@ -70,7 +70,7 @@ class BuscarConsultora extends Component {
     changeActiveButton(event) {
         const target = event.target;
         const name = target.name;
-        // Evitar el uso de var, solo usar const y let
+
         var isActive = false;
 
         if (target.className.indexOf("active") > -1) {
