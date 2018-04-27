@@ -2,6 +2,9 @@ import { userConstants } from '../constants';
 import { history } from '../helpers/history';
 import * as userService from '../services/userService';
 
+// Podria ser una mejor opcion utilizar argumento en el thunk https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
+// para remover la dependencia directa al servicio
+
 export function login(token) {
     return dispatch => {
         userService.login(token).then(
