@@ -12,6 +12,7 @@ class GridConsultora extends Component {
     }
 
     render() {
+        //extrar en otro componente
         const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item,index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
