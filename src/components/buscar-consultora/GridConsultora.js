@@ -9,26 +9,48 @@ class GridConsultora extends Component {
     constructor(props) {
         super(props);
 
-        this.state={
+        this.state = {
             activeInformationAccount: ''
         }
 
         this.activaPanelAccount = this.activaPanelAccount.bind(this);
+        this.exportAccounts = this.exportAccounts.bind(this);
+
+
+    }
+
+    exportAccounts(event) {
+        var filter = this.props.filters;
+        let params = "CodConsultoraLogged=" + filter.CodConsultoraLogged +
+            "&CodConsultoraSearched=" + filter.CodConsultoraSearched +
+            "&NombreConsultora=" + filter.NombreConsultora +
+            "&CodPatrocinador=" + filter.CodPatrocinador +
+            "&NombrePatrocinador=" + filter.NombrePatrocinador +
+            "&Period=" + filter.Period +
+            "&Nivel=" + filter.Nivel +
+            "&Generation=" + filter.Generation +
+            "&TituloCarrera=" + filter.TituloCarrera +
+            "&Estado=" + filter.Estado +
+            "&NumeroPagina=" + filter.NumeroPagina +
+            "&NumeroRegistros=" + filter.NumeroRegistros;
+
+        window.location.href = 'http://10.12.9.83:3391/api/report/exportexcel/?' + params;
+
     }
 
 
-    activaPanelAccount(event){
+    activaPanelAccount(event) {
         debugger;
         const target = event.target;
         const name = target.id;
         this.setState({
-            activeInformationAccount:name
+            activeInformationAccount: name
         })
-        
+
     }
 
     render() {
-        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item,index) => {
+        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item, index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a className="tituloConsultoraMargin" >
@@ -72,7 +94,7 @@ class GridConsultora extends Component {
                         <br />
                     </div>
 
-                    <div  className={this.state.activeInformationAccount == "account"+index ?"active-accountDetal":"inactive-accountDetal"} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
+                    <div className={this.state.activeInformationAccount == "account" + index ? "active-accountDetal" : "inactive-accountDetal"} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
                         <div className="row">
                             <div className="col-sm-4 col-md-4 col-lg-4">
                                 <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
@@ -100,11 +122,11 @@ class GridConsultora extends Component {
         return (<div className="content-results">
             <div className="tab-head">
                 <div className="col-sm-12">
-                    {/* <div className="col-sm-3 col-md-2">
+                    <div className="col-sm-3 col-md-2">
                         <div className="files-export text-center">
-                            <a className="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
+                            <a onClick={this.exportAccounts} className="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="col-offset-md-2 col-sm-13 col-md-5">
                         <div className="upper mt-15 text-md text-center">
                             <div className="upper mt-15 text-sm text-center">

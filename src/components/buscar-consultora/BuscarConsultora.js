@@ -5,7 +5,7 @@ import GridConsultora from '../../components/buscar-consultora/GridConsultora';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
-import { PacmanLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
 import 'rc-calendar/assets/index.css';
 import Calendar from 'rc-calendar';
 import DatePicker from 'rc-calendar/lib/Picker';
@@ -277,7 +277,7 @@ class BuscarConsultora extends Component {
             <div className="container">
                 <div className={'sweet-loading ' + this.state.activaClass}>
                     <div className="loader-pacman">
-                        <PacmanLoader
+                        <RingLoader
                             color={'rgb(189, 16, 224)'}
                             loading={this.state.loading}
                             className="loader-pacman"
@@ -449,7 +449,7 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         <div id="div-contenido-buscar-consultora">
-                            <GridConsultora data={this.state.items} />
+                            <GridConsultora data={this.state.items} filters={this.state.filtro} />
                         </div>
                     </div>
                 </div>
