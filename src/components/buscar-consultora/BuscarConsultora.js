@@ -73,7 +73,9 @@ class BuscarConsultora extends Component {
         this.changeActiveButton = this.changeActiveButton.bind(this);
         this.filterOpen = this.filterOpen.bind(this);
         this.changeNivelActive = this.changeNivelActive.bind(this);
-        
+        this.changeGenerationActive = this.changeGenerationActive.bind(this);
+        this.changeTitlesActive = this.changeTitlesActive.bind(this);
+        this.changeStatusActive = this.changeStatusActive.bind(this);
     }
     onChange = (value) => {
         this.setState({
@@ -104,18 +106,26 @@ class BuscarConsultora extends Component {
         });
     }
 
-    changeNivelActive() {
-        debugger;
+    changeNivelActive(event) {
         const target = event.target;
         const name = target.name;
-        const nivel = this.filtro.Nivel;
-        if (nivel.indexOf(name) > 0) {
-            nivel = nivel.replace(name, '');
+
+        let isActive = false;
+        let nivel = this.state.filtro.Nivel;
+
+        if (target.className.indexOf("active") > -1) {
+            target.className = target.className.replace("active", "");
         }
         else {
-            nivel += name + ',';
+            target.className += " active";
+            isActive = true;
         }
-        nivel += name + ',';
+
+        if (nivel.indexOf(name) > -1)
+            nivel = nivel.replace(name + ",", '');
+        else 
+            nivel += name + ',';
+
         this.state.filtro.Nivel = nivel;
         this.setState({
             filtro: this.state.filtro
@@ -123,10 +133,93 @@ class BuscarConsultora extends Component {
 
     }
 
+    changeStatusActive(event) {
+        const target = event.target;
+        const name = target.name;
+
+        let isActive = false;
+        let estado = this.state.filtro.Estado;
+
+        if (target.className.indexOf("active") > -1) {
+            target.className = target.className.replace("active", "");
+        }
+        else {
+            target.className += " active";
+            isActive = true;
+        }
+
+        if (estado.indexOf(name) > -1)
+            estado = estado.replace(name + ",", '');
+        else
+            estado += name + ',';
+
+        this.state.filtro.Estado = estado;
+        this.setState({
+            filtro: this.state.filtro
+        });
+
+    }
+
+
+    changeGenerationActive(event) {
+        const target = event.target;
+        const name = target.name;
+
+        let isActive = false;
+        let generation = this.state.filtro.Generation;
+
+        if (target.className.indexOf("active") > -1) {
+            target.className = target.className.replace("active", "");
+        }
+        else {
+            target.className += " active";
+            isActive = true;
+        }
+
+        if (generation.indexOf(name) > -1)
+            generation = generation.replace(name + ",", '');
+        else
+            generation += name + ',';
+
+        this.state.filtro.Generation = generation;
+        this.setState({
+            filtro: this.state.filtro
+        });
+
+    }
+
+    changeTitlesActive(event) {
+        const target = event.target;
+        const name = target.name;
+
+        let isActive = false;
+        let title = this.state.filtro.TituloCarrera;
+
+        if (target.className.indexOf("active") > -1) {
+            target.className = target.className.replace("active", "");
+        }
+        else {
+            target.className += " active";
+            isActive = true;
+        }
+
+        if (title.indexOf(name) > -1)
+            title = title.replace(name + ",", '');
+        else
+            title += name + ',';
+
+        this.state.filtro.TituloCarrera = title;
+        this.setState({
+            filtro: this.state.filtro
+        });
+
+    }
+
+
     changeActiveButton(event) {
         const target = event.target;
         const name = target.name;
-        const isActive = false;
+        let isActive = false;
 
         if (target.className.indexOf("active") > -1) {
             target.className = target.className.replace("active", "");
@@ -150,6 +243,10 @@ class BuscarConsultora extends Component {
             "&CodPatrocinador=" + this.state.filtro.CodPatrocinador +
             "&NombrePatrocinador=" + this.state.filtro.NombrePatrocinador +
             "&Period=" + this.state.filtro.Period +
+            "&Nivel=" + this.state.filtro.Nivel +
+            "&Generation=" + this.state.filtro.Generation +
+            "&TituloCarrera=" + this.state.filtro.TituloCarrera +
+            "&Estado=" + this.state.filtro.Estado +
             "&NumeroPagina=" + this.state.filtro.NumeroPagina +
             "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
 
@@ -226,9 +323,9 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-8 margin-top30">
                                             <span className="bc-title-text">Generación</span><br />
                                             <div className="RegionZonaSeccionButton">
-                                                <a id="A" className="btnSeccion" name="Generacion1" onClick={this.changeActiveButton}>1</a>
-                                                <a id="B" className="btnSeccion" name="Generacion2" onClick={this.changeActiveButton}>2</a>
-                                                <a id="C" className="btnSeccion" name="Generacion3" onClick={this.changeActiveButton}>3</a>
+                                                <a id="A" className="btnSeccion" name="1" onClick={this.changeGenerationActive}>1</a>
+                                                <a id="B" className="btnSeccion" name="2" onClick={this.changeGenerationActive}>2</a>
+                                                <a id="C" className="btnSeccion" name="3" onClick={this.changeGenerationActive}>3</a>
                                             </div>
                                         </div>
                                     </div>
@@ -236,19 +333,19 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-8 margin-top30">
                                             <span className="bc-title-text">Título</span><br />
                                             <div className="segmentoButton">
-                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="Consultor" onClick={this.changeActiveButton}>Consultor</a>
-                                                <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="ConsultorSenior" onClick={this.changeActiveButton}>Cons. Senior</a>
-                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="ConsultorEspecialista" onClick={this.changeActiveButton}>Cons. Especialista</a>
-                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="Empresario" onClick={this.changeActiveButton}>Empresario</a>
-                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="EmpresarioAvanzado" onClick={this.changeActiveButton}>Empr. Avanzado</a>
-                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="EmpresarioPrincipal" onClick={this.changeActiveButton}>Emp. Principal</a>
-                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="Executivo" onClick={this.changeActiveButton}>Executivo</a>
-                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="ExecutivoPrestige" onClick={this.changeActiveButton}>Exec. Prestige</a>
-                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="ExecutivoElite" onClick={this.changeActiveButton}>Exec. Elite</a>
-                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="ExecutivoPremium" onClick={this.changeActiveButton}>Exec. Premium</a>
-                                                <a id="9" title="Exec. Supreme" className="btnSegmento line-height2" name="ExecutivoSupreme" onClick={this.changeActiveButton}>Exec. Supreme</a>
-                                                <a id="9" title="Exec. Nacional" className="btnSegmento line-height2" name="ExecutivoNacional" onClick={this.changeActiveButton}>Exec. Nacional</a>
-                                                <a id="9" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="GranExecutivoNacional" onClick={this.changeActiveButton}>Gran Exec. Nacional</a>
+                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>Consultor</a>
+                                                <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>Cons. Senior</a>
+                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="4" onClick={this.changeTitlesActive}>Cons. Especialista</a>
+                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="5" onClick={this.changeTitlesActive}>Empresario</a>
+                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="6" onClick={this.changeTitlesActive}>Empr. Avanzado</a>
+                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="7" onClick={this.changeTitlesActive}>Emp. Principal</a>
+                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="8" onClick={this.changeTitlesActive}>Executivo</a>
+                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="9" onClick={this.changeTitlesActive}>Exec. Prestige</a>
+                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="10" onClick={this.changeTitlesActive}>Exec. Elite</a>
+                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="11" onClick={this.changeTitlesActive}>Exec. Premium</a>
+                                                <a id="10" title="Exec. Supreme" className="btnSegmento line-height2" name="12" onClick={this.changeTitlesActive}>Exec. Supreme</a>
+                                                <a id="11" title="Exec. Nacional" className="btnSegmento line-height2" name="13" onClick={this.changeTitlesActive}>Exec. Nacional</a>
+                                                <a id="12" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="14" onClick={this.changeTitlesActive}>Gran Exec. Nacional</a>
                                             </div>
                                         </div>
                                     </div>
@@ -256,16 +353,16 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-8 margin-top30">
                                             <span className="bc-title-text">Estatus</span><br />
                                             <div className="segmentoButton">
-                                                <a id="1" title="Activa" className="btnSegmento line-height2" name="EstatusActiva" onClick={this.changeActiveButton}>Activa</a>
-                                                <a id="0" title="Inactiva (1)" className="btnSegmento line-height2" name="EstatusInactiva1" onClick={this.changeActiveButton}>Inactiva (1)</a>
-                                                <a id="0" title="Inactiva (2)" className="btnSegmento line-height2" name="EstatusInactiva2" onClick={this.changeActiveButton}>Inactiva (2)</a>
-                                                <a id="0" title="Inactiva (3)" className="btnSegmento line-height2" name="EstatusInactiva3" onClick={this.changeActiveButton}>Inactiva (3)</a>
-                                                <a id="0" title="Inactiva (4)" className="btnSegmento line-height2" name="EstatusInactiva4" onClick={this.changeActiveButton}>Inactiva (4)</a>
-                                                <a id="0" title="Inactiva (5)" className="btnSegmento line-height2" name="EstatusInactiva5" onClick={this.changeActiveButton}>Inactiva (5)</a>
-                                                <a id="0" title="Inactiva (6)" className="btnSegmento line-height2" name="EstatusInactiva6" onClick={this.changeActiveButton}>Inactiva (6)</a>
-                                                <a id="0" title="Inactiva (7)" className="btnSegmento line-height2" name="EstatusInactiva7" onClick={this.changeActiveButton}>Inactiva (7)</a>
-                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="EstatusPosibleEgreso" onClick={this.changeActiveButton}>Posible Egreso</a>
-                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="EstatusCadastra" onClick={this.changeActiveButton}>Cadastra</a>
+                                                <a id="1" title="Activa" className="btnSegmento line-height2" name="1" onClick={this.changeStatusActive}>Activa</a>
+                                                <a id="0" title="Inactiva (1)" className="btnSegmento line-height2" name="2" onClick={this.changeStatusActive}>Inactiva (1)</a>
+                                                <a id="0" title="Inactiva (2)" className="btnSegmento line-height2" name="3" onClick={this.changeStatusActive}>Inactiva (2)</a>
+                                                <a id="0" title="Inactiva (3)" className="btnSegmento line-height2" name="4" onClick={this.changeStatusActive}>Inactiva (3)</a>
+                                                <a id="0" title="Inactiva (4)" className="btnSegmento line-height2" name="5" onClick={this.changeStatusActive}>Inactiva (4)</a>
+                                                <a id="0" title="Inactiva (5)" className="btnSegmento line-height2" name="6" onClick={this.changeStatusActive}>Inactiva (5)</a>
+                                                <a id="0" title="Inactiva (6)" className="btnSegmento line-height2" name="7" onClick={this.changeStatusActive}>Inactiva (6)</a>
+                                                <a id="0" title="Inactiva (7)" className="btnSegmento line-height2" name="8" onClick={this.changeStatusActive}>Inactiva (7)</a>
+                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="18" onClick={this.changeStatusActive}>Posible Egreso</a>
+                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="17" onClick={this.changeStatusActive}>Cadastra</a>
                                             </div>
                                         </div>
                                     </div>
