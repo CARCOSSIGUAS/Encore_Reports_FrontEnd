@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './GridConsultora.css';
-
+import PaginationConsultora from '../../components/buscar-consultora/PaginationConsultora'
 
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -42,7 +42,8 @@ class GridConsultora extends Component {
     activaPanelAccount(event) {
         debugger;
         const target = event.target;
-        const name = target.id;
+        let name = target.id;
+        name = this.state.activeInformationAccount == name ? "" : name;
         this.setState({
             activeInformationAccount: name
         })
@@ -130,7 +131,7 @@ class GridConsultora extends Component {
                     <div className="col-offset-md-2 col-sm-13 col-md-5">
                         <div className="upper mt-15 text-md text-center">
                             <div className="upper mt-15 text-sm text-center">
-                                <b> 1 - 15</b> de <b>{this.props.data != null ? this.props.data.numPage : 0} </b>Consultoras
+                                <b> 1 - {this.props.filters.NumeroRegistros}</b> de <b>{this.props.data != null ? this.props.data.numPage : 0} </b>Consultoras
                                 </div>
                         </div>
                     </div>
@@ -153,19 +154,7 @@ class GridConsultora extends Component {
                     </div>
                 </div>
             </div>
-            <div id="contentPaginacion" className={this.props.data.accountsInformationDTO == null ? "float-pagination-left hidden-pagination" : "float-pagination-left visible-pagination"}>
-                <nav>
-                    <ul id="pagBuscarConsultora" paginaactual="1" cantregistros="7929" className="pagination pagination-sm">
-                        <li className="active"><a className="_pointer" title="Current page is 1">1</a></li>
-                        <li><a className="_pointer" title="Go to page 2">2</a></li>
-                        <li><a className="_pointer" title="Go to page 3">3</a></li>
-                        <li><a className="_pointer" title="Go to page 4">4</a></li>
-                        <li><a className="_pointer" title="Go to page 5">5</a></li>
-                        <li><a className="_pointer" title="Go to next page">&gt;</a></li>
-                        <li><a className="_pointer" title="Go to last page">&gt;&gt;</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar}/>
         </div>);
     }
 

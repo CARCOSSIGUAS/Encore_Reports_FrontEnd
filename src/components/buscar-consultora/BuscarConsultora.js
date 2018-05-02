@@ -17,6 +17,7 @@ import 'moment/locale/zh-cn';
 import 'moment/locale/en-gb';
 
 import './BuscarConsultora.css';
+import { DEFAULT_ECDH_CURVE } from 'tls';
 
 const timePickerElement = <TimePickerPanel defaultValue={moment('00:00:00', 'HH:mm:ss')} />;
 
@@ -39,6 +40,7 @@ class BuscarConsultora extends Component {
             value: '',
             valueDateFin: '',
             openFilter: 'activeFilterHidden',
+            isDisplayed: false,
             filtro: {
                 CodConsultoraLogged: user.accountID,
                 CodConsultoraSearched: 0,
@@ -90,13 +92,36 @@ class BuscarConsultora extends Component {
     }
 
     filterOpen(event) {
-        var cssActive = this.state.openFilter == "activeFilterHidden" ? "activeFilter" : "activeFilterHidden";
+        debugger;
+        const target = event.target;
+        target.innerHTML = 'Oc'
+
+        let cssActive = '';
+        if (this.state.openFilter == "activeFilterHidden") {
+            cssActive = "activeFilter";
+            target.innerHTML = 'OCULTAR FILTROS'
+        }
+        else {
+            cssActive = "activeFilterHidden";
+            target.innerHTML = 'MOSTRAR FILTROS'
+        }
+
         this.setState({
             openFilter: cssActive
         });
     }
 
     handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.state.filtro[name] = value;
+        this.setState({
+            filtro: this.state.filtro
+        });
+    }
+
+    showHiddenFilters(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -123,7 +148,7 @@ class BuscarConsultora extends Component {
 
         if (nivel.indexOf(name) > -1)
             nivel = nivel.replace(name + ",", '');
-        else 
+        else
             nivel += name + ',';
 
         this.state.filtro.Nivel = nivel;
@@ -235,7 +260,10 @@ class BuscarConsultora extends Component {
         });
     }
 
-    onBuscar() {
+    onBuscar(numPage) {
+        debugger;
+        
+        var pageNumber = (typeof numPage != 'undefined') ? numPage : this.state.filtro.NumeroPagina;
         this.setState({ activaClass: 'active' });
         let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
             "&CodConsultoraSearched=" + this.state.filtro.CodConsultoraSearched +
@@ -247,7 +275,7 @@ class BuscarConsultora extends Component {
             "&Generation=" + this.state.filtro.Generation +
             "&TituloCarrera=" + this.state.filtro.TituloCarrera +
             "&Estado=" + this.state.filtro.Estado +
-            "&NumeroPagina=" + this.state.filtro.NumeroPagina +
+            "&NumeroPagina=" + pageNumber+
             "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
 
         fetch('http://10.12.9.83:3391/api/report/GetAccountsFilterPaginated/?' + params, {
@@ -257,7 +285,9 @@ class BuscarConsultora extends Component {
                 return response.json()
             })
             .then((items) => {
-                this.setState({ activaClass: 'inactive', items: items });
+                debugger;
+                let display = items != null && items.accountsInformationDTO.length > 0 ? true : false;
+                this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });
     }
 
@@ -308,7 +338,7 @@ class BuscarConsultora extends Component {
                                     <span className="bc-title-text">Nombre Patrocinador</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
                                 </div>
-                                <p onClick={this.filterOpen} className="bc-filters"><a id="lnk-filtros"><span className="text-filtros">OCULTAR FILTROS</span></a><i className="icon-menu-down"></i></p>
+                                <p onClick={this.filterOpen} className="bc-filters"><a id="lnk-filtros"><span className="text-filtros">MOSTRAR FILTROS</span></a><i className="icon-menu-down"></i></p>
                                 <div id="Filters" className={this.state.openFilter}>
                                     <div className="row">
                                         <div className="col-md-3 margin-top30">
@@ -448,9 +478,12 @@ class BuscarConsultora extends Component {
                     </div>
                     <div className="margin-top10"></div>
                     <div className="row">
-                        <div id="div-contenido-buscar-consultora">
-                            <GridConsultora data={this.state.items} filters={this.state.filtro} />
-                        </div>
+                        {this.state.isDisplayed ? (
+                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
+                        ) : (
+                                <h2>No se encontraron resultados</h2>
+                            )}
+
                     </div>
                 </div>
             </div>

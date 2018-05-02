@@ -89,12 +89,12 @@ class Indicadores extends Component {
                                 </div>
                                 <div className="box-text-md-encore">
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">VO-T: {items != null ? items[0].vot : 0}</span>
+                                    <span className="VentasRestanteVN">VO-T: {items != null ? items[0].voq : 0}</span>
                                   </span>
                                 </div>
                                 <div className="box-text-md-encore">
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].voq : 0}</span>
+                                    <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].vot : 0}</span>
                                   </span>
                                 </div>
                               </div>
