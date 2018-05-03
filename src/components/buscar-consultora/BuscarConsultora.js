@@ -277,7 +277,7 @@ class BuscarConsultora extends Component {
             "&NumeroPagina=" + pageNumber+
             "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://datarequestqas.lbel.com.br/api/report/GetAccountsFilterPaginated/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/report/GetReportAccountsSponsoreds/?' + params, {
 
         })
             .then((response) => {
