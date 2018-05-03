@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class PaginationConsultora extends Component {
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
 
         var elements = this.props.data;

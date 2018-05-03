@@ -71,18 +71,18 @@ class GridConsultora extends Component {
                                 <div className="row">
                                     <div className="col-xs-6">
                                         <div>CÓDIGO: <b>{item.accountID}</b></div>
-                                        <div>CUMPLEAÑOS: <b>{item.enrollmentDateUTC}</b></div>
+                                        <div>DATA ANIVERSARIO: <b>{item.enrollmentDateUTC}</b></div>
                                         <div>ESTADO: <b>{item.state}</b></div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div>NIVEL: <b className="tnormal">{item.level}</b></div>
-                                        <div>GENERACIÓN: <b>{item.generation}</b></div>
+                                        <div>GERAÇAO: <b>{item.generation}</b></div>
                                         <div>STATUS: <b>{item.activity}</b></div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-6 col-md-3 col-lg-3 line-left">
-                                <div>VENTA PERSONAL: <b className="tnormal"></b></div>
+                                <div>VO: <b className="tnormal"></b></div>
                                 <div>VO-T: <b>{item.pqv}</b></div>
                                 <div>VO-Q: <b>{item.dqvt}</b></div>
                             </div>
@@ -139,9 +139,9 @@ class GridConsultora extends Component {
                         <div className="order-by-content">
                             Ordenar por:
                                 <select className="form-control input-sm">
-                                <option value="1">Nombre, Apellido</option>
-                                <option value="2">Apellido, Nombre</option>
-                                <option value="3">Saldo / Nombre Consultora</option>
+                                <option value="1">Nome, Sobrenome</option>
+                                <option value="2">Sobrenome, Nome</option>
+                                <option value="3">Nome Consultor</option>
                             </select>
                         </div>
                     </div>

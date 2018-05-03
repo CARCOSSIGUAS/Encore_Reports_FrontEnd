@@ -43,7 +43,7 @@ class ConsultorHeader extends React.Component {
                             <div className="row">
                                 <div className="col-md-4 col-sm-7 col-xs-16">
                                     <div className="text-md text-primary">
-                                        <strong>Hola, {consultor.accounts_Mongo != null ? consultor.accounts_Mongo.firstName : ""}</strong>
+                                        <strong>Olá , {consultor.accounts_Mongo != null ? consultor.accounts_Mongo.firstName : ""}</strong>
                                     </div>
                                     <span className="text-primary-xs">
                                         <span>{consultor != null ? consultor.careerTitle_Des : ""}</span>
@@ -55,7 +55,7 @@ class ConsultorHeader extends React.Component {
                                             <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
                                         </div>
                                         <div className="text-ws">
-                                            <span>Cierre de Campanha</span> <br />
+                                            <span>Fechamento de Campanha</span> <br />
                                             <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""}</span>
                                         </div>
                                     </div>

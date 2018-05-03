@@ -54,7 +54,7 @@ class Indicadores extends Component {
               <div role="tabpanel" className="indicadores">
                 <div className="col-xs-16 col-sm-8 col-sm-offset-1">
                   <div className="section-title-icon-content">
-                    <h2 className="section-title-icon">REVISA Y PONTE AL DÍA </h2>
+                    <h2 className="section-title-icon">FAÇA SEGUIMIENTO</h2>
                     <span id="indicadores-breadcrumb" className="text-info mt-5"></span>
                   </div>
                 </div>
@@ -62,10 +62,10 @@ class Indicadores extends Component {
                   <div className="text-right mb-20 mt-10">
                     <ul className="material-tabs tabHome" role="tablist">
                       <li role="presentation" className="active liTabHome">
-                        <a className="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">Indicadores</a>
+                        <a className="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">Resultados</a>
                       </li>
                       <li role="presentation" className="liTabHome">
-                        <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">Resumen</a>
+                        <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">Resumo</a>
                       </li>
                       <li role="presentation" className="liTabHome datareport-mobile">
                         <a id="lnk-datareport" className="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Descargas</a>
@@ -105,7 +105,7 @@ class Indicadores extends Component {
                       </div>
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-blue">
-                          <h3 className="box-data-title"> <a className="box-data-title">GANANCIAS</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">BONIFICAÇAO</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                           <div className="box-icon"><FontAwesomeIcon icon="dollar-sign" /></div>
                             <div className="box-data-content">
@@ -130,7 +130,7 @@ class Indicadores extends Component {
                       </div>
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-success">
-                          <h3 className="box-data-title"> <a className="box-data-title">Nuevas</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">NOVAS</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                           <div className="box-icon"><FontAwesomeIcon icon="user-plus" /></div>
                             <div className="box-data-content">
@@ -156,7 +156,7 @@ class Indicadores extends Component {
                       <div className="col-sm-offset-8 col-sm-3">
                         <div className="margin-top-10">
                           <div className="text-right mt-30">
-                            <span className="UltimaActualizacion">Actualizado el 03/04 a las 2:30am</span>
+                            <span className="UltimaActualizacion"> Ultima Actualizaçao 03/04 a las 2:30am</span>
                             <span className="UltimaActualizacionDetalle"></span>
                           </div>
                         </div>

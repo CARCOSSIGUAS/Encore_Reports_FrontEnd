@@ -285,7 +285,7 @@ class BuscarConsultora extends Component {
                 return response.json()
             })
             .then((items) => {
-                debugger;
+                debugger;   
                 let display = items != null && items.accountsInformationDTO.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });
@@ -317,7 +317,7 @@ class BuscarConsultora extends Component {
                 <div className="content-main margin-top30">
                     <div className="row">
                         <div className="bc-backtitle">
-                            <p className="bc-title">BUSCAR CONSULTORA</p>
+                            <p className="bc-title">PESQUISAR CONSULTORES</p>
                         </div>
                         <div className="col-sm-12">
                             <div className="bc-content-body">
@@ -326,7 +326,7 @@ class BuscarConsultora extends Component {
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">Nombre Consultor</span><br />
+                                    <span className="bc-title-text">Nome Consultor</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
@@ -335,7 +335,7 @@ class BuscarConsultora extends Component {
                                 </div>
 
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">Nombre Patrocinador</span><br />
+                                    <span className="bc-title-text">Nome Patrocinado</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
                                 </div>
                                 <p onClick={this.filterOpen} className="bc-filters"><a id="lnk-filtros"><span className="text-filtros">MOSTRAR FILTROS</span></a><i className="icon-menu-down"></i></p>
@@ -351,7 +351,7 @@ class BuscarConsultora extends Component {
                                             </div>
                                         </div>
                                         <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Generación</span><br />
+                                            <span className="bc-title-text">Geraçao</span><br />
                                             <div className="RegionZonaSeccionButton">
                                                 <a id="A" className="btnSeccion" name="1" onClick={this.changeGenerationActive}>1</a>
                                                 <a id="B" className="btnSeccion" name="2" onClick={this.changeGenerationActive}>2</a>
@@ -381,24 +381,24 @@ class BuscarConsultora extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Estatus</span><br />
+                                            <span className="bc-title-text">Status</span><br />
                                             <div className="segmentoButton">
-                                                <a id="1" title="Activa" className="btnSegmento line-height2" name="1" onClick={this.changeStatusActive}>Activa</a>
-                                                <a id="0" title="Inactiva (1)" className="btnSegmento line-height2" name="2" onClick={this.changeStatusActive}>Inactiva (1)</a>
-                                                <a id="0" title="Inactiva (2)" className="btnSegmento line-height2" name="3" onClick={this.changeStatusActive}>Inactiva (2)</a>
-                                                <a id="0" title="Inactiva (3)" className="btnSegmento line-height2" name="4" onClick={this.changeStatusActive}>Inactiva (3)</a>
-                                                <a id="0" title="Inactiva (4)" className="btnSegmento line-height2" name="5" onClick={this.changeStatusActive}>Inactiva (4)</a>
-                                                <a id="0" title="Inactiva (5)" className="btnSegmento line-height2" name="6" onClick={this.changeStatusActive}>Inactiva (5)</a>
-                                                <a id="0" title="Inactiva (6)" className="btnSegmento line-height2" name="7" onClick={this.changeStatusActive}>Inactiva (6)</a>
-                                                <a id="0" title="Inactiva (7)" className="btnSegmento line-height2" name="8" onClick={this.changeStatusActive}>Inactiva (7)</a>
-                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="18" onClick={this.changeStatusActive}>Posible Egreso</a>
-                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="17" onClick={this.changeStatusActive}>Cadastra</a>
+                                                <a id="1" title="Ativa" className="btnSegmento line-height2" name="1" onClick={this.changeStatusActive}>Ativa</a>
+                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="2" onClick={this.changeStatusActive}>Inativa (1)</a>
+                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="3" onClick={this.changeStatusActive}>Inativa (2)</a>
+                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="4" onClick={this.changeStatusActive}>Inativa (3)</a>
+                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="5" onClick={this.changeStatusActive}>Inativa (4)</a>
+                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="6" onClick={this.changeStatusActive}>Inativa (5)</a>
+                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="7" onClick={this.changeStatusActive}>Inativa (6)</a>
+                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="8" onClick={this.changeStatusActive}>Inativa (7)</a>
+                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="18" onClick={this.changeStatusActive}>Possível Cessada</a>
+                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="17" onClick={this.changeStatusActive}>Cadastrada</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-2">
-                                            <span className="bc-title-text">Fecha ingreso</span><br />
+                                            <span className="bc-title-text">Data Cadastro</span><br />
                                             <DatePicker
                                                 animation="slide-up"
                                                 calendar={calendar}
@@ -422,7 +422,7 @@ class BuscarConsultora extends Component {
                                             </DatePicker>
                                         </div>
                                         <div className="col-md-2">
-                                            <span className="bc-title-text">Hasta</span><br />
+                                            <span className="bc-title-text">até</span><br />
 
                                             <DatePicker
                                                 animation="slide-up"
@@ -447,7 +447,7 @@ class BuscarConsultora extends Component {
                                             </DatePicker>
                                         </div>
                                         <div className="col-md-2 margin-lef10">
-                                            <span className="bc-title-text">Venta Personal</span><br />
+                                            <span className="bc-title-text">VP</span><br />
                                             <input type="text" id="bc-documento" className="inpBusquedaM" />
                                         </div>
                                         <div className="col-md-2">
@@ -458,11 +458,11 @@ class BuscarConsultora extends Component {
                                     <div className="row">
                                         <div className="form-group">
                                             <div className="col-md-2">
-                                                <span className="bc-title-text">Venta Organización</span><br />
+                                                <span className="bc-title-text">VO</span><br />
                                                 <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
                                             </div>
                                             <div className="col-md-2">
-                                                <span className="bc-title-text">Hasta</span><br />
+                                                <span className="bc-title-text">até</span><br />
                                                 <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
                                             </div>
                                         </div>

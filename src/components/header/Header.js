@@ -59,7 +59,7 @@ class Header extends Component {
                                     </Link>
                                 </li>
                                 <li className="dropdown">
-                                    <a className="dropdown-toggle _pointer" data-toggle="dropdown" role="menu" region="Principal" parent="Reportes" title="Reportes" id="lnk-prin-reportes">Reportes <FontAwesomeIcon icon="angle-down" className="icono_flechaDesglegarMenu" onClick={this.onMostrarReporte} onFocusOut={this.onCloseReporte} /></a>
+                                    <a className="dropdown-toggle _pointer" data-toggle="dropdown" role="menu" region="Principal" parent="Reportes" title="Relatórios" id="lnk-prin-reportes">Relatórios <FontAwesomeIcon icon="angle-down" className="icono_flechaDesglegarMenu" onClick={this.onMostrarReporte} onFocusOut={this.onCloseReporte} /></a>
                                     <ul className={"dropdown-menu multi-level tnormal "+this.state.activeReporte} >
                                         <li>
                                             <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Reportes de Cierre" id="lnk-prin-reportes-de-cierre">Reporte de Desempeño</a>
@@ -74,14 +74,14 @@ class Header extends Component {
                                 </li>
                                 <li  className={this.state.activeSelected == "item2" ? "active" : ""} id="item2" onClick={this.handleInputChange}>
                                     <Link to={`/buscarConsultora`} >
-                                        Buscar Consultora
+                                        Pesquisar Consultor
                                     </Link>
                                 </li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
                                 <li>
-                                    <a role="menu" region="Principal" parent="Cerrar Sesión" title="Cerrar Sesión" id="lnk-prin-cerrar-sesion" href="/Login">
-                                        Cerrar Sesión
+                                    <a role="menu" region="Principal" parent="Deslogar" title="Deslogar" id="lnk-prin-cerrar-sesion" href="/Login">
+                                        Deslogar
                                     </a>
                                 </li>
                             </ul>
