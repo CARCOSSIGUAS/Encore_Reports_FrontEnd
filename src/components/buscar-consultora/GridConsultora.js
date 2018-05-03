@@ -154,7 +154,7 @@ class GridConsultora extends Component {
                     </div>
                 </div>
             </div>
-            <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar}/>
+            <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar} cantReg = {this.props.cantReg}/>
         </div>);
     }
 
