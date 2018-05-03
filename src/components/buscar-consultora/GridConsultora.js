@@ -34,7 +34,7 @@ class GridConsultora extends Component {
             "&NumeroPagina=" + filter.NumeroPagina +
             "&NumeroRegistros=" + filter.NumeroRegistros;
 
-        window.location.href = 'http://10.12.9.83:3391/api/report/exportexcel/?' + params;
+        window.location.href = 'http://datarequestqas.lbel.com.br/api/report/exportexcel/?' + params;
 
     }
 
@@ -154,7 +154,7 @@ class GridConsultora extends Component {
                     </div>
                 </div>
             </div>
-            <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar} cantReg = {this.props.cantReg}/>
+            {/* <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar} cantReg = {this.props.cantReg}/> */}
         </div>);
     }
 

@@ -261,7 +261,8 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(numPage) {
-        var pageNumber = (typeof numPage != 'undefined') ? numPage : this.state.filtro.NumeroPagina;
+        
+        var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
         this.setState({ activaClass: 'active' });
         let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
             "&CodConsultoraSearched=" + this.state.filtro.CodConsultoraSearched +
@@ -276,14 +277,13 @@ class BuscarConsultora extends Component {
             "&NumeroPagina=" + pageNumber+
             "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://10.12.9.83:3391/api/report/GetAccountsFilterPaginated/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/report/GetAccountsFilterPaginated/?' + params, {
 
         })
             .then((response) => {
                 return response.json()
             })
             .then((items) => {
-                debugger;   
                 let display = items != null && items.accountsInformationDTO.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });
@@ -477,7 +477,7 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         {this.state.isDisplayed ? (
-                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} cantReg={this.items.numPage} />
+                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
                         ) : (
                                 <h2>No se encontraron resultados</h2>
                             )}
