@@ -261,8 +261,6 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(numPage) {
-        debugger;
-        
         var pageNumber = (typeof numPage != 'undefined') ? numPage : this.state.filtro.NumeroPagina;
         this.setState({ activaClass: 'active' });
         let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
@@ -479,7 +477,7 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         {this.state.isDisplayed ? (
-                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
+                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} cantReg={this.items.numPage} />
                         ) : (
                                 <h2>No se encontraron resultados</h2>
                             )}
