@@ -25,6 +25,7 @@ class PaginationConsultora extends Component {
         return (<div id="contentPaginacion" className={this.state.elements == null ? "float-pagination-left hidden-pagination" : "float-pagination-left visible-pagination"}>
             <nav>
                 <ul id="pagBuscarConsultora" paginaactual="1" cantregistros="7929" className="pagination pagination-sm">
+                
                     <li className="active"><a className="_pointer" title="Current page is 1">1</a></li>
 
 
