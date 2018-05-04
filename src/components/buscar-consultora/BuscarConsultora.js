@@ -264,20 +264,20 @@ class BuscarConsultora extends Component {
         
         var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
         this.setState({ activaClass: 'active' });
-        let params = "CodConsultoraLogged=" + this.state.filtro.CodConsultoraLogged +
-            "&CodConsultoraSearched=" + this.state.filtro.CodConsultoraSearched +
-            "&NombreConsultora=" + this.state.filtro.NombreConsultora +
-            "&CodPatrocinador=" + this.state.filtro.CodPatrocinador +
-            "&NombrePatrocinador=" + this.state.filtro.NombrePatrocinador +
-            "&Period=" + this.state.filtro.Period +
-            "&Nivel=" + this.state.filtro.Nivel +
+        let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
+            "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
+            "&AccountNameSearch=" + this.state.filtro.NombreConsultora +
+            "&sponsorNumberSearch=" + this.state.filtro.CodPatrocinador +
+            "&SponsorNameSearch=" + this.state.filtro.NombrePatrocinador +
+            "&periodId=" + this.state.filtro.Period +
+            "&levelIds=" + this.state.filtro.Nivel +
             "&Generation=" + this.state.filtro.Generation +
-            "&TituloCarrera=" + this.state.filtro.TituloCarrera +
-            "&Estado=" + this.state.filtro.Estado +
-            "&NumeroPagina=" + pageNumber+
-            "&NumeroRegistros=" + this.state.filtro.NumeroRegistros;
+            "&careerTitleIds=" + this.state.filtro.TituloCarrera +
+            "&accountStatusIds=" + this.state.filtro.Estado +
+            "&pageNumber=" + pageNumber+
+            "&pageSize=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://datarequestqas.lbel.com.br/api/report/GetReportAccountsSponsoreds/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
 
         })
             .then((response) => {
