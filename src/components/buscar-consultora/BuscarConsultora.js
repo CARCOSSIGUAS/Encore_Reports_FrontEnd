@@ -265,16 +265,18 @@ class BuscarConsultora extends Component {
         var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
         this.setState({ activaClass: 'active' });
         let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
-            "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
-            "&AccountNameSearch=" + this.state.filtro.NombreConsultora +
-            "&sponsorNumberSearch=" + this.state.filtro.CodPatrocinador +
-            "&SponsorNameSearch=" + this.state.filtro.NombrePatrocinador +
             "&periodId=" + this.state.filtro.Period +
-            "&levelIds=" + this.state.filtro.Nivel +
-            "&Generation=" + this.state.filtro.Generation +
+            "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
+            "&accountNameSearch=" + this.state.filtro.NombreConsultora +
+            "&sponsorNumberSearch=" + this.state.filtro.CodPatrocinador +
+            "&sponsorNameSearch=" + this.state.filtro.NombrePatrocinador +
+
             "&careerTitleIds=" + this.state.filtro.TituloCarrera +
             "&accountStatusIds=" + this.state.filtro.Estado +
-            "&pageNumber=" + pageNumber+
+            "&levelIds=" + this.state.filtro.Nivel +
+            "&generationIds=" + this.state.filtro.Generation +
+
+            "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
 
         fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
