@@ -50,7 +50,7 @@ class GridConsultora extends Component {
     }
 
     render() {
-        const consultorasList = this.props.data == null ? "" : this.props.data.map((item, index) => {
+        const consultorasList = this.props.data.items == null ? "" : this.props.data.items.map((item, index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a className="tituloConsultoraMargin" >
