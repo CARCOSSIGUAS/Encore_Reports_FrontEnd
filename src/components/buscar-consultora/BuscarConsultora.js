@@ -259,7 +259,7 @@ class BuscarConsultora extends Component {
     onBuscar(numPage) {
         
         var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
-
+        debugger;
         this.state.filtro.NumeroPagina = pageNumber;
         
         this.setState({
@@ -286,7 +286,7 @@ class BuscarConsultora extends Component {
             "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
+        fetch('http://10.12.9.83:3391/api/report/sponsoreds/?' + params, {
 
         })
             .then((response) => {

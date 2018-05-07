@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames'
 import './PaginationConsultora.css';
 
 class PaginationConsultora extends Component {
@@ -25,6 +26,7 @@ class PaginationConsultora extends Component {
     }
 
     componentWillReceiveProps(newProps) {
+        debugger;
         if (newProps === this.props) return;
         const { margin, page, count } = newProps;
         const startPage = page > margin ? page - margin : 1;
@@ -33,9 +35,9 @@ class PaginationConsultora extends Component {
     }
 
     onPageChange(event) {
-        const index =
-            Array.prototype.indexOf.call(event.target.parentNode.children, event.target);
-        this.props.onPageChange(index + this.state.startPage);
+        const target = event.target;
+        const index = target.name;
+        this.props.onPageChange(parseInt(index));
     }
 
     goFirstPage() {
@@ -66,38 +68,39 @@ class PaginationConsultora extends Component {
         const { page, margin } = this.props;
         const pages = [];
         const firstPage = page - margin > 1 ?
-            <div
+            <li
                 className="pagination-button pagination-go-first"
                 onClick={this.goFirstPage}
-            >1</div> :
+            ><a class="_pointer">1</a></li> :
             null;
         const lastPage = page + margin < count ?
-            <div
+            <li
                 className="pagination-button pagination-go-last"
                 onClick={this.goLastPage}
-            >{count}</div> :
+            ><a class="_pointer">{count}</a></li> :
             null;
         const prevPage = page === 1 ? null :
-            <div
+            <li
                 className="pagination-button"
                 onClick={this.goPrevPage}
-            >prev</div>;
+            ><a class="_pointer">&lt;</a></li>;
         const nextPage = page === count ? null :
-            <div
+            <li
                 className="pagination-button"
                 onClick={this.goNextPage}
-            >next</div>;
+            ><a class="_pointer">&gt;</a></li>;
         for (let i = startPage; i <= endPage; i++) {
             pages.push(
                 <li
                     key={i}
+                    name={i}
                     onClick={this.onPageChange}
-                //     className={classnames('pagination-list-item', 'pagination-button', {
-                //         active: i === this.props.page
-                //     })
-                // }
+                    className={classNames('pagination-list-item', 'pagination-button', {
+                        active: i === this.props.page
+                    })
+                }
                 >
-                    {i}
+                    <a class="_pointer" name={i}>{i}</a>
                 </li>
             );
         }
@@ -105,13 +108,15 @@ class PaginationConsultora extends Component {
         return (
             <div id="pagination-container">
                 <div id="pagination">
-                    {prevPage}
-                    {firstPage}
-                    <ul id="pagination-list">
+
+                    <ul id="pagination-list" className="pagination pagination-sm">
+                        {prevPage}
+                        {firstPage}
                         {pages}
+                        {lastPage}
+                        {nextPage}
                     </ul>
-                    {lastPage}
-                    {nextPage}
+
                 </div>
             </div>
         );

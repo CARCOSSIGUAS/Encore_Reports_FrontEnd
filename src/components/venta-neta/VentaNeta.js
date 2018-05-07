@@ -24,7 +24,7 @@ class VentaNeta extends Component {
   }
 
   componentDidMount() {
-    fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json();
       })
@@ -34,7 +34,7 @@ class VentaNeta extends Component {
         this.setState({ indicadorVentaNeta });
       });
 
-    fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })
