@@ -43,29 +43,26 @@ class BuscarConsultora extends Component {
             isDisplayed: false,
             filtro: {
                 CodConsultoraLogged: user.accountID,
+                Period: 201803,
                 CodConsultoraSearched: 0,
                 CodPatrocinador: 0,
                 NombrePatrocinador: '',
                 NombreConsultora: '',
-                Period: 201803,
-                NumeroPagina: 1,
-                NumeroRegistros: 15,
+                Nivel: '',
+                Generation: '',
                 TituloPago: '',
                 TituloCarrera: '',
                 Estado: '',
                 DataCadastro: '',
-                VentaPersonal: '',
-                Nivel: '',
-                Generation: '',
-                VOT: '',
-                VOQ: '',
-                Nivel1: false,
-                Nivel2: false,
-                Nivel3: false,
-                Nivel4: false,
-                Generacion1: false,
-                Generacion2: false,
-                Generacion3: false,
+                
+                JoinDateFrom: '',
+                JoinDateTo: '',
+                PQVFrom: 0,
+                PQVTo: null,
+                DQVFrom: 0,
+                DQVTo: null,
+                NumeroPagina: 1,
+                NumeroRegistros: 15
             },
             items: [],
             activaClass: 'inactive'
@@ -92,7 +89,6 @@ class BuscarConsultora extends Component {
     }
 
     filterOpen(event) {
-        debugger;
         const target = event.target;
         target.innerHTML = 'Oc'
 
@@ -271,10 +267,15 @@ class BuscarConsultora extends Component {
             "&sponsorNumberSearch=" + this.state.filtro.CodPatrocinador +
             "&sponsorNameSearch=" + this.state.filtro.NombrePatrocinador +
 
-            "&careerTitleIds=" + this.state.filtro.TituloCarrera +
-            "&accountStatusIds=" + this.state.filtro.Estado +
             "&levelIds=" + this.state.filtro.Nivel +
             "&generationIds=" + this.state.filtro.Generation +
+            "&careerTitleIds=" + this.state.filtro.TituloCarrera +
+            "&accountStatusIds=" + this.state.filtro.Estado +
+
+            "&pqvFrom=" + this.state.filtro.PQVFrom +
+            "&pqvTo=" + this.state.filtro.PQVTo +
+            "&dqvFrom=" + this.state.filtro.DQVFrom +
+            "&dqvTo=" + this.state.filtro.DQVTo +
 
             "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
@@ -286,7 +287,7 @@ class BuscarConsultora extends Component {
                 return response.json()
             })
             .then((items) => {
-                let display = items != null && items.accountsInformationDTO.length > 0 ? true : false;
+                let display = items != null && items.items.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });
     }
@@ -383,16 +384,16 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-8 margin-top30">
                                             <span className="bc-title-text">Status</span><br />
                                             <div className="segmentoButton">
-                                                <a id="1" title="Ativa" className="btnSegmento line-height2" name="1" onClick={this.changeStatusActive}>Ativa</a>
-                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="2" onClick={this.changeStatusActive}>Inativa (1)</a>
-                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="3" onClick={this.changeStatusActive}>Inativa (2)</a>
-                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="4" onClick={this.changeStatusActive}>Inativa (3)</a>
-                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="5" onClick={this.changeStatusActive}>Inativa (4)</a>
-                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="6" onClick={this.changeStatusActive}>Inativa (5)</a>
-                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="7" onClick={this.changeStatusActive}>Inativa (6)</a>
-                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="8" onClick={this.changeStatusActive}>Inativa (7)</a>
-                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="18" onClick={this.changeStatusActive}>Possível Cessada</a>
-                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="17" onClick={this.changeStatusActive}>Cadastrada</a>
+                                                <a id="1" title="Ativo" className="btnSegmento line-height2" name="Ativo" onClick={this.changeStatusActive}>Ativa</a>
+                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="Inativa(1)" onClick={this.changeStatusActive}>Inativa (1)</a>
+                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="Inativa(2)" onClick={this.changeStatusActive}>Inativa (2)</a>
+                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="Inativa(3)" onClick={this.changeStatusActive}>Inativa (3)</a>
+                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="Inativa(4)" onClick={this.changeStatusActive}>Inativa (4)</a>
+                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="Inativa(5)" onClick={this.changeStatusActive}>Inativa (5)</a>
+                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="Inativa(6)" onClick={this.changeStatusActive}>Inativa (6)</a>
+                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="Inativa(7)" onClick={this.changeStatusActive}>Inativa (7)</a>
+                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="Inativa(8),Inativa(9)" onClick={this.changeStatusActive}>Possível Cessada</a>
+                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="Cadastrada" onClick={this.changeStatusActive}>Cadastrada</a>
                                             </div>
                                         </div>
                                     </div>
@@ -448,22 +449,22 @@ class BuscarConsultora extends Component {
                                         </div>
                                         <div className="col-md-2 margin-lef10">
                                             <span className="bc-title-text">VP</span><br />
-                                            <input type="text" id="bc-documento" className="inpBusquedaM" />
+                                            <input type="text" id="bc-PQVFrom" className="inpBusquedaM" name="PQVFrom" value={this.state.PQVFrom} onChange={this.handleInputChange} />
                                         </div>
                                         <div className="col-md-2">
                                             <span className="bc-title-text">Hasta</span><br />
-                                            <input type="text" id="bc-documento" className="inpBusquedaM" />
+                                            <input type="text" id="bc-PQVTo" className="inpBusquedaM" name="PQVTo" value={this.state.PQVTo} onChange={this.handleInputChange} />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="form-group">
                                             <div className="col-md-2">
                                                 <span className="bc-title-text">VO</span><br />
-                                                <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
+                                                <input type="text" id="bc-DQVFrom" className="inpBusquedaM" name="DQVFrom" value={this.state.DQVFrom} onChange={this.handleInputChange} />
                                             </div>
                                             <div className="col-md-2">
                                                 <span className="bc-title-text">até</span><br />
-                                                <input type="text" id="bc-direccion" className="inpBusquedaM" value={this.state.DireccionConsultora} onChange={this.handleInputChange} />
+                                                <input type="text" id="bc-DQVTo" className="inpBusquedaM" name="DQVTo" value={this.state.DQVTo} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                     </div>
