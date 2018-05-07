@@ -1,44 +1,120 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './PaginationConsultora.css';
 
 class PaginationConsultora extends Component {
-    constructor(props) 
-    {
+    constructor(props) {
         super(props);
 
         let elements = this.props.data;
         let cantReg = this.props.cantReg;
-        
+
         this.state = {
             elements: elements,
-            cantReg:cantReg
+            cantReg: cantReg
         };
+
+        this.onPageChange = this.onPageChange.bind(this);
+        this.goFirstPage = this.goFirstPage.bind(this);
+        this.goLastPage = this.goLastPage.bind(this);
+        this.goPrevPage = this.goPrevPage.bind(this);
+        this.goNextPage = this.goNextPage.bind(this);
+
 
         this.onBuscar = this.onBuscar.bind(this);
     }
 
+    componentWillReceiveProps(newProps) {
+        if (newProps === this.props) return;
+        const { margin, page, count } = newProps;
+        const startPage = page > margin ? page - margin : 1;
+        const endPage = page + margin > count ? count : page + margin;
+        this.setState({ startPage, endPage, count });
+    }
+
+    onPageChange(event) {
+        const index =
+            Array.prototype.indexOf.call(event.target.parentNode.children, event.target);
+        this.props.onPageChange(index + this.state.startPage);
+    }
+
+    goFirstPage() {
+        this.props.onPageChange(1);
+    }
+
+    goLastPage() {
+        this.props.onPageChange(this.state.count);
+    }
+
+    goPrevPage() {
+        this.props.onPageChange(this.props.page - 1);
+    }
+
+    goNextPage() {
+        this.props.onPageChange(this.props.page + 1);
+    }
+
+
+
     onBuscar() {
-        this.props.eventBuscar(2);
+        this.props.onPageChange(2);
     }
 
 
     render() {
-        return (<div id="contentPaginacion" className={this.state.elements == null ? "float-pagination-left hidden-pagination" : "float-pagination-left visible-pagination"}>
-            <nav>
-                <ul id="pagBuscarConsultora" paginaactual="1" cantregistros="7929" className="pagination pagination-sm">
-                
-                    <li className="active"><a className="_pointer" title="Current page is 1">1</a></li>
+        const { startPage, endPage, count } = this.state;
+        const { page, margin } = this.props;
+        const pages = [];
+        const firstPage = page - margin > 1 ?
+            <div
+                className="pagination-button pagination-go-first"
+                onClick={this.goFirstPage}
+            >1</div> :
+            null;
+        const lastPage = page + margin < count ?
+            <div
+                className="pagination-button pagination-go-last"
+                onClick={this.goLastPage}
+            >{count}</div> :
+            null;
+        const prevPage = page === 1 ? null :
+            <div
+                className="pagination-button"
+                onClick={this.goPrevPage}
+            >prev</div>;
+        const nextPage = page === count ? null :
+            <div
+                className="pagination-button"
+                onClick={this.goNextPage}
+            >next</div>;
+        for (let i = startPage; i <= endPage; i++) {
+            pages.push(
+                <li
+                    key={i}
+                    onClick={this.onPageChange}
+                //     className={classnames('pagination-list-item', 'pagination-button', {
+                //         active: i === this.props.page
+                //     })
+                // }
+                >
+                    {i}
+                </li>
+            );
+        }
 
-
-                    <li><a className="_pointer" title="Go to page 2" onClick={this.onBuscar(1)}>2</a></li>
-                    <li><a className="_pointer" title="Go to page 3">3</a></li>
-                    <li><a className="_pointer" title="Go to page 4">4</a></li>
-                    <li><a className="_pointer" title="Go to page 5">5</a></li>
-                    <li><a className="_pointer" title="Go to next page">&gt;</a></li>
-                    <li><a className="_pointer" title="Go to last page">&gt;&gt;</a></li>
-                </ul>
-            </nav>
-        </div>);
+        return (
+            <div id="pagination-container">
+                <div id="pagination">
+                    {prevPage}
+                    {firstPage}
+                    <ul id="pagination-list">
+                        {pages}
+                    </ul>
+                    {lastPage}
+                    {nextPage}
+                </div>
+            </div>
+        );
     }
 }
 

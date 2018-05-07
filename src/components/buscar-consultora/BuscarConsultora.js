@@ -263,7 +263,13 @@ class BuscarConsultora extends Component {
     onBuscar(numPage) {
         
         var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
-        this.setState({ activaClass: 'active' });
+
+        this.state.filtro.NumeroPagina = pageNumber;
+        
+        this.setState({
+            activaClass: 'active',
+            filtro: this.state.filtro
+        });
         let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
             "&periodId=" + this.state.filtro.Period +
             "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
@@ -286,7 +292,8 @@ class BuscarConsultora extends Component {
                 return response.json()
             })
             .then((items) => {
-                let display = items != null && items.accountsInformationDTO.length > 0 ? true : false;
+                debugger;
+                let display = items != null && items.items.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });
     }
@@ -479,7 +486,7 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         {this.state.isDisplayed ? (
-                            <GridConsultora data={this.state.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
+                            <GridConsultora data={this.state.items.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
                         ) : (
                                 <h2>No se encontraron resultados</h2>
                             )}

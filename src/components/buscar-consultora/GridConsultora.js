@@ -40,7 +40,6 @@ class GridConsultora extends Component {
 
 
     activaPanelAccount(event) {
-        debugger;
         const target = event.target;
         let name = target.id;
         name = this.state.activeInformationAccount == name ? "" : name;
@@ -51,7 +50,7 @@ class GridConsultora extends Component {
     }
 
     render() {
-        const consultorasList = this.props.data.accountsInformationDTO == null ? "" : this.props.data.accountsInformationDTO.map((item, index) => {
+        const consultorasList = this.props.data == null ? "" : this.props.data.map((item, index) => {
             return <div className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a className="tituloConsultoraMargin" >
@@ -64,7 +63,7 @@ class GridConsultora extends Component {
                         </span>
                     </a>
                     <br />
-                    <span> <b>{index + 1}</b></span>
+                    <span> <b>{(index * this.props.filters.NumeroPagina) + 1}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-sm-10 col-md-4 col-lg-4 line-left">
@@ -154,6 +153,13 @@ class GridConsultora extends Component {
                     </div>
                 </div>
             </div>
+            <PaginationConsultora
+                margin={2}
+                page={this.props.filters.NumeroPagina}
+                count={Math.ceil(this.props.cantReg / 2)}
+                onPageChange={this.props.eventBuscar}
+            />
+
             {/* <PaginationConsultora data={this.props.data.accountsInformationDTO} filters= {this.props.filters} eventBuscar={this.props.eventBuscar} cantReg = {this.props.cantReg}/> */}
         </div>);
     }
