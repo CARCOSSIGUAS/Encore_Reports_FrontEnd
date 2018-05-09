@@ -26,7 +26,6 @@ class PaginationConsultora extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        debugger;
         if (newProps === this.props) return;
         const { margin, page, count } = newProps;
         const startPage = page > margin ? page - margin : 1;

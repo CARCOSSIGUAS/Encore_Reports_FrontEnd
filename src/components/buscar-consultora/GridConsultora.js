@@ -34,7 +34,7 @@ class GridConsultora extends Component {
             "&NumeroPagina=" + filter.NumeroPagina +
             "&NumeroRegistros=" + filter.NumeroRegistros;
 
-        window.location.href = 'http://10.12.9.83:3391/api/report/exportexcel/?' + params;
+        window.location.href = 'http://localhost:31832/api/report/exportexcel/?' + params;
 
     }
 
@@ -69,9 +69,9 @@ class GridConsultora extends Component {
                             <div className="col-sm-10 col-md-4 col-lg-4 line-left">
                                 <div className="row">
                                     <div className="col-xs-6">
-                                        <div>CÓDIGO: <b>{item.accountID}</b></div>
-                                        <div>DATA ANIVERSARIO: <b>{item.enrollmentDateUTC}</b></div>
-                                        <div>ESTADO: <b>{item.state}</b></div>
+                                        <div>CÓDIGO: <b>{ item.accountID }</b></div>
+                                        <div>DATA ANIVERSARIO: <b>{ item.enrollmentDateUTC }</b></div>
+                                        <div>ESTADO: <b>{ item.state }</b></div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div>NIVEL: <b className="tnormal">{item.level}</b></div>
@@ -81,14 +81,14 @@ class GridConsultora extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-6 col-md-3 col-lg-3 line-left">
-                                <div>VO: <b className="tnormal"></b></div>
-                                <div>VO-T: <b>{item.pqv}</b></div>
-                                <div>VO-Q: <b>{item.dqvt}</b></div>
+                                <div>VO:   <b>{ item.pqv }  </b></div>
+                                <div>VO-T: <b>{ item.dqv }  </b></div>
+                                <div>VO-Q: <b>{ item.dqvt } </b></div>
                             </div>
                             <div className="col-sm-6 col-md-4 col-lg-4 line-left">
-                                <div>TIT CARRERA: <b>{item.careerTitle_Des}</b></div>
+                                <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
                                 <div>PERMANENCIA: <b className="tnormal"></b></div>
-                                <div>TIT,PAGO: <b className="tnormal">{item.paidAsCurrentMonth_Des}</b></div>
+                                <div>TIT. PAGO: <b className="tnormal">{item.paidAsCurrentMonth_Des}</b></div>
                             </div>
                         </div>
                         <br />
@@ -134,13 +134,14 @@ class GridConsultora extends Component {
                                 </div>
                         </div>
                     </div>
-                    <div className="col-sm-16 col-md-5">
+					<div className="col-sm-16 col-md-5">
                         <div className="order-by-content">
-                            Ordenar por:
-                                <select className="form-control input-sm">
-                                <option value="1">Nome, Sobrenome</option>
-                                <option value="2">Sobrenome, Nome</option>
-                                <option value="3">Nome Consultor</option>
+                            Ordenar por: { ' ' }
+                            <select className="form-control input-sm">
+                                <option value="1">Título de Carrera</option>
+                                <option value="2">Título de Pago</option>
+                                <option value="3">Volumen Personal</option>
+                                <option value="4">Fecha de Ingreso</option>
                             </select>
                         </div>
                     </div>

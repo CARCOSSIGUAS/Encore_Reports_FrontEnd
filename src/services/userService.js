@@ -1,6 +1,6 @@
 export function login(token) {
 
-    return fetch('http://10.12.9.83:3391/api/Security/SingleSignOn/?token=' + token)
+    return fetch('http://localhost:31832/api/Security/SingleSignOn/?token=' + token)
         .then(response => {
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
