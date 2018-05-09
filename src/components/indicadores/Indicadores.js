@@ -21,13 +21,13 @@ class Indicadores extends Component {
         vas: 25731706
       },
       codConsultor: user.accountID,
-      periodId: 201803,
+      periodId: 201804,
       items: [{}]
     };
   }
 
   componentDidMount() {
-    fetch('http://10.12.9.83:3391/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })

@@ -11,12 +11,12 @@ class ConsultorHeader extends React.Component {
         this.state = {
             consultor: {},
             codConsultor: user.accountID,
-            periodId: 201803,
+            
         }
     }
 
     componentDidMount() {
-        fetch('http://10.12.9.83:3391/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=' + this.state.periodId)
+        fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=201804')
             .then((response) => {
                   if (!response.ok) { 
                 return Promise.reject(response.statusText);

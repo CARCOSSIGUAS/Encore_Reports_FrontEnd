@@ -43,7 +43,7 @@ class BuscarConsultora extends Component {
             isDisplayed: false,
             filtro: {
                 CodConsultoraLogged: user.accountID,
-                Period: 201803,
+                Period: 201804,
                 CodConsultoraSearched: 0,
                 CodPatrocinador: 0,
                 NombrePatrocinador: '',
@@ -286,14 +286,13 @@ class BuscarConsultora extends Component {
             "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://10.12.9.83:3391/api/report/sponsoreds/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
 
         })
             .then((response) => {
                 return response.json()
             })
             .then((items) => {
-                debugger;
                 let display = items != null && items.items.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             });

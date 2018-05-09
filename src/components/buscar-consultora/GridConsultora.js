@@ -34,7 +34,7 @@ class GridConsultora extends Component {
             "&NumeroPagina=" + filter.NumeroPagina +
             "&NumeroRegistros=" + filter.NumeroRegistros;
 
-        window.location.href = 'http://10.12.9.83:3391/api/report/exportexcel/?' + params;
+        window.location.href = 'http://datarequestqas.lbel.com.br/api/report/exportexcel/?' + params;
 
     }
 
