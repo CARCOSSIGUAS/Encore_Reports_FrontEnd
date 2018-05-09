@@ -16,8 +16,11 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import 'moment/locale/en-gb';
 
+import DropDown from '../../components/utils/DropDown';
+
 import './BuscarConsultora.css';
 import { DEFAULT_ECDH_CURVE } from 'tls';
+
 
 const timePickerElement = <TimePickerPanel defaultValue={moment('00:00:00', 'HH:mm:ss')} />;
 
@@ -33,30 +36,26 @@ class BuscarConsultora extends Component {
 
         const { user } = this.props;
 
-
         this.state = {
-            showTime: true,
+            showTime: false,
             disabled: false,
-            value: '',
-            valueDateFin: '',
+            JoinDateFrom: '',
+            JoinDateTo: '',
             openFilter: 'activeFilterHidden',
             isDisplayed: false,
             filtro: {
                 CodConsultoraLogged: user.accountID,
-                Period: 201804,
+                periodId: null,
                 CodConsultoraSearched: 0,
                 CodPatrocinador: 0,
                 NombrePatrocinador: '',
                 NombreConsultora: '',
                 Nivel: '',
                 Generation: '',
-                TituloPago: '',
-                TituloCarrera: '',
+                TitleType: 1,
+                Title: '',
                 Estado: '',
-                DataCadastro: '',
-                
-                JoinDateFrom: '',
-                JoinDateTo: '',
+
                 PQVFrom: 0,
                 PQVTo: null,
                 DQVFrom: 0,
@@ -65,6 +64,7 @@ class BuscarConsultora extends Component {
                 NumeroRegistros: 15
             },
             items: [],
+            periodsOptions: [],
             activaClass: 'inactive'
         };
         this.onBuscar = this.onBuscar.bind(this);
@@ -76,15 +76,31 @@ class BuscarConsultora extends Component {
         this.changeTitlesActive = this.changeTitlesActive.bind(this);
         this.changeStatusActive = this.changeStatusActive.bind(this);
     }
-    onChange = (value) => {
+
+    componentDidMount() {
+        fetch('http://localhost:31832/api/report/periods')
+            .then((response) => {
+                if (!response.ok) { 
+                    return Promise.reject(response.statusText);
+                }
+                return response.json()
+            })
+            .then((results) => {
+                this.setState({ 
+                    periodsOptions: results.result
+                });
+            });
+    }
+
+    onChangeDateFrom = (JoinDateFrom) => {
         this.setState({
-            value
+            JoinDateFrom
         });
     }
 
-    onChangeDateFin = (valueDateFin) => {
+    onChangeDateTo = (JoinDateTo) => {
         this.setState({
-            valueDateFin
+            JoinDateTo
         });
     }
 
@@ -108,6 +124,8 @@ class BuscarConsultora extends Component {
     }
 
     handleInputChange(event) {
+        debugger;
+
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -214,7 +232,7 @@ class BuscarConsultora extends Component {
         const name = target.name;
 
         let isActive = false;
-        let title = this.state.filtro.TituloCarrera;
+        let title = this.state.filtro.Title;
 
         if (target.className.indexOf("active") > -1) {
             target.className = target.className.replace("active", "");
@@ -229,7 +247,7 @@ class BuscarConsultora extends Component {
         else
             title += name + ',';
 
-        this.state.filtro.TituloCarrera = title;
+        this.state.filtro.Title = title;
         this.setState({
             filtro: this.state.filtro
         });
@@ -259,15 +277,15 @@ class BuscarConsultora extends Component {
     onBuscar(numPage) {
         
         var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
-        debugger;
         this.state.filtro.NumeroPagina = pageNumber;
         
         this.setState({
             activaClass: 'active',
             filtro: this.state.filtro
         });
+        
         let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
-            "&periodId=" + this.state.filtro.Period +
+            "&periodId=" + this.state.filtro.periodId +
             "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
             "&accountNameSearch=" + this.state.filtro.NombreConsultora +
             "&sponsorNumberSearch=" + this.state.filtro.CodPatrocinador +
@@ -275,8 +293,12 @@ class BuscarConsultora extends Component {
 
             "&levelIds=" + this.state.filtro.Nivel +
             "&generationIds=" + this.state.filtro.Generation +
-            "&careerTitleIds=" + this.state.filtro.TituloCarrera +
+            "&titleType=" + this.state.filtro.TitleType +
+            "&titleIds=" + this.state.filtro.Title +
             "&accountStatusIds=" + this.state.filtro.Estado +
+
+            "&joinDateFrom=" + moment(this.state.JoinDateFrom).format(getFormat(this.state.showTime)) +
+            "&joinDateTo=" + moment(this.state.JoinDateTo).format(getFormat(this.state.showTime)) +
 
             "&pqvFrom=" + this.state.filtro.PQVFrom +
             "&pqvTo=" + this.state.filtro.PQVTo +
@@ -286,15 +308,22 @@ class BuscarConsultora extends Component {
             "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
+        fetch('http://localhost:31832/api/report/sponsoreds/?' + params, {
 
         })
             .then((response) => {
+                if (!response.ok) { 
+                    return Promise.reject(response.statusText);
+                }
                 return response.json()
             })
             .then((items) => {
                 let display = items != null && items.items.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
+            })
+            .catch(error => 
+            {
+                this.setState({ activaClass: 'inactive', isDisplayed: false});
             });
     }
 
@@ -326,6 +355,22 @@ class BuscarConsultora extends Component {
                         <div className="bc-backtitle">
                             <p className="bc-title">PESQUISAR CONSULTORES</p>
                         </div>
+
+                        <div className="col-sm-12">
+                            <div className="bc-content-body">
+                                <div className="col-md-2">
+                                    <span className="bc-title-text">Campanha</span><br />
+                                    <DropDown 
+                                        name = "periodId" 
+                                        handleChange={ this.handleInputChange } 
+                                        items = { this.state.periodsOptions }
+                                        value = { this.state.filtro.periodId }
+                                        defaultOption = "select Period"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
@@ -367,8 +412,16 @@ class BuscarConsultora extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Título</span><br />
+                                        <div className="col-md-2 margin-top30">
+                                            <span className="bc-title-text">Título</span>
+                                            <select name = "TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
+                                                <option value="1">Título de Carrera</option>
+                                                <option value="2">Título de Pago</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-8">
                                             <div className="segmentoButton">
                                                 <a id="0" title="Consultor" className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>Consultor</a>
                                                 <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>Cons. Senior</a>
@@ -404,13 +457,14 @@ class BuscarConsultora extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">Data Cadastro</span><br />
                                             <DatePicker
+                                                name = "JoinDateFrom"
                                                 animation="slide-up"
                                                 calendar={calendar}
-                                                value={state.value}
-                                                onChange={this.onChange}
+                                                value = { state.JoinDateFrom }
+                                                onChange = { this.onChangeDateFrom }
                                             >
                                                 {
                                                     ({ value }) => {
@@ -420,7 +474,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value={value && value.format(getFormat(state.showTime)) || ''}
+                                                                    value = {value && value.format(getFormat(state.showTime)) || ''}
                                                                 />
                                                             </span>
                                                         );
@@ -428,14 +482,15 @@ class BuscarConsultora extends Component {
                                                 }
                                             </DatePicker>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">até</span><br />
-
+                                            
                                             <DatePicker
+                                                name = "JoinDateTo"
                                                 animation="slide-up"
                                                 calendar={calendar}
-                                                value={state.valueDateFin}
-                                                onChange={this.onChangeDateFin}
+                                                value={state.JoinDateTo}
+                                                onChange={this.onChangeDateTo}
                                             >
                                                 {
                                                     ({ value }) => {
@@ -445,7 +500,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value={value && value.format(getFormat(state.showTime)) || ''}
+                                                                    value= { value && value.format(getFormat(state.showTime)) || '' }
                                                                 />
                                                             </span>
                                                         );
@@ -453,22 +508,22 @@ class BuscarConsultora extends Component {
                                                 }
                                             </DatePicker>
                                         </div>
-                                        <div className="col-md-2 margin-lef10">
+                                        <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">VP</span><br />
                                             <input type="text" id="bc-PQVFrom" className="inpBusquedaM" name="PQVFrom" value={this.state.PQVFrom} onChange={this.handleInputChange} />
                                         </div>
-                                        <div className="col-md-2">
-                                            <span className="bc-title-text">Hasta</span><br />
+                                        <div className="col-md-2 margin-top30">
+                                            <span className="bc-title-text">até</span><br />
                                             <input type="text" id="bc-PQVTo" className="inpBusquedaM" name="PQVTo" value={this.state.PQVTo} onChange={this.handleInputChange} />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="form-group">
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 margin-top30">
                                                 <span className="bc-title-text">VO</span><br />
                                                 <input type="text" id="bc-DQVFrom" className="inpBusquedaM" name="DQVFrom" value={this.state.DQVFrom} onChange={this.handleInputChange} />
                                             </div>
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 margin-top30">
                                                 <span className="bc-title-text">até</span><br />
                                                 <input type="text" id="bc-DQVTo" className="inpBusquedaM" name="DQVTo" value={this.state.DQVTo} onChange={this.handleInputChange} />
                                             </div>
@@ -485,12 +540,11 @@ class BuscarConsultora extends Component {
                     </div>
                     <div className="margin-top10"></div>
                     <div className="row">
-                        {this.state.isDisplayed ? (
-                            <GridConsultora data={this.state.items.items} filters={this.state.filtro} eventBuscar={this.onBuscar} />
-                        ) : (
-                                <h2>No se encontraron resultados</h2>
-                            )}
-
+                        {   this.state.isDisplayed ? 
+                            ( <GridConsultora data={this.state.items.items} filters={this.state.filtro} eventBuscar={this.onBuscar} /> ) 
+                            :
+                            ( <h2>No se encontraron resultados</h2> )
+                        }
                     </div>
                 </div>
             </div>

@@ -18,9 +18,9 @@ class ConsultorHeader extends React.Component {
     componentDidMount() {
         fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_HeaderFront/?accountId=' + this.state.codConsultor + '&periodid=201804')
             .then((response) => {
-                  if (!response.ok) { 
-                return Promise.reject(response.statusText);
-            }
+                if (!response.ok) { 
+                    return Promise.reject(response.statusText);
+                }
                 return response.json()
             })
             .then((consultor) => {
