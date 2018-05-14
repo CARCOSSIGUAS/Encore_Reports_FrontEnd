@@ -6,38 +6,29 @@ import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 import { RingLoader } from 'react-spinners';
+
+import './BuscarConsultora.css';
 import 'rc-calendar/assets/index.css';
 import Calendar from 'rc-calendar';
 import DatePicker from 'rc-calendar/lib/Picker';
-import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import enUS from 'rc-calendar/lib/locale/en_US';
-import TimePickerPanel from 'rc-time-picker/lib/Panel';
 import moment from 'moment';
-import 'moment/locale/zh-cn';
-import 'moment/locale/en-gb';
 
 import DropDown from '../../components/utils/DropDown';
-
-import './BuscarConsultora.css';
 import { DEFAULT_ECDH_CURVE } from 'tls';
 
-
-const timePickerElement = <TimePickerPanel defaultValue={moment('00:00:00', 'HH:mm:ss')} />;
-
-const format = 'DD-MM-YYYY';
-
-function getFormat(time) {
+function getFormat() {
     return 'DD-MM-YYYY';
 }
 
 class BuscarConsultora extends Component {
     constructor(props) {
         super(props);
-
+        
         const { user } = this.props;
+        const { item } = this.props;
 
         this.state = {
-            showTime: false,
             disabled: false,
             JoinDateFrom: '',
             JoinDateTo: '',
@@ -60,14 +51,18 @@ class BuscarConsultora extends Component {
                 PQVTo: null,
                 DQVFrom: 0,
                 DQVTo: null,
+                OrderBy : '',
                 NumeroPagina: 1,
-                NumeroRegistros: 15
+                NumeroRegistros: 10
             },
             items: [],
             periodsOptions: [],
-            activaClass: 'inactive'
+            activaClass: 'inactive',
+            stringFilter : ''
         };
         this.onBuscar = this.onBuscar.bind(this);
+        this.onChangeOrderBy = this.onChangeOrderBy.bind(this);
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.changeActiveButton = this.changeActiveButton.bind(this);
         this.filterOpen = this.filterOpen.bind(this);
@@ -75,10 +70,11 @@ class BuscarConsultora extends Component {
         this.changeGenerationActive = this.changeGenerationActive.bind(this);
         this.changeTitlesActive = this.changeTitlesActive.bind(this);
         this.changeStatusActive = this.changeStatusActive.bind(this);
+        
     }
 
     componentDidMount() {
-        fetch('http://localhost:31832/api/report/periods')
+        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/periods')
             .then((response) => {
                 if (!response.ok) { 
                     return Promise.reject(response.statusText);
@@ -87,9 +83,21 @@ class BuscarConsultora extends Component {
             })
             .then((results) => {
                 this.setState({ 
-                    periodsOptions: results.result
+                    periodsOptions: results.result,
                 });
             });
+    }
+
+    onChangeOrderBy(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.state.filtro[name] = value;
+        this.setState({
+            filtro: this.state.filtro
+        });
+
+        this.onBuscar();
     }
 
     onChangeDateFrom = (JoinDateFrom) => {
@@ -124,18 +132,6 @@ class BuscarConsultora extends Component {
     }
 
     handleInputChange(event) {
-        debugger;
-
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.state.filtro[name] = value;
-        this.setState({
-            filtro: this.state.filtro
-        });
-    }
-
-    showHiddenFilters(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -169,7 +165,6 @@ class BuscarConsultora extends Component {
         this.setState({
             filtro: this.state.filtro
         });
-
     }
 
     changeStatusActive(event) {
@@ -196,7 +191,6 @@ class BuscarConsultora extends Component {
         this.setState({
             filtro: this.state.filtro
         });
-
     }
 
 
@@ -297,18 +291,21 @@ class BuscarConsultora extends Component {
             "&titleIds=" + this.state.filtro.Title +
             "&accountStatusIds=" + this.state.filtro.Estado +
 
-            "&joinDateFrom=" + moment(this.state.JoinDateFrom).format(getFormat(this.state.showTime)) +
-            "&joinDateTo=" + moment(this.state.JoinDateTo).format(getFormat(this.state.showTime)) +
+            "&joinDateFrom=" + moment(this.state.JoinDateFrom).format(getFormat()) +
+            "&joinDateTo=" + moment(this.state.JoinDateTo).format(getFormat()) +
 
             "&pqvFrom=" + this.state.filtro.PQVFrom +
             "&pqvTo=" + this.state.filtro.PQVTo +
             "&dqvFrom=" + this.state.filtro.DQVFrom +
             "&dqvTo=" + this.state.filtro.DQVTo +
+            "&orderBy=" + this.state.filtro.OrderBy +
 
-            "&pageNumber=" + pageNumber +
-            "&pageSize=" + this.state.filtro.NumeroRegistros;
+            "&pageSize=" + this.state.filtro.NumeroRegistros +
+            "&pageNumber=" + pageNumber;
+        
+            this.setState({ stringFilter: params});
 
-        fetch('http://localhost:31832/api/report/sponsoreds/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {
 
         })
             .then((response) => {
@@ -333,9 +330,8 @@ class BuscarConsultora extends Component {
         const calendar = (<Calendar
             locale={enUS}
             style={{ zIndex: 1000 }}
-            dateInputPlaceholder="please input"
-            formatter={getFormat(state.showTime)}
-            timePicker={state.showTime ? timePickerElement : null}
+            dateInputPlaceholder="Please input"
+            formatter={getFormat()}
             defaultValue={this.props.defaultCalendarValue}
         />);
 
@@ -474,7 +470,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value = {value && value.format(getFormat(state.showTime)) || ''}
+                                                                    value = {value && value.format(getFormat()) || ''}
                                                                 />
                                                             </span>
                                                         );
@@ -500,7 +496,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value= { value && value.format(getFormat(state.showTime)) || '' }
+                                                                    value= { value && value.format(getFormat()) || '' }
                                                                 />
                                                             </span>
                                                         );
@@ -541,7 +537,15 @@ class BuscarConsultora extends Component {
                     <div className="margin-top10"></div>
                     <div className="row">
                         {   this.state.isDisplayed ? 
-                            ( <GridConsultora data={this.state.items.items} filters={this.state.filtro} eventBuscar={this.onBuscar} /> ) 
+                            ( <GridConsultora 
+                                data={this.state.items.items}
+                                paging = {this.state.items.paging}
+                                filters = {this.state.filtro} 
+                                stringFilter = { this.state.stringFilter} 
+                                eventBuscar = {this.onBuscar} 
+                                eventChangeOrderBy = {this.onChangeOrderBy} 
+                              /> 
+                            ) 
                             :
                             ( <h2>No se encontraron resultados</h2> )
                         }
@@ -554,8 +558,11 @@ class BuscarConsultora extends Component {
 
 function mapStateToProps(state) {
     const { user } = state.authentication;
+    const item = state.accountHomeFetchDataSuccess;
+
     return {
-        user
+        user,
+        item
     };
 }
 

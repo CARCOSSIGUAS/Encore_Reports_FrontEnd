@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './GridConsultora.css';
 import PaginationConsultora from '../../components/buscar-consultora/PaginationConsultora'
+// import Pagination from '../../components/utils/Pagination'
 
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+
 class GridConsultora extends Component {
     constructor(props) {
         super(props);
@@ -20,24 +22,9 @@ class GridConsultora extends Component {
     }
 
     exportAccounts(event) {
-        var filter = this.props.filters;
-        let params = "CodConsultoraLogged=" + filter.CodConsultoraLogged +
-            "&CodConsultoraSearched=" + filter.CodConsultoraSearched +
-            "&NombreConsultora=" + filter.NombreConsultora +
-            "&CodPatrocinador=" + filter.CodPatrocinador +
-            "&NombrePatrocinador=" + filter.NombrePatrocinador +
-            "&Period=" + filter.Period +
-            "&Nivel=" + filter.Nivel +
-            "&Generation=" + filter.Generation +
-            "&TituloCarrera=" + filter.TituloCarrera +
-            "&Estado=" + filter.Estado +
-            "&NumeroPagina=" + filter.NumeroPagina +
-            "&NumeroRegistros=" + filter.NumeroRegistros;
-
-        window.location.href = 'http://datarequestqas.lbel.com.br/api/report/exportexcel/?' + params;
-
+        var filter = this.props.stringFilter;
+        window.location.href = 'http://datarequestqas.lbel.com.br/api/reportaccount/exportexcel/?' + filter;
     }
-
 
     activaPanelAccount(event) {
         const target = event.target;
@@ -46,7 +33,6 @@ class GridConsultora extends Component {
         this.setState({
             activeInformationAccount: name
         })
-
     }
 
     render() {
@@ -137,7 +123,8 @@ class GridConsultora extends Component {
 					<div className="col-sm-16 col-md-5">
                         <div className="order-by-content">
                             Ordenar por: { ' ' }
-                            <select className="form-control input-sm">
+                            <select name = "OrderBy" className="form-control input-sm" onChange={ this.props.eventChangeOrderBy } >
+                                <option value="" selected="selected"> Seleccione </option>
                                 <option value="1">Título de Carrera</option>
                                 <option value="2">Título de Pago</option>
                                 <option value="3">Volumen Personal</option>
@@ -163,11 +150,17 @@ class GridConsultora extends Component {
                         count={Math.ceil(this.props.cantReg / 2)}
                         onPageChange={this.props.eventBuscar}
                     />
+
+                    {/* <Pagination
+                        margin={2}
+                        page={this.props.paging.pageNumber}
+                        totalPages={this.props.paging.pageNumber}
+                        onPageChange={this.props.eventBuscar}
+                    /> */}
                 </div>
             </div>
         </div>);
     }
-
 }
 
 export default GridConsultora;

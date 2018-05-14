@@ -15,34 +15,30 @@ class Indicadores extends Component {
     const { user } = this.props;
 
     this.state = {
-      indicadorVentaNeta: {
-        falta: 9364686,
-        meta: 35096392,
-        vas: 25731706
-      },
-      codConsultor: user.accountID,
-      periodId: 201804,
-      items: [{}]
+      accountID: user.accountID,
+      indicatorPerformance: {},
+      indicatorSale : {}
     };
   }
 
   componentDidMount() {
-    fetch('http://datarequestqas.lbel.com.br/api/Report/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
-      .then((response) => {
-        return response.json()
-      })
-      .then((items) => {
-        var rpt = items != null && items.length > 0 ? items : null;
-        items = rpt;
-        this.setState({ items })
-      });
+    fetch('http://datarequestqas.lbel.com.br/api/home/performanceindicator/?accountId=' + this.state.accountID)
+        .then((response) => {
+          if (!response.ok) { 
+            return Promise.reject(response.statusText);
+          }
+          return response.json()
+        })
+        .then((results) => {
+          this.setState({ 
+            indicatorPerformance: results.result,
+          });
+        });
   }
 
   render() {
 
-    const {
-      indicadorVentaNeta, items
-    } = this.state;
+    const { indicatorPerformance, indicatorSale } = this.state;
 
     return (
 
@@ -85,16 +81,16 @@ class Indicadores extends Component {
                             <div className="box-data-content">
                               <div id="VentaNetaFacturacionBox">
                                 <div className="box-text-md-encore">
-                                  <span className="VentaFaltanteVN stl-ind">VP:  {items != null ? items[0].vp : 0}</span>
+                                  <span className="VentaFaltanteVN stl-ind">VP:  {indicatorPerformance != null ? indicatorPerformance.pqv : 0}</span>
                                 </div>
                                 <div className="box-text-md-encore">
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">VO-T: {items != null ? items[0].voq : 0}</span>
+                                    <span className="VentasRestanteVN">VO-T: {indicatorPerformance != null ? indicatorPerformance.dqv : 0}</span>
                                   </span>
                                 </div>
                                 <div className="box-text-md-encore">
                                   <span className="box-text-sm">
-                                    <span className="VentasRestanteVN">VO-Q: {items != null ? items[0].vot : 0}</span>
+                                    <span className="VentasRestanteVN">VO-Q: {indicatorPerformance != null ? indicatorPerformance.dqvt : 0}</span>
                                   </span>
                                 </div>
                               </div>
@@ -181,5 +177,4 @@ function mapStateToProps(state) {
 }
 
 const IndicadoresPage = connect(mapStateToProps)(Indicadores);
-
 export default IndicadoresPage;

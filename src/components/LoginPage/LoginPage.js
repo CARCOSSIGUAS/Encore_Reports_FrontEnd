@@ -53,11 +53,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(LoginPage);
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//       actions: bindActionCreators(userActions, dispatch)
-//     };
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
