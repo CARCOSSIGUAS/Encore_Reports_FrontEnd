@@ -305,9 +305,7 @@ class BuscarConsultora extends Component {
         
             this.setState({ stringFilter: params});
 
-        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {
-
-        })
+        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {})
             .then((response) => {
                 if (!response.ok) { 
                     return Promise.reject(response.statusText);
