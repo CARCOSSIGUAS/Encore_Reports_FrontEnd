@@ -245,7 +245,6 @@ class BuscarConsultora extends Component {
         this.setState({
             filtro: this.state.filtro
         });
-
     }
 
 
@@ -268,10 +267,11 @@ class BuscarConsultora extends Component {
         });
     }
 
-    onBuscar(numPage) {
-        
-        var pageNumber = (typeof numPage != 'undefined' && !isNaN(numPage)) ? numPage : this.state.filtro.NumeroPagina;
-        this.state.filtro.NumeroPagina = pageNumber;
+    onBuscar(event) {
+        debugger;
+
+        const initialSeleted = event.selected ? event.selected + 1: 1;
+        this.state.filtro.NumeroPagina = initialSeleted;
         
         this.setState({
             activaClass: 'active',
@@ -301,7 +301,7 @@ class BuscarConsultora extends Component {
             "&orderBy=" + this.state.filtro.OrderBy +
 
             "&pageSize=" + this.state.filtro.NumeroRegistros +
-            "&pageNumber=" + pageNumber;
+            "&pageNumber=" + this.state.filtro.NumeroPagina;
         
             this.setState({ stringFilter: params});
 

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './GridConsultora.css';
-import PaginationConsultora from '../../components/buscar-consultora/PaginationConsultora'
-// import Pagination from '../../components/utils/Pagination'
 
+import ReactPaginate from 'react-paginate';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import './GridConsultora.css';
 
 class GridConsultora extends Component {
     constructor(props) {
@@ -17,8 +15,6 @@ class GridConsultora extends Component {
 
         this.activaPanelAccount = this.activaPanelAccount.bind(this);
         this.exportAccounts = this.exportAccounts.bind(this);
-
-
     }
 
     exportAccounts(event) {
@@ -116,8 +112,8 @@ class GridConsultora extends Component {
                     <div className="col-offset-md-2 col-sm-13 col-md-5">
                         <div className="upper mt-15 text-md text-center">
                             <div className="upper mt-15 text-sm text-center">
-                                <b> 1 - {this.props.filters.NumeroRegistros}</b> de <b>{this.props.data != null ? this.props.data.numPage : 0} </b>Consultoras
-                                </div>
+                                <b> 1 - {this.props.paging.pageSize}</b> de <b>{this.props.paging != null ? this.props.paging.totalItems : 0} </b>Consultoras
+                            </div>
                         </div>
                     </div>
 					<div className="col-sm-16 col-md-5">
@@ -144,19 +140,19 @@ class GridConsultora extends Component {
 
             <div id="pagination">
                 <div className="col-md-12">
-                    <PaginationConsultora
-                        margin={2}
-                        page={this.props.filters.NumeroPagina}
-                        count={Math.ceil(this.props.cantReg / 2)}
-                        onPageChange={this.props.eventBuscar}
-                    />
 
-                    {/* <Pagination
-                        margin={2}
-                        page={this.props.paging.pageNumber}
-                        totalPages={this.props.paging.pageNumber}
+                    <ReactPaginate previousLabel={"previous"}
+                        nextLabel={"next"}
+                        breakLabel={<a href="">...</a>}
+                        breakClassName={"break-me"}
+                        pageCount={this.props.paging.totalPages}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={3}
                         onPageChange={this.props.eventBuscar}
-                    /> */}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"} 
+                    />
                 </div>
             </div>
         </div>);
