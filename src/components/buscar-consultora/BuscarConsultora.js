@@ -78,7 +78,7 @@ class BuscarConsultora extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:31832/api/report/periods')
+        fetch('http://datarequestqas.lbel.com.br/api/report/periods')
             .then((response) => {
                 if (!response.ok) { 
                     return Promise.reject(response.statusText);
@@ -308,7 +308,7 @@ class BuscarConsultora extends Component {
             "&pageNumber=" + pageNumber +
             "&pageSize=" + this.state.filtro.NumeroRegistros;
 
-        fetch('http://localhost:31832/api/report/sponsoreds/?' + params, {
+        fetch('http://datarequestqas.lbel.com.br/api/report/sponsoreds/?' + params, {
 
         })
             .then((response) => {
