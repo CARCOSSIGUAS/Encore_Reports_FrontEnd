@@ -97,7 +97,7 @@ class BuscarConsultora extends Component {
             filtro: this.state.filtro
         });
 
-        this.onBuscar();
+        this.onBuscar(1);
     }
 
     onChangeDateFrom = (JoinDateFrom) => {
@@ -359,7 +359,7 @@ class BuscarConsultora extends Component {
                                         handleChange={ this.handleInputChange } 
                                         items = { this.state.periodsOptions }
                                         value = { this.state.filtro.periodId }
-                                        defaultOption = "select Period"
+                                        defaultOption = "Selecione Campanha"
                                     />
                                 </div>
                             </div>
@@ -397,7 +397,7 @@ class BuscarConsultora extends Component {
                                             </div>
                                         </div>
                                         <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Geraçao</span><br />
+                                            <span className="bc-title-text">Geração</span><br />
                                             <div className="RegionZonaSeccionButton">
                                                 <a id="A" className="btnSeccion" name="1" onClick={this.changeGenerationActive}>1</a>
                                                 <a id="B" className="btnSeccion" name="2" onClick={this.changeGenerationActive}>2</a>
@@ -409,8 +409,8 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">Título</span>
                                             <select name = "TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
-                                                <option value="1">Título de Carrera</option>
-                                                <option value="2">Título de Pago</option>
+                                                <option value="1">Titulo Carreira</option>
+                                                <option value="2">Desempenho</option>
                                             </select>
                                         </div>
                                     </div>
@@ -526,7 +526,10 @@ class BuscarConsultora extends Component {
                                 </div>
                                 <div className="row margin-bottom20">
                                     <div className="col-sm-4">
-                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  &nbsp;BUSCAR</button><br />
+                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  
+                                            &nbsp;PESQUISAR
+                                        </button>
+                                        <br />
                                     </div>
                                 </div>
                             </div>
@@ -545,7 +548,12 @@ class BuscarConsultora extends Component {
                               /> 
                             ) 
                             :
-                            ( <h2>No se encontraron resultados</h2> )
+                            (   <div className="col-sm-12">
+                                    <div className="bc-content-body">
+                                        <h2>Nenhum resultado encontrado</h2> 
+                                    </div>
+                                </div>
+                            )
                         }
                     </div>
                 </div>

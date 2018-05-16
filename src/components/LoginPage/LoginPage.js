@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 
+import './LoginPage.css';
+
 class LoginPage extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -29,17 +31,14 @@ class LoginPage extends React.Component {
     render(){
         const { loggingIn, loggedIn } = this.props;
         return (
-            
-            <section>
+            <div className="backstretch">
                 <div className="container">
-                    <div className="content-main">
-                            <div>
-                                <h1>Logout</h1>
-                                <span>Try logging in from Encore</span>
-                            </div>
-                    </div>
-                </div >
-            </section>
+                    <br/>
+                    <h1 style={{color: 'white'}}>Logout</h1>
+                    <span style={{color: 'white'}}>Try logging in from Encore</span>
+                </div>
+                <img src={require("../../images/logo.jpg")} />
+            </div>
         );
     }
 };

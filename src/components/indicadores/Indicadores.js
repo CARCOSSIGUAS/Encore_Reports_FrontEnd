@@ -50,7 +50,7 @@ class Indicadores extends Component {
               <div role="tabpanel" className="indicadores">
                 <div className="col-xs-16 col-sm-8 col-sm-offset-1">
                   <div className="section-title-icon-content">
-                    <h2 className="section-title-icon">FAÇA SEGUIMIENTO</h2>
+                    <h2 className="section-title-icon">FAÇA ACOMPANHAMENTO</h2>
                     <span id="indicadores-breadcrumb" className="text-info mt-5"></span>
                   </div>
                 </div>

@@ -12,7 +12,7 @@ class Footer extends React.Component {
                                 <div id="content_nuestros_portales" className="col-sm-4 col-xs-12">
                                     <h3>Nossos Sites</h3>
                                     <a role="menu" region="Footer" parent="Nuestros portales" title="Escritorio Virtual" id="lnk-foo-ingresa-tu-pedido" href="https://consultor.lbel.com.br" target="_blank" rel="noopener noreferrer"> Escritorio Virtual</a> <br />
-                                    <a role="menu" region="Footer" parent="Nuestros portales" title="Únete" id="lnk-foo-cerrar-sesion" href="http://www.uneteabelcorp.com/" target="_blank" rel="noopener noreferrer"> Únete</a> <br />
+                                    <a role="menu" region="Footer" parent="Nuestros portales" title="Únete" id="lnk-foo-cerrar-sesion" href="https://meunegocio.lbel.com.br/" target="_blank" rel="noopener noreferrer"> Únete</a> <br />
                                 </div>
                                 <div id="content_nuestras_marcas" className="col-sm-4 col-xs-12">
                                     <h3>Nossas Marcas</h3>

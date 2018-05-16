@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 import ReactPaginate from 'react-paginate';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import './GridConsultora.css';
+
+function getFormat() {
+    return 'DD-MM-YYYY';
+}
+
 
 class GridConsultora extends Component {
     constructor(props) {
@@ -50,49 +56,53 @@ class GridConsultora extends Component {
                         <div className="row">
                             <div className="col-sm-10 col-md-4 col-lg-4 line-left">
                                 <div className="row">
-                                    <div className="col-xs-6">
+                                    <div className="col-xs-11">
                                         <div>CÓDIGO: <b>{ item.accountID }</b></div>
-                                        <div>DATA ANIVERSARIO: <b>{ item.enrollmentDateUTC }</b></div>
-                                        <div>ESTADO: <b>{ item.state }</b></div>
+                                        <div>DATA DE INGRESSO: <b>{ moment(item.joinDate).format(getFormat()) }</b></div>
+                                        <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
+                                        <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
                                     </div>
-                                    <div className="col-xs-6">
-                                        <div>NIVEL: <b className="tnormal">{item.level}</b></div>
-                                        <div>GERAÇAO: <b>{item.generation}</b></div>
-                                        <div>STATUS: <b>{item.activity}</b></div>
+                                    <div className="col-xs-1">
+                                           
                                     </div>
                                 </div>
                             </div>
+
                             <div className="col-sm-6 col-md-3 col-lg-3 line-left">
+                                <div>ENDEREÇO:   <b>{  }  </b></div>
+                                <div>EMAIL: <b>{ item.emailAddress }</b></div>
+                                <div>TELEFONE: <b>{  }</b></div>
+                            </div>
+
+                            <div className="col-sm-6 col-md-3 col-lg-4 line-left">
                                 <div>VO:   <b>{ item.pqv }  </b></div>
                                 <div>VO-T: <b>{ item.dqv }  </b></div>
                                 <div>VO-Q: <b>{ item.dqvt } </b></div>
-                            </div>
-                            <div className="col-sm-6 col-md-4 col-lg-4 line-left">
-                                <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
-                                <div>PERMANENCIA: <b className="tnormal"></b></div>
-                                <div>TIT. PAGO: <b className="tnormal">{item.paidAsCurrentMonth_Des}</b></div>
+                                <div>STATUS: <b>{item.activity}</b></div>
                             </div>
                         </div>
                         <br />
                     </div>
 
                     <div className={this.state.activeInformationAccount == "account" + index ? "active-accountDetal" : "inactive-accountDetal"} role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" >
-                        <div className="row">
-                            <div className="col-sm-4 col-md-4 col-lg-4">
-                                <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
-                                <div>NOMBRE: <b>{item.sponsorName}</b></div>
-                                <div>EMAIL: <b></b></div>
-                                <div>TELÉFONO: <b></b></div>
-                            </div>
-                            <div className="col-sm-3 col-md-3 col-lg-3">
-                                <div>CÓD. LIDER: <b></b></div>
-                                <div>NOMBRE: <b></b></div>
-                                <div>EMAIL: <b></b></div>
-                                <div>TELÉFONO: <b></b></div>
-                            </div>
-                            <div className="col-sm-4 col-md-4 col-lg-4">
-                                <div>CONSULTORES ACTIVO: <b>NO</b></div>
-                                <div>LÍDERES 1A GEN: <b>NO</b></div>
+                        <div className="collapse-resumen">
+                            <div className="row">
+                                <div className="col-sm-10 col-md-4 col-lg-5 line-left">
+                                    <div className="row">
+                                        <div className="col-xs-10">
+                                            <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
+                                            <div>NOME PATROCINADOR: <b>{item.sponsorName}</b></div>
+                                            <div>EMAIL: <b>{}</b></div>
+                                            <div>TELEFONE: <b>{}</b></div>
+                                        </div>
+                                        <div className="col-xs-2">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 col-lg-3 line-left">
+                                       
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,8 +131,8 @@ class GridConsultora extends Component {
                             Ordenar por: { ' ' }
                             <select name = "OrderBy" className="form-control input-sm" onChange={ this.props.eventChangeOrderBy } >
                                 <option value="" selected="selected"> Seleccione </option>
-                                <option value="1">Título de Carrera</option>
-                                <option value="2">Título de Pago</option>
+                                <option value="1">Titulo Carreira</option>
+                                <option value="2">Titulo Desempenho</option>
                                 <option value="3">Volumen Personal</option>
                                 <option value="4">Fecha de Ingreso</option>
                             </select>
