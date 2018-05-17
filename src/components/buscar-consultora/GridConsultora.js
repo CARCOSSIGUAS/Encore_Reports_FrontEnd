@@ -54,27 +54,24 @@ class GridConsultora extends Component {
                     <span> <b>{(index + 1) * this.props.filters.NumeroPagina}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
-                            <div className="col-sm-10 col-md-4 col-lg-4 line-left">
+                            <div className="col-md-4 col-lg-4 col-xs-12 line-left">
                                 <div className="row">
-                                    <div className="col-xs-11">
+                                    <div className="col-md-12 col-xs-12">
                                         <div>CÓDIGO: <b>{ item.accountID }</b></div>
                                         <div>DATA DE INGRESSO: <b>{ moment(item.joinDate).format(getFormat()) }</b></div>
                                         <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
                                         <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
                                     </div>
-                                    <div className="col-xs-1">
-                                           
-                                    </div>
                                 </div>
                             </div>
 
-                            <div className="col-sm-6 col-md-3 col-lg-3 line-left">
+                            <div className="col-md-6 col-lg-5 col-xs-12 line-left">
                                 <div>ENDEREÇO:   <b>{  }  </b></div>
                                 <div>EMAIL: <b>{ item.emailAddress }</b></div>
                                 <div>TELEFONE: <b>{  }</b></div>
                             </div>
 
-                            <div className="col-sm-6 col-md-3 col-lg-4 line-left">
+                            <div className="col-md-2 col-lg-2 col-xs-12 line-left">
                                 <div>VO:   <b>{ item.pqv }  </b></div>
                                 <div>VO-T: <b>{ item.dqv }  </b></div>
                                 <div>VO-Q: <b>{ item.dqvt } </b></div>
@@ -89,14 +86,11 @@ class GridConsultora extends Component {
                             <div className="row">
                                 <div className="col-sm-10 col-md-4 col-lg-5 line-left">
                                     <div className="row">
-                                        <div className="col-xs-10">
+                                        <div className="col-md-12 col-xs-12">
                                             <div>CÓD. PATROCINADOR: <b>{item.sponsorID}</b></div>
                                             <div>NOME PATROCINADOR: <b>{item.sponsorName}</b></div>
                                             <div>EMAIL: <b>{}</b></div>
                                             <div>TELEFONE: <b>{}</b></div>
-                                        </div>
-                                        <div className="col-xs-2">
-                                           
                                         </div>
                                     </div>
                                 </div>
