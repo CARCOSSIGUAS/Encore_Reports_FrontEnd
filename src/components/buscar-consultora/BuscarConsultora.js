@@ -268,8 +268,6 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(event) {
-        debugger;
-
         const initialSeleted = event.selected ? event.selected + 1: 1;
         this.state.filtro.NumeroPagina = initialSeleted;
         

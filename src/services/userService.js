@@ -9,9 +9,11 @@ export function login(token) {
             return response.json();
         })
         .then(user => {
-
+            debugger;
+            
             if (user && user.accountID ) {
                 // store user details in local storage to keep user logged in between page refreshes
+                user.token = token;
                 localStorage.setItem('user', JSON.stringify(user));
             }
             return user;

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import './Header.css';
 
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 
 
 class Header extends Component {
@@ -11,28 +15,32 @@ class Header extends Component {
     constructor(props) {
         super(props);
 
+        const { user } = this.props;
+
+
         this.state = {
             activeSelected: "",
-            activeReporte: 'hidden-reporte'
+            activeReporte: 'hidden-reporte',
+            token: user != null ? user.token : 0
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.onMostrarReporte = this.onMostrarReporte.bind(this);
     }
 
-    onMostrarReporte (){
+    onMostrarReporte() {
         this.setState({
             activeReporte: 'active-reporte'
         })
     }
 
-    onCloseReporte(){
+    onCloseReporte() {
         this.setState({
             activeReporte: 'hidden-reporte'
         })
     }
     handleInputChange(event) {
-        
+
         const target = event.target.parentElement;
         const name = target.id;
         this.setState({ activeSelected: name });
@@ -41,55 +49,65 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <nav className="navbar navbar-expand-lg navbar-inverse upper" role="navigation">
-                    <div className="container-fluid" >
-                        <div className="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="/"><img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="45" className="hidden" /> <img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="55" height="42" /></a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                            <ul className="nav navbar-nav">
-                                <li className={this.state.activeSelected == "item1" ? "active" : ""} id="item1" onClick={this.handleInputChange}>
-                                    <Link to={`/`} className="_pointer" title="Inicio" id="lnk-prin-inicio">
-                                        Inicio
-                                    </Link>
-                                </li>
-                                <li className="dropdown">
-                                    <a className="dropdown-toggle _pointer" data-toggle="dropdown" role="menu" region="Principal" parent="Reportes" title="Relatórios" id="lnk-prin-reportes">Relatórios <FontAwesomeIcon icon="angle-down" className="icono_flechaDesglegarMenu" onClick={this.onMostrarReporte} onFocusOut={this.onCloseReporte} /></a>
-                                    <ul className={"dropdown-menu multi-level tnormal "+this.state.activeReporte} >
-                                        <li>
-                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Reportes de Cierre" id="lnk-prin-reportes-de-cierre">Reporte de Desempeño</a>
-                                        </li>
-                                        <li>
-                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Bolsa de Pedidos" id="lnk-prin-bolsa-de-pedidos">Reporte de Ganancia</a>
-                                        </li>
-                                        <li>
-                                            <a className="_pointer"  role="menu" region="Principal" parent="Reportes" title="Pedido Web" id="lnk-prin-pedido-web">Reporte de Nuevas</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li  className={this.state.activeSelected == "item2" ? "active" : ""} id="item2" onClick={this.handleInputChange}>
-                                    <Link to={`/buscarConsultora`} >
-                                        Pesquisar Consultor
-                                    </Link>
-                                </li>
-                            </ul>
-                            <ul className="nav navbar-nav navbar-right">
-                                <li>
-                                    <a role="menu" region="Principal" parent="Deslogar" title="Deslogar" id="lnk-prin-cerrar-sesion" href="/Login">
-                                        Deslogar
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                <Navbar inverse collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <a href="/"><img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="45" className="hidden" /> <img src={require("../../images/lbel-white.svg")} alt="Belcorp" width="55" height="42" /></a>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        ,    <Nav>
+                            <NavItem eventKey={1} href="/" className="upper">
+                                Inicio
+      </NavItem>
+                            <NavDropdown eventKey={3} title="RELATÓRIOS" id="basic-nav-dropdown">
+                                <MenuItem eventKey={3.1}>Action</MenuItem>
+                                <MenuItem eventKey={3.2}>Another action</MenuItem>
+                                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                                <MenuItem divider />
+                                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                            </NavDropdown>
+                            <NavItem eventKey={2} href="/buscarConsultora" className="upper">
+                                Pesquisar Consultor
+                            </NavItem>
+
+                        </Nav>
+
+
+                        <Nav pullRight>
+                            <NavItem href="/Login" eventKey={0} className="upper">
+                                Deslogar
+      </NavItem>
+                        </Nav>
+
+                        <Nav pullRight>
+                            <NavItem eventKey={1} target="_blank" href={"https://consultorqa.lbel.com.br/Login?token=" + this.state.token} className="upper">
+                                Consultora
+                          </NavItem>
+                        </Nav>
+
+                    </Navbar.Collapse>
+                </Navbar>
+
             </header >
         );
     }
 }
-export default Header;
+
+function mapStateToProps(state) {
+    const { user } = state.authentication;
+    const item = state.accountHomeFetchDataSuccess;
+    const hasErrored = state.accountHomeHasErrored;
+    const isLoading = state.accountHomeIsLoading;
+
+    return {
+        user,
+        item,
+        hasErrored,
+        isLoading
+    };
+}
+
+const HeaderPage = connect(mapStateToProps)(Header);
+export default HeaderPage;

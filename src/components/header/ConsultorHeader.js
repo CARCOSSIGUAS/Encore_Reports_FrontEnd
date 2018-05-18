@@ -36,7 +36,6 @@ class ConsultorHeader extends React.Component {
         // }
 
         const consultor = this.props.item;
-        debugger;
         return (
             <div className="main-header main-header-mobile">
                 <div className="container" id="main-header-container">

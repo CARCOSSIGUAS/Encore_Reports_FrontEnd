@@ -28,3 +28,20 @@
 .visible-pagination{
     visibility: visible;
 }
+
+.tab-head {
+    padding-top: 5px;
+    margin-bottom: -5px;
+}
+
+.work-break-grid{
+    word-break: break-all;
+}
+
+.content-results{
+    margin:10px 0 0 18px;
+}
+
+.excel{
+    font-size: 30px;
+}
