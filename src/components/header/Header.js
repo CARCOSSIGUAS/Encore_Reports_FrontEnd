@@ -81,11 +81,11 @@ class Header extends Component {
       </NavItem>
                         </Nav>
 
-                        <Nav pullRight>
+                        {/* <Nav pullRight>
                             <NavItem eventKey={1} target="_blank" href={"https://consultorqa.lbel.com.br/Login?token=" + this.state.token} className="upper">
                                 Consultora
                           </NavItem>
-                        </Nav>
+                        </Nav> */}
 
                     </Navbar.Collapse>
                 </Navbar>

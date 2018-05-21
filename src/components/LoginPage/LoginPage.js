@@ -37,7 +37,6 @@ debugger;
                     <h1 style={{color: 'white'}}>Logout</h1>
                     <span style={{color: 'white'}}>Try logging in from Encore</span>
                 </div>
-                <img src={require("../../images/logo.jpg")} />
             </div>
         );
     }
