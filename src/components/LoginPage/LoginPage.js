@@ -8,7 +8,7 @@ import './LoginPage.css';
 class LoginPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-
+debugger;
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const token = encodeURIComponent(params.get('token'));
