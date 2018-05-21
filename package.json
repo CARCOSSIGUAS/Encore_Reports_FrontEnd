@@ -17,21 +17,11 @@
     "prop-types": "^15.6.1",
     "rc-calendar": "^9.6.0",
     "rc-time-picker": "^3.3.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-=======
-    "react": "^16.3.2",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.2",
->>>>>>> parent of b3fdd93... Cambios CQ
-=======
+
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-i18next": "^7.6.1",
->>>>>>> parent of 7ad06a9... Merge branch 'develop' of https://github.com/CARCOSSIGUAS/Encore_Reports into develop
     "react-logger": "^1.1.0",
     "react-paginate": "^5.2.3",
     "react-redux": "^5.0.7",
