@@ -60,7 +60,7 @@ class Header extends Component {
                         ,    <Nav>
                             <NavItem eventKey={1} href="/" className="upper">
                                 Inicio
-      </NavItem>
+                            </NavItem>
                             <NavDropdown eventKey={3} title="RELATÓRIOS" id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Action</MenuItem>
                                 <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -78,7 +78,7 @@ class Header extends Component {
                         <Nav pullRight>
                             <NavItem href="/Login" eventKey={0} className="upper">
                                 Deslogar
-      </NavItem>
+                        </NavItem>
                         </Nav>
 
                         {/* <Nav pullRight>
