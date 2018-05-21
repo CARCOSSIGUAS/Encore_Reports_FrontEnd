@@ -34,7 +34,7 @@ class GridConsultora extends Component {
     render() {
         const consultorasList = this.props.data == null ? "" : this.props.data.map((item, index) => {
 
-            return <div className="content-collapse-item upper">
+            return <div key={index} className="content-collapse-item upper">
                 <div className="collapse-head" role="tab">
                     <a className="tituloConsultoraMargin" >
                         <FontAwesomeIcon icon="plus-circle" />
@@ -50,14 +50,10 @@ class GridConsultora extends Component {
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
-                                <div className="row">
-                                    <div className="col-md-12 col-xs-12">
-                                        <div>CÓDIGO: <b>{ item.accountID }</b></div>
-                                        <div>DATA DE INGRESSO: <b>{ item.joinDateToString }</b></div>
-                                        <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
-                                        <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
-                                    </div>
-                                </div>
+                                <div>CÓDIGO: <b>{ item.accountID }</b></div>
+                                <div>DATA DE INGRESSO: <b>{ item.joinDateToString }</b></div>
+                                <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
+                                <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
@@ -117,8 +113,8 @@ class GridConsultora extends Component {
                 <div className="col-sm-16 col-md-5 col-xs-12">
                     <div className="order-by-content">
                         Ordenar por: {' '}
-                        <select name="OrderBy" className="form-control input-sm" onChange={this.props.eventChangeOrderBy} >
-                            <option value="" selected="selected"> Seleccione </option>
+                        <select name="OrderBy" defaultValue="" className="form-control input-sm" onChange={this.props.eventChangeOrderBy} >
+                            <option value="" > Selecione </option>
                             <option value="1">Titulo Carreira</option>
                             <option value="2">Titulo Desempenho</option>
                             <option value="3">Volumen Personal</option>
@@ -137,11 +133,11 @@ class GridConsultora extends Component {
             <div className="col-md-12 col-sm-12 col-xs-12">
                     <ReactPaginate previousLabel={"previous"}
                         nextLabel={"next"}
-                        breakLabel={<span>...</span>}
+                        breakLabel={<span>..</span>}
                         breakClassName={"break-me"}
                         pageCount={this.props.paging.totalPages}
                         marginPagesDisplayed={2}
-                        pageRangeDisplayed={3}
+                        pageRangeDisplayed={2}
                         onPageChange={this.props.eventBuscar}
                         containerClassName={"pagination"}
                         subContainerClassName={"pages pagination"}
