@@ -268,7 +268,10 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(event) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a6b99cc7f3c0d66c8b3c539da0dc8afb57ebf55
         const initialSeleted = event.selected ? event.selected + 1: 1;
         this.state.filtro.NumeroPagina = initialSeleted;
         

@@ -52,8 +52,13 @@ class GridConsultora extends Component {
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
                                 <div className="row">
                                     <div className="col-md-12 col-xs-12">
+<<<<<<< HEAD
                                         <div>CÓDIGO: <b>{ item.accountID }</b></div>
                                         <div>DATA DE INGRESSO: <b>{ item.joinDateToString }</b></div>
+=======
+                                        <div>CÓDIGO: <b>{item.accountID}</b></div>
+                                        <div>DATA DE INGRESSO: <b>{moment(item.joinDate).format(getFormat())}</b></div>
+>>>>>>> 3a6b99cc7f3c0d66c8b3c539da0dc8afb57ebf55
                                         <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
                                         <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
                                     </div>
@@ -61,6 +66,7 @@ class GridConsultora extends Component {
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
+<<<<<<< HEAD
                                 <div>ENDEREÇO:   <b>{ item.mainAddress }  </b></div>
                                 <div>EMAIL: <b>{ item.emailAddress }</b></div>
                                 <div>TELEFONE: <b>{ item.phones }</b></div>
@@ -70,6 +76,17 @@ class GridConsultora extends Component {
                                 <div>VP:   <b>{ item.pqv }  </b></div>
                                 <div>VO-T: <b>{ item.dqv }  </b></div>
                                 <div>VO-Q: <b>{ item.dqvt } </b></div>
+=======
+                                <div>ENDEREÇO:   <b>{}  </b></div>
+                                <div>EMAIL: <b className="work-break-grid">{item.emailAddress}</b></div>
+                                <div>TELEFONE: <b>{}</b></div>
+                            </div>
+
+                            <div className="col-md-2 col-lg-2 col-xs-12 line-left">
+                                <div>VO:   <b>{item.pqv}  </b></div>
+                                <div>VO-T: <b>{item.dqv}  </b></div>
+                                <div>VO-Q: <b>{item.dqvt} </b></div>
+>>>>>>> 3a6b99cc7f3c0d66c8b3c539da0dc8afb57ebf55
                                 <div>STATUS: <b>{item.activity}</b></div>
                             </div>
                         </div>
@@ -90,7 +107,7 @@ class GridConsultora extends Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-6 col-md-3 col-lg-3 line-left">
-                                       
+
                                 </div>
                             </div>
                         </div>
@@ -101,42 +118,40 @@ class GridConsultora extends Component {
         });
 
         return (<div className="content-results">
-            <div className="tab-head">
-                <div className="col-sm-12">
-                    <div className="col-sm-3 col-md-2">
-                        <div className="files-export text-center">
-                            <a onClick={this.exportAccounts} className="icon-file-export _pointer hidden-xs excel"><FontAwesomeIcon icon="file-excel" /></a>
-                        </div>
+            <div className="col-sm-12 col-md-12 col-xs-12">
+                <div className="col-sm-3 col-md-2 col-xs-12">
+                    <div className="files-export text-center">
+                        <a onClick={this.exportAccounts} className="icon-file-export _pointer excel"><FontAwesomeIcon icon="file-excel" /></a>
                     </div>
-                    <div className="col-offset-md-2 col-sm-13 col-md-5">
-                        <div className="upper mt-15 text-md text-center">
-                            <div className="upper mt-15 text-sm text-center">
-                                <b> 1 - {this.props.paging.pageSize}</b> de <b>{this.props.paging != null ? this.props.paging.totalItems : 0} </b>Consultoras
+                </div>
+                <div className="col-offset-md-2 col-sm-6 col-md-5 col-xs-12">
+                    <div className="upper mt-15 text-md text-center">
+                        <div className="upper mt-15 text-sm text-center">
+                            <b> 1 - {this.props.paging.pageSize}</b> de <b>{this.props.paging != null ? this.props.paging.totalItems : 0} </b>Consultoras
                             </div>
-                        </div>
                     </div>
-					<div className="col-sm-16 col-md-5">
-                        <div className="order-by-content">
-                            Ordenar por: { ' ' }
-                            <select name = "OrderBy" className="form-control input-sm" onChange={ this.props.eventChangeOrderBy } >
-                                <option value="" selected="selected"> Seleccione </option>
-                                <option value="1">Titulo Carreira</option>
-                                <option value="2">Titulo Desempenho</option>
-                                <option value="3">Volumen Personal</option>
-                                <option value="4">Fecha de Ingreso</option>
-                            </select>
-                        </div>
+                </div>
+                <div className="col-sm-16 col-md-5 col-xs-12">
+                    <div className="order-by-content">
+                        Ordenar por: {' '}
+                        <select name="OrderBy" className="form-control input-sm" onChange={this.props.eventChangeOrderBy} >
+                            <option value="" selected="selected"> Seleccione </option>
+                            <option value="1">Titulo Carreira</option>
+                            <option value="2">Titulo Desempenho</option>
+                            <option value="3">Volumen Personal</option>
+                            <option value="4">Fecha de Ingreso</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <div id="detalle">
-                <div className="col-md-12">
-                    <div role="tabpanel" className="collapse-group accordion">
-                        {consultorasList}
-                    </div>
+            <hr />
+            <div className="col-md-12 col-sm-12 col-xs-12">
+                <div role="tabpanel" className="collapse-group accordion">
+                    {consultorasList}
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div id="pagination">
                 <div className="col-md-12">
 
@@ -154,6 +169,21 @@ class GridConsultora extends Component {
                         forcePage={this.props.paging.pageNumber - 1}
                     />
                 </div>
+=======
+            <div className="col-md-12 col-sm-12 col-xs-12">
+                <ReactPaginate previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={<a href="">...</a>}
+                    breakClassName={"break-me"}
+                    pageCount={this.props.paging.totalPages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={this.props.eventBuscar}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}
+                />
+>>>>>>> 3a6b99cc7f3c0d66c8b3c539da0dc8afb57ebf55
             </div>
         </div>);
     }

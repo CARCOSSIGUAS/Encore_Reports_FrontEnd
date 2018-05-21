@@ -77,7 +77,9 @@ class Indicadores extends Component {
                         <div className="box-data box-yellow">
                           <h3 className="box-data-title"><a className="box-data-title">DESEMPENHO</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
-                            <div className="box-icon"><FontAwesomeIcon icon="chart-area" /></div>
+
+                           
+                            <div className="box-icon"><img className="icon-width" src={require("../../images/icons/Actividad.svg")} /></div>
                             <div className="box-data-content">
                               <div id="VentaNetaFacturacionBox">
                                 <div className="box-text-md-encore">
@@ -103,7 +105,7 @@ class Indicadores extends Component {
                         <div className="box-data box-blue">
                           <h3 className="box-data-title"> <a className="box-data-title">BONIFICAÇAO</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
-                          <div className="box-icon"><FontAwesomeIcon icon="dollar-sign" /></div>
+                          <div className="box-icon"><img className="icon-width" src={require("../../images/icons/Cobranza.svg")} /></div>
                             <div className="box-data-content">
 
                               <div id="VentaNetaFacturacionBox">
@@ -128,7 +130,7 @@ class Indicadores extends Component {
                         <div className="box-data box-success">
                           <h3 className="box-data-title"> <a className="box-data-title">NOVAS</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
-                          <div className="box-icon"><FontAwesomeIcon icon="user-plus" /></div>
+                          <div className="box-icon"><img className="icon-width" src={require("../../images/icons/Ciclo Nuevas.svg")} /></div>
                             <div className="box-data-content">
                               <div id="VentaNetaFacturacionBox">
                                 <span className="VentaFaltanteVN stl-ind"></span>
