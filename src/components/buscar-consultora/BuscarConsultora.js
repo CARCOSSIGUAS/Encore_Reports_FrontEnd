@@ -268,8 +268,6 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(event) {
-        debugger;
-
         const initialSeleted = event.selected ? event.selected + 1: 1;
         this.state.filtro.NumeroPagina = initialSeleted;
         
@@ -330,7 +328,6 @@ class BuscarConsultora extends Component {
             style={{ zIndex: 1000 }}
             dateInputPlaceholder="Please input"
             formatter={getFormat()}
-            defaultValue={this.props.defaultCalendarValue}
         />);
 
         return (
@@ -358,7 +355,6 @@ class BuscarConsultora extends Component {
                                         name = "periodId" 
                                         handleChange={ this.handleInputChange } 
                                         items = { this.state.periodsOptions }
-                                        value = { this.state.filtro.periodId }
                                         defaultOption = "Selecione Campanha"
                                     />
                                 </div>

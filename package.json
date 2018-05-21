@@ -8,11 +8,16 @@
     "@fortawesome/react-fontawesome": "0.0.18",
     "bootstrap": "^3.3.1",
     "classnames": "^2.2.5",
+    "i18next": "^11.3.2",
+    "i18next-browser-languagedetector": "^2.2.0",
+    "i18next-locize-backend": "^1.4.2",
+    "i18next-xhr-backend": "^1.5.1",
     "moment": "^2.22.1",
     "npm": "^5.8.0",
     "prop-types": "^15.6.1",
     "rc-calendar": "^9.6.0",
     "rc-time-picker": "^3.3.1",
+<<<<<<< HEAD
 <<<<<<< HEAD
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -21,6 +26,12 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
 >>>>>>> parent of b3fdd93... Cambios CQ
+=======
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.3.2",
+    "react-i18next": "^7.6.1",
+>>>>>>> parent of 7ad06a9... Merge branch 'develop' of https://github.com/CARCOSSIGUAS/Encore_Reports into develop
     "react-logger": "^1.1.0",
     "react-paginate": "^5.2.3",
     "react-redux": "^5.0.7",
