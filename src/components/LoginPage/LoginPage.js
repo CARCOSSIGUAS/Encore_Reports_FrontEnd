@@ -8,17 +8,17 @@ import './LoginPage.css';
 class LoginPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-debugger;
+
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const token = encodeURIComponent(params.get('token'));
 
         this.props.dispatch(userActions.logout());
 
-        this.state = 
-        {
-            token : token
-        }
+        this.state =
+            {
+                token: token
+            }
     };
 
     componentDidMount() {
@@ -28,16 +28,20 @@ debugger;
         }
     }
 
-    render(){
+    render() {
         const { loggingIn, loggedIn } = this.props;
         return (
-            <div className="backstretch">
-                <div className="container">
-                    <br/>
-                    <h1 style={{color: 'white'}}>Logout</h1>
-                    <span style={{color: 'white'}}>Try logging in from Encore</span>
+            <div>
+                <div className="backstretch">
+                    <img src={require('../../images/logo.jpg')}/>
                 </div>
+                <div className="container">
+                        <br />
+                        <h1 style={{ color: 'white' }}>Logout</h1>
+                        <span style={{ color: 'white' }}>Try logging in from Encore</span>
+                    </div>
             </div>
+
         );
     }
 };

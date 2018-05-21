@@ -15,7 +15,7 @@
 
 .footer-page {
     background: #f1f3f6;
-    /* position: absolute; */
+    position: fixed;
     width: 100%;
     bottom: 0;
 }
