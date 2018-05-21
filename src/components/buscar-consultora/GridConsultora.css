@@ -1,0 +1,47 @@
+.active-accountDetal{
+    display: block;
+}
+
+.inactive-accountDetal{
+    display: none;
+}
+
+.tab-head .files-export {
+    font-size: 3.3em;
+    line-height: 1;
+}
+
+.float-pagination-left{
+    float: right;
+}
+
+.pagination {
+    padding-left: 0;
+    margin: 21px 0;
+    border-radius: 0;
+}
+
+.hidden-pagination{
+    visibility: hidden;
+}
+
+.visible-pagination{
+    visibility: visible;
+}
+
+.tab-head {
+    padding-top: 5px;
+    margin-bottom: -5px;
+}
+
+.work-break-grid{
+    word-break: break-all;
+}
+
+.content-results{
+    margin:10px 0 0 18px;
+}
+
+.excel{
+    font-size: 30px;
+}

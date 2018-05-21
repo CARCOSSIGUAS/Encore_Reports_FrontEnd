@@ -1,0 +1,234 @@
+.text-info {
+    font-size: 12px;
+    color: #00abdf;
+}
+.box-detalle-head {
+    position: absolute;
+    left: 10px;
+    margin-top: 20px;
+    min-width: 105px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.table-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 2.3em;
+    z-index: 99;
+    top: 85px;
+    cursor: pointer;
+}
+
+.table-controls .table-left {
+    position: absolute;
+    left: 210px;
+}
+
+.box-detail-content-head {
+    position: absolute;
+    left: 120px;
+    min-width: 125px;
+    white-space: nowrap;
+}
+
+.box-detail-content-head-content {
+    margin-left: 235px;
+    margin-right: 30px;
+}
+
+.box-detail-content-head-content-details {
+    margin-left: 135px;
+    margin-right: 30px;
+}
+
+.table-no-border tr:first-child td {
+    border: none !important;
+}
+
+.table-middle tbody tr td {
+    vertical-align: middle !important;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 8px !important;
+    line-height: 1.42857143;
+}
+
+.zone-circle.zone-circle-title:hover, .zone-circle.zone-circle-title.active {
+    background-color: #5c758a;
+    color: #fff;
+    border: 1px solid #5c758a;
+}
+
+.zone-circle.zone-circle-title {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 1;
+    padding-top: 12px;
+    margin-right: 40px;
+}
+
+.zone-circle:hover, .zone-circle.active {
+    text-decoration: none;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.text-xlg {
+    font-size: 2em !important;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-15 {
+    margin-top: 15px;
+}
+
+.table-responsive {
+    border: none !important;
+    overflow: hidden;
+}
+.table-responsive {
+    min-height: .01%;
+}
+
+.table-controls .table-right {
+    position: absolute;
+    right: 0px;
+}
+.table-controls .table-left {
+    position: absolute;
+    left: 210px;
+}
+
+.nav-pills.nav-justified > li.active > a {
+    border: none;
+    background: none;
+    color: #768ea3 !important;
+}
+.nav-pills.nav-justified > li.active > a {
+    font-weight: 500;
+}
+.tab-info > li.active > a {
+    border-top: 5px solid #00abdf !important;
+}
+.nav-justified {
+    width: 100%;
+}
+.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+}
+.nav-justified > li, .nav-stacked > li {
+    float: none;
+}
+
+.tituloConsultoraMargin{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.collapse-group .content-collapse-item .collapse-body {
+    padding: 30px 0 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-left: 25px;
+}
+
+.zone-circle-details {
+    font-size: 1.2em;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 3;
+    color: #768ea3;
+    border: 1px solid #768ea3;
+    cursor: pointer;
+  }
+
+  .box-info .box-content {
+    background: #00abdf;
+}
+
+.box-controls {
+    position: relative;
+    top: -8px;
+    font-size: 2em;
+    z-index: 99;
+}
+
+.box-controls .box-prev {
+    color: #768ea3;
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+}
+
+.box-controls .box-next {
+    color: #00bcd4;
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+}
+
+.collapse-group .content-collapse-item .collapse-head .num-collapse {
+    position: absolute;
+    float: left;
+    margin-left: 8px;
+}
+
+
+.box-data .box-text-md-encore {
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 100;
+    margin-top: 8px;
+}
+
+.sweet-loading{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(164, 181, 196, 0.8);
+    -moz-transition: all 250ms linear;
+    -o-transition: all 250ms linear;
+    -webkit-transition: all 250ms linear;
+    transition: all 250ms linear; 
+}
+.sweet-loading.active{
+    visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+    position: fixed;
+}
+
+.sweet-loading.inactive{
+    visibility: hidden;
+}
+
+.loader-pacman{
+    top: 30em;
+    width: 10em;
+    height: 10em;
+    margin: 0 auto;
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+}

@@ -1,0 +1,276 @@
+.activeFilter{
+    display:block;
+}
+
+.activeFilterHidden{
+    display:none;
+}
+
+
+.bc-backtitle {
+    background: #9bb2c6;
+    height: 43px;
+}
+
+.bc-title-text {
+    font-size: 14px;
+    color: #768ea3;
+    font-weight: 500;
+}
+
+.bc-content-body input[type=text] {
+    color: #768ea3;
+    padding-left: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+}
+
+.bc-filters {
+    font-size: 12px;
+    color: #722789;
+    font-weight: 700;
+    border-bottom: 1px solid #9bb2c6;
+    text-align: right;
+    margin: 18px 20px 0px 0px;
+    cursor: pointer;
+}
+
+.btnSeccion {
+    width: 37px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2;
+}
+
+.btnSeccion:hover{
+    cursor: pointer;
+}
+
+.btnSeccion.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnEstado:hover{
+    cursor: pointer;
+}
+
+.btnEstado.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.line-height2{
+    line-height: 2;
+}
+
+.line-height1{
+    line-height: 1;
+}
+
+
+.btnEstado {
+    width: 125px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btnSaldo {
+    width: 170px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2.1;
+    vertical-align: middle;
+}
+
+.btnSaldo:hover, .btnSaldo.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnSegmento {
+    width: 125px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btnSegmento:hover
+{
+    cursor: pointer;
+}
+
+.btnSegmento.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnPedidos {
+    width: 170px;
+    height: 30px;
+    border: 1px solid rgba(117, 142, 163, 0.6);
+    color: #768ea3;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 10px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    line-height: 2.1;
+    vertical-align: middle;
+}
+
+.btnPedidos:hover, .btnPedidos.active {
+    text-decoration: none;
+    background-color: #722789;
+    border: 1px solid #722789;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnBusqueda {
+    width: 170px;
+    height: 35px;
+    background: #722789;
+    color: #fff;
+    border: 0px;
+    font-size: 15px;
+    margin-top: 20px;
+    letter-spacing: 0.3px;
+}
+
+.bc-title {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 30px;
+    letter-spacing: 0.3px;
+    padding-top: 12px;
+    font-weight: 500;
+    float: left;
+    position: absolute;
+}
+
+.bc-content-body {
+    margin: 10px 0px 0px 18px;
+}
+
+.text-primary {
+    color: #722789;
+    font-weight: 500;
+}
+a {
+    color: #722789;
+    text-decoration: none;
+}
+
+.padding-left10
+{
+    padding-right: 10px;
+}
+.padding-left-border{
+    padding-left: 10px;
+    border-left: 1px solid #5d1376;
+}
+
+.text-md {
+    font-size: 1.2em !important;
+}
+
+.content-main{
+    padding-top: 0px;
+}
+
+.margin-bottom20 {
+    margin-bottom: 20px;
+}
+
+.margin-top10{
+    margin-left: -10px;
+    margin-right: -10px;
+    background-color:#f1f3f6;
+    height:20px;
+}
+
+
+.margin-top30{
+    margin-top: 30px;
+}
+
+.tab-head .order-by-content .form-control {
+    display: inline-block;
+    width: 280px;
+}
+
+.tab-head {
+    padding-top: 5px;
+    margin-bottom: -5px;
+}
+.btnSeccion a:active{
+    background-color: #722789;
+    border: 1px solid #722789;
+}
+@media screen and (min-width: 1199px)
+{
+    .inpBusqueda {
+        width: 200px;
+        height: 30px;
+    }
+
+
+    .inpBusquedaM {
+        width: 180px;
+        height: 25px;
+    }
+
+    .inpBusquedaC {
+        width: 250px;
+        height: 30px;
+    }
+}
+.margin-lef10
+{
+    margin-left: 10px;
+}

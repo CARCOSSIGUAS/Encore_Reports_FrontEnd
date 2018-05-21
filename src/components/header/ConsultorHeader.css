@@ -1,0 +1,59 @@
+.text-md {
+    font-size: 1.2em !important;
+}
+
+.text-primary {
+    color: #722789;
+    font-weight: 500;
+}
+
+.main-header {
+    padding: 20px 0;
+}
+
+.group-btn-header .btn {
+    margin-bottom: 5px;
+}
+
+.btn-md {
+    padding: 6px 25px;
+    font-size: 13px;
+}
+.btn-primary-outline {
+    background: transparent;
+    color: #722789;
+    border: 1px solid #722789;
+}
+
+.btn {
+    border-radius: 30px;
+    margin-right: 3px;
+    text-transform: uppercase;
+}
+
+.main-campana {
+    float: right;
+}
+
+.text-ws:first-child {
+    padding-left: 0;
+}
+
+.text-ws {
+    display: inline-block;
+    padding: 0 12px;
+    margin: 5px 0;
+    border-right: 1px solid #768ea3;
+    line-height: 1;
+    font-size: 13px;
+}
+
+.text-ws .text-ws-lg {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: left !important;
+}
+.text-ws:last-child {
+    border: none;
+    padding-right: 0;
+}

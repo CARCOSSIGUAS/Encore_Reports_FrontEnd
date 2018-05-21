@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Router } from 'react-router-dom';
+import { history } from './helpers/history';
+import { connect } from 'react-redux';
 
-class App extends Component {
+import './App.css';
+import Header from './components/header/Header';
+import Container from './components/container/Container';
+import Footer from './components/footer/Footer';
+
+import { PrivateRoute } from './PrivateRoute';
+import BuscarConsultora from './components/buscar-consultora/BuscarConsultora';
+import Indicadores from './components/indicadores/Indicadores';
+import VentaNeta from './components/venta-neta/VentaNeta';
+import LoginPage from './components/LoginPage/LoginPage';
+import TranslateReact from './components/translate/TranslateReact';
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
   render() {
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Router history={history}>
+          <div>
+            <Header />
+            <Switch>
+              <Route path="/Login" component={LoginPage} />
+              <PrivateRoute exact path="/" component={Indicadores} />
+              <PrivateRoute path="/buscarConsultora" component={BuscarConsultora} />
+              <PrivateRoute path="/ventaneta" component={VentaNeta} />
+              <Route path="/translates" component={TranslateReact} />
+            </Switch>
+          </div>
+        </Router>
+        <Footer />
       </div>
     );
   }
 }
+
 
 export default App;
