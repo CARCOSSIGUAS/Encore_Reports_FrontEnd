@@ -16,8 +16,8 @@ class DropDown extends React.Component {
         
         return (
          <div>
-             <select defaultValue="" value={ this.props.value } name={ this.props.name } onChange={ this.props.handleChange } className="form-control input-sm">
-                <option value="" disabled >
+             <select value={ this.props.value } name={ this.props.name } onChange={ this.props.handleChange } className="form-control input-sm">
+                <option value="" selected="selected" disabled >
                     { this.props.defaultOption }
                 </option>
                 { makeDropDown() }

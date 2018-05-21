@@ -13,8 +13,6 @@ import BuscarConsultora from './components/buscar-consultora/BuscarConsultora';
 import Indicadores from './components/indicadores/Indicadores';
 import VentaNeta from './components/venta-neta/VentaNeta';
 import LoginPage from './components/LoginPage/LoginPage';
-import TranslateReact from './components/translate/TranslateReact';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +21,6 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <Router history={history}>
@@ -34,7 +31,6 @@ class App extends React.Component {
               <PrivateRoute exact path="/" component={Indicadores} />
               <PrivateRoute path="/buscarConsultora" component={BuscarConsultora} />
               <PrivateRoute path="/ventaneta" component={VentaNeta} />
-              <Route path="/translates" component={TranslateReact} />
             </Switch>
           </div>
         </Router>
@@ -43,6 +39,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;

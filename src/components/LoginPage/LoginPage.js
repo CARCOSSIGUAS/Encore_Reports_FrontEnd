@@ -15,10 +15,10 @@ class LoginPage extends React.Component {
 
         this.props.dispatch(userActions.logout());
 
-        this.state =
-            {
-                token: token
-            }
+        this.state = 
+        {
+            token : token
+        }
     };
 
     componentDidMount() {
@@ -28,19 +28,19 @@ class LoginPage extends React.Component {
         }
     }
 
-    render() {
+    render(){
         const { loggingIn, loggedIn } = this.props;
         return (
             <div>
                 <div className="backstretch">
                 </div>
                 <div className="container">
-                        <br />
-                        <h1 style={{ color: 'white' }}>Logout</h1>
-                        <span style={{ color: 'white' }}>Try logging in from Encore</span>
-                    </div>
+                    <br/>
+                    <h1 style={{color: 'white'}}>Logout</h1>
+                    <span style={{color: 'white'}}>Try logging in from Encore</span>
+                </div>
+                <img src={require("../../images/logo.jpg")} />
             </div>
-
         );
     }
 };
