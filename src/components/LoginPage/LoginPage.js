@@ -33,7 +33,6 @@ class LoginPage extends React.Component {
         return (
             <div>
                 <div className="backstretch">
-                    <img src={require('../../images/logo.jpg')}/>
                 </div>
                 <div className="container">
                         <br />

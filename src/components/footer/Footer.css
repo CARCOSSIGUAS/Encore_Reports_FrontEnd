@@ -15,10 +15,10 @@
 
 .footer-page {
     background: #f1f3f6;
-    position: fixed;
+    position: absolute;
     width: 100%;
-    bottom: 0;
 }
+
 .fbClassIcon{
     font-size: 12px;
     text-decoration: none;
