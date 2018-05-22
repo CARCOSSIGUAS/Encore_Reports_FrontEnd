@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import Header from './components/header/Header';
 import Container from './components/container/Container';
-import Footer from './components/footer/Footer';
+
 
 import { PrivateRoute } from './PrivateRoute';
 import BuscarConsultora from './components/buscar-consultora/BuscarConsultora';
@@ -38,7 +38,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </Router>
-        <Footer />
+        
       </div>
     );
   }
