@@ -51,9 +51,9 @@ class GridConsultora extends Component {
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
                                 <div>CÓDIGO: <b>{ item.accountID }</b></div>
-                                <div>DATA DE INGRESSO: <b>{ item.joinDateToString }</b></div>
-                                <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
-                                <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
+                                <div>DATA DE INGRESSO: <b>{ item.joinDate }</b></div>
+                                <div>TIT. CARRERA: <b>{ item.careerTitle }</b></div>
+                                <div>TIT. DESEMPENHO: <b>{ item.paidAsCurrentMonth }</b></div>
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
@@ -117,8 +117,8 @@ class GridConsultora extends Component {
                             <option value="" > Selecione </option>
                             <option value="1">Titulo Carreira</option>
                             <option value="2">Titulo Desempenho</option>
-                            <option value="3">Volumen Personal</option>
-                            <option value="4">Fecha de Ingreso</option>
+                            <option value="3">Volume Pessoal</option>
+                            <option value="4">Data de Ingresso</option>
                         </select>
                     </div>
                 </div>

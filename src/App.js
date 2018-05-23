@@ -31,10 +31,10 @@ class App extends React.Component {
             <Header />
             <Switch>
               <Route path="/Login" component={LoginPage} />
-              <PrivateRoute exact path="/" component={Indicadores} />
-              <PrivateRoute path="/buscarConsultora" component={BuscarConsultora} />
-              <PrivateRoute path="/ventaneta" component={VentaNeta} />
-              <Route path="/translates" component={TranslateReact} />
+              {/* <PrivateRoute exact path="/" component={Indicadores} /> */}
+              <PrivateRoute path="/" component={BuscarConsultora} />
+              {/* <PrivateRoute path="/ventaneta" component={VentaNeta} /> */}
+              {/* <Route path="/translates" component={TranslateReact} /> */}
             </Switch>
           </div>
         </Router>

@@ -57,7 +57,8 @@ class Header extends Component {
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        ,    <Nav>
+                        ,
+                        {/* <Nav>
                             <NavItem eventKey={1} href="/" className="upper">
                                 Inicio
                             </NavItem>
@@ -75,7 +76,7 @@ class Header extends Component {
                                 Translates
                             </NavItem>
 
-                        </Nav>
+                        </Nav> */}
 
 
                         <Nav pullRight>
