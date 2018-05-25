@@ -17,6 +17,8 @@ import moment from 'moment';
 import DropDown from '../../components/utils/DropDown';
 import { DEFAULT_ECDH_CURVE } from 'tls';
 
+import { translate, Trans } from 'react-i18next';
+import { bindActionCreators } from 'redux';
 function getFormat() {
     return 'DD-MM-YYYY';
 }
@@ -24,7 +26,7 @@ function getFormat() {
 class BuscarConsultora extends Component {
     constructor(props) {
         super(props);
-        
+
         const { user } = this.props;
         const { item } = this.props;
 
@@ -70,7 +72,11 @@ class BuscarConsultora extends Component {
         this.changeGenerationActive = this.changeGenerationActive.bind(this);
         this.changeTitlesActive = this.changeTitlesActive.bind(this);
         this.changeStatusActive = this.changeStatusActive.bind(this);
-        
+        const { t, i18n } = this.props;
+
+        const changeLanguage = (lng) => {
+          i18n.changeLanguage(lng);
+        }
     }
 
     componentDidMount() {
@@ -330,6 +336,7 @@ class BuscarConsultora extends Component {
             formatter={getFormat()}
         />);
 
+        const { t, i18n } = this.props;
         return (
             <div className="container">
                 <div className={'sweet-loading ' + this.state.activaClass}>
@@ -364,11 +371,13 @@ class BuscarConsultora extends Component {
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">Código Consultor</span><br />
+                                    {/* <span className="bc-title-text">Código Consultor</span><br /> */}
+                                    <span className="bc-title-text">{t('consultora')}</span><br />
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">Nome Consultor</span><br />
+                                    {/* <span className="bc-title-text">Nome Consultor</span><br /> */}
+                                    <span className="bc-title-text">{t('ingles')}</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
@@ -570,4 +579,4 @@ function mapStateToProps(state) {
 
 const BuscarConsultoraPage = connect(mapStateToProps)(BuscarConsultora);
 
-export default BuscarConsultoraPage;
+export default translate('translations')(BuscarConsultoraPage);

@@ -35,8 +35,46 @@ switch (whichBackend()) {
     break;
 
   case 'xhr':
-    options.backend = {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+
+
+    // options.resources = {
+    //   loadPath: '/locales/{{lng}}/{{ns}}.json',
+    // };
+    // i18n.use(XHR);
+    // break;
+
+    options.resources = {
+      en: {
+        translations: {
+          "To get started, edit <1>src/App.js</1> and save to reload.": "To get started, edit <1>src/App.js</1> and save to reload.",
+          "Welcome to React": "Welcome to React and react-i18next",
+          "advice": "Try to set the query parameter \"backend\" to memory, xhr or locize i.e. {{url}}",
+          "consultora":"Searchr Consulthor inlges",
+          "ingles":"Item new",
+          "xhr":"jijijjiijijijiji xhr en"
+        }
+      },
+      de: {
+        translations: {
+          "To get started, edit <1>src/App.js</1> and save to reload.": "Starte in dem du, <1>src/App.js</1> editierst und speicherst.",
+          "Welcome to React": "Willkommen bei React und react-i18next",
+          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo",
+          "consultora":"codoski consultorski",
+          "ingles":"Item novoski",
+          "xhr":"jijijjiijijijiji xhr de"
+        }
+      },
+      fr: {
+        translations: {
+          "To get started, edit <1>src/App.js</1> and save to reload.": "Starte in dem du, <1>src/App.js</1> editierst und speicherst.",
+          "Welcome to React": "Benevenuto bei React und react-i18next",
+          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo",
+          "consultora":"Buscar Consultore franch",
+          "ingles":"Item nuevu",
+          "xhe":"jijijjiijijijiji xhr fr"
+        }
+      }
+      
     };
     i18n.use(XHR);
     break;
@@ -48,14 +86,27 @@ switch (whichBackend()) {
         translations: {
           "To get started, edit <1>src/App.js</1> and save to reload.": "To get started, edit <1>src/App.js</1> and save to reload.",
           "Welcome to React": "Welcome to React and react-i18next",
-          "advice": "Try to set the query parameter \"backend\" to memory, xhr or locize i.e. {{url}}"
+          "advice": "Try to set the query parameter \"backend\" to memory, xhr or locize i.e. {{url}}",
+          "consultora":"Searchr Consulthor inlges",
+          "ingles":"Item new"
         }
       },
       de: {
         translations: {
           "To get started, edit <1>src/App.js</1> and save to reload.": "Starte in dem du, <1>src/App.js</1> editierst und speicherst.",
           "Welcome to React": "Willkommen bei React und react-i18next",
-          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo"
+          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo",
+          "consultora":"codoski consultorski",
+          "ingles":"Item novoski"
+        }
+      },
+      fr: {
+        translations: {
+          "To get started, edit <1>src/App.js</1> and save to reload.": "Starte in dem du, <1>src/App.js</1> editierst und speicherst.",
+          "Welcome to React": "Benevenuto bei React und react-i18next",
+          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo",
+          "consultora":"Buscar Consultore franch",
+          "ingles":"Item nuevu"
         }
       }
     };
