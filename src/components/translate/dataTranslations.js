@@ -7,41 +7,36 @@ class DataLocalStorage extends Component {
       super(props);
       var DataLocalStorage=null;
       const { value } = props.value;
-      const { name } = props.name;
-      
-    // if (localStorage.getItem("key")== "") {
-    //     return;
-    // }
 
     if (localStorage.getItem("key")) {
-        console.log("DataLocalStorage");
         DataLocalStorage = JSON.parse(localStorage.getItem("key")); 
-        console.log(DataLocalStorage);
     }  
 
     this.state = {
     hits: DataLocalStorage,
+    datos : null
     }  
 }
 
     componentDidMount() {
-        fetch('http://localhost:31832/api/language/language/' + this.props.value + '/' + this.props.name)
+        fetch('http://localhost:31832/api/language/language/' + this.props.value)
                 .then(response => response.json())
-                .then(result => this.onSetResult(result, this.props.value));
+                .then(translations => this.onSetResult(translations));
     }
 
-    onSetResult = (result, key) => {
-        localStorage.setItem("key", JSON.stringify(result));
-        this.setState({ hits: result });
+    onSetResult = (translations) => {
+        console.log(translations)
+        let data = translations
+        localStorage.setItem("key", JSON.stringify(data));
+        this.setState({ hits: data });
+        console.log(this.state.hits);
         }
 
     render () {
         const { hits } = this.state;
         return (
-            hits &&
-            hits.map(hit => 
-           <span key={hit.id}>{hit.term}{hit.termName}{hit.languageId}</span>)
-        )
+        <div>{JSON.stringify(hits)}</div>
+            )
     }
 }
 export default DataLocalStorage;

@@ -11,6 +11,7 @@
     "i18next": "^11.3.2",
     "i18next-browser-languagedetector": "^2.2.0",
     "i18next-locize-backend": "^1.4.2",
+    "i18next-sync-fs-backend": "^1.1.0",
     "i18next-xhr-backend": "^1.5.1",
     "moment": "^2.22.1",
     "npm": "^5.8.0",

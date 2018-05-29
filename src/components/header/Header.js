@@ -8,7 +8,7 @@ import './Header.css';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-
+import TranslateReact from '../translate/TranslateReact.js';
 
 class Header extends Component {
 
@@ -71,13 +71,11 @@ class Header extends Component {
                             <NavItem eventKey={2} href="/buscarConsultora" className="upper">
                                 Pesquisar Consultor
                             </NavItem>
-                            <NavItem eventKey={3} href="/translates" className="upper">
+                            {/* <NavItem eventKey={3} href="/translates" className="upper">
                                 Translates
-                            </NavItem>
-
+                            </NavItem> */}
                         </Nav>
-
-
+                        <TranslateReact/>
                         <Nav pullRight>
                             <NavItem href="/Login" eventKey={0} className="upper">
                                 Deslogar
