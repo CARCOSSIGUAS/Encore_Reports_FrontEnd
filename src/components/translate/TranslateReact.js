@@ -38,8 +38,9 @@ class TranslateReact extends Component {
               {/* <div>{t('AnErrorHasOccurred')}</div>
               <div>{t('ErrorText')}</div>
               <div>{t('ReturnToHomePage')}</div>  */}
+              <div hidden={true}> <DataLocalStorage value="1"/></div>
             </Nav>
-              // <DataLocalStorage value="1"/>
+              
             )
 }}
 
