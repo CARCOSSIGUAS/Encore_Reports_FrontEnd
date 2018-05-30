@@ -27,13 +27,13 @@ class TranslateReact extends Component {
         return (
             <Nav>
               <NavItem>
-                <button onClick={() => changeLanguage('de')} className="btn btn-success btn-md">de</button>
+                <button onClick={() => changeLanguage('es')} className="btn btn-success btn-md">{t('Spanish')}</button>
               </NavItem>
               <NavItem>
-                <button onClick={() => changeLanguage('en')} className="btn btn-info btn-md">en</button>
+                <button onClick={() => changeLanguage('en')} className="btn btn-info btn-md">{t('English')}</button>
               </NavItem>
               <NavItem>
-                <button onClick={() => changeLanguage('fr')} className="btn btn-warning btn-md">fr</button>
+                <button onClick={() => changeLanguage('po')} className="btn btn-warning btn-md">{t('Portugues')}</button>
               </NavItem>
               {/* <div>{t('AnErrorHasOccurred')}</div>
               <div>{t('ErrorText')}</div>
