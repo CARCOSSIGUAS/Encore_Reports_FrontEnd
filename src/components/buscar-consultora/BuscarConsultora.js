@@ -379,15 +379,15 @@ class BuscarConsultora extends Component {
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('ConsultantCode')}</span><br />
+                                    <span className="bc-title-text">{t('AccountNumber')}</span><br />
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('ConsultantName')}</span><br />
+                                    <span className="bc-title-text">{t('AccountName')}</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('Sponsor')}</span><br />
+                                    <span className="bc-title-text">{t('SponsorNumber')}</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
                                 </div>
 
