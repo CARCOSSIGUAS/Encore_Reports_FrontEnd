@@ -11,8 +11,14 @@ import './BuscarConsultora.css';
 import 'rc-calendar/assets/index.css';
 import Calendar from 'rc-calendar';
 import DatePicker from 'rc-calendar/lib/Picker';
-import enUS from 'rc-calendar/lib/locale/en_US';
+import en from 'rc-calendar/lib/locale/en_US';
+import po from 'rc-calendar/lib/locale/pt_BR';
+import es from 'rc-calendar/lib/locale/es_ES';
+
 import moment from 'moment';
+import por from 'moment/locale/pt-br.js';
+import esp from 'moment/locale/es-us.js';
+//import 'moment/locale/en-gb';
 
 import DropDown from '../../components/utils/DropDown';
 import { DEFAULT_ECDH_CURVE } from 'tls';
@@ -82,13 +88,13 @@ class BuscarConsultora extends Component {
     componentDidMount() {
         fetch('http://datarequestqas.lbel.com.br/api/reportaccount/periods')
             .then((response) => {
-                if (!response.ok) { 
+                if (!response.ok) {
                     return Promise.reject(response.statusText);
                 }
                 return response.json()
             })
             .then((results) => {
-                this.setState({ 
+                this.setState({
                     periodsOptions: results.result,
                 });
             });
@@ -276,12 +282,12 @@ class BuscarConsultora extends Component {
     onBuscar(event) {
         const initialSeleted = event.selected ? event.selected + 1: 1;
         this.state.filtro.NumeroPagina = initialSeleted;
-        
+
         this.setState({
             activaClass: 'active',
             filtro: this.state.filtro
         });
-        
+
         let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
             "&periodId=" + this.state.filtro.periodId +
             "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
@@ -306,12 +312,12 @@ class BuscarConsultora extends Component {
 
             "&pageSize=" + this.state.filtro.NumeroRegistros +
             "&pageNumber=" + this.state.filtro.NumeroPagina;
-        
+
             this.setState({ stringFilter: params});
 
         fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {})
             .then((response) => {
-                if (!response.ok) { 
+                if (!response.ok) {
                     return Promise.reject(response.statusText);
                 }
                 return response.json()
@@ -320,7 +326,7 @@ class BuscarConsultora extends Component {
                 let display = items != null && items.items.length > 0 ? true : false;
                 this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
             })
-            .catch(error => 
+            .catch(error =>
             {
                 this.setState({ activaClass: 'inactive', isDisplayed: false});
             });
@@ -330,10 +336,11 @@ class BuscarConsultora extends Component {
     render() {
         const state = this.state;
         const calendar = (<Calendar
-            locale={enUS}
+            locale={en}
             style={{ zIndex: 1000 }}
             dateInputPlaceholder="Please input"
             formatter={getFormat()}
+            calendar={calendar}
         />);
 
         const { t, i18n } = this.props;
@@ -351,50 +358,48 @@ class BuscarConsultora extends Component {
                 <div className="content-main margin-top30">
                     <div className="row">
                         <div className="bc-backtitle">
-                            <p className="bc-title">PESQUISAR CONSULTORES</p>
+                            <p className="bc-title">{t('SearchConsultants')}</p>
                         </div>
 
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-2">
-                                    <span className="bc-title-text">Campanha</span><br />
-                                    <DropDown 
-                                        name = "periodId" 
-                                        handleChange={ this.handleInputChange } 
+                                    <span className="bc-title-text">{t('Campaign')}</span><br />
+                                    <DropDown
+                                        name = "periodId"
+                                        handleChange={ this.handleInputChange }
                                         items = { this.state.periodsOptions }
-                                        defaultOption = "Selecione Campanha"
+                                        defaultOption = {t('ChoiseCampaign')}
+                                        
                                     />
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
-                                    {/* <span className="bc-title-text">Código Consultor</span><br /> */}
-                                    <span className="bc-title-text">{t('ErrorText')}</span><br />
+                                    <span className="bc-title-text">{t('ConsultantCode')}</span><br />
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
                                 <div className="col-md-3">
-                                    {/* <span className="bc-title-text">Nome Consultor</span><br /> */}
-                                    <span className="bc-title-text">{t('AnErrorHasOccurred')}</span><br />
+                                    <span className="bc-title-text">{t('ConsultantName')}</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
-                                    {/* <span className="bc-title-text">Código Patrocinador</span><br /> */}
-                                    <span className="bc-title-text">{t('ReturnToHomePage')}</span><br />
+                                    <span className="bc-title-text">{t('Sponsor')}</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
                                 </div>
 
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">Nome Patrocinado</span><br />
+                                    <span className="bc-title-text">{t('SponsorName')}</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="NombrePatrocinador" value={this.state.NombrePatrocinador} onChange={this.handleInputChange} />
                                 </div>
-                                <p onClick={this.filterOpen} className="bc-filters"><a id="lnk-filtros"><span className="text-filtros">MOSTRAR FILTROS</span></a><i className="icon-menu-down"></i></p>
+                                <p onClick={this.filterOpen} className="bc-filters"><a id="lnk-filtros"><span className="text-filtros">{t('ShowFilter')}</span></a><i className="icon-menu-down"></i></p>
                                 <div id="Filters" className={this.state.openFilter}>
                                     <div className="row">
                                         <div className="col-md-3 margin-top30">
-                                            <span className="bc-title-text">Nivel</span><br />
+                                            <span className="bc-title-text">{t('Level')}</span><br />
                                             <div className="RegionZonaSeccionButton">
                                                 <a id="A" className="btnSeccion" name="1" onClick={this.changeNivelActive}>1</a>
                                                 <a id="B" className="btnSeccion" name="2" onClick={this.changeNivelActive}>2</a>
@@ -403,7 +408,7 @@ class BuscarConsultora extends Component {
                                             </div>
                                         </div>
                                         <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Geração</span><br />
+                                            <span className="bc-title-text">{t('Generation')}</span><br />
                                             <div className="RegionZonaSeccionButton">
                                                 <a id="A" className="btnSeccion" name="1" onClick={this.changeGenerationActive}>1</a>
                                                 <a id="B" className="btnSeccion" name="2" onClick={this.changeGenerationActive}>2</a>
@@ -413,7 +418,7 @@ class BuscarConsultora extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-2 margin-top30">
-                                            <span className="bc-title-text">Título</span>
+                                            <span className="bc-title-text">{t('Title')}</span>
                                             <select name = "TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
                                                 <option value="1">Titulo Carreira</option>
                                                 <option value="2">Desempenho</option>
@@ -423,48 +428,49 @@ class BuscarConsultora extends Component {
                                     <div className="row">
                                         <div className="col-md-8">
                                             <div className="segmentoButton">
-                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>Consultor</a>
-                                                <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>Cons. Senior</a>
-                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="4" onClick={this.changeTitlesActive}>Cons. Especialista</a>
-                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="5" onClick={this.changeTitlesActive}>Empresario</a>
-                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="6" onClick={this.changeTitlesActive}>Empr. Avanzado</a>
-                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="7" onClick={this.changeTitlesActive}>Emp. Principal</a>
-                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="8" onClick={this.changeTitlesActive}>Executivo</a>
-                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="9" onClick={this.changeTitlesActive}>Exec. Prestige</a>
-                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="10" onClick={this.changeTitlesActive}>Exec. Elite</a>
-                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="11" onClick={this.changeTitlesActive}>Exec. Premium</a>
-                                                <a id="10" title="Exec. Supreme" className="btnSegmento line-height2" name="12" onClick={this.changeTitlesActive}>Exec. Supreme</a>
-                                                <a id="11" title="Exec. Nacional" className="btnSegmento line-height2" name="13" onClick={this.changeTitlesActive}>Exec. Nacional</a>
-                                                <a id="12" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="14" onClick={this.changeTitlesActive}>Gran Exec. Nacional</a>
+                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>{t('Title1')}</a>
+                                               <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>{t('Title2')}</a>
+                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="4" onClick={this.changeTitlesActive}>{t('Title4')}</a>
+                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="5" onClick={this.changeTitlesActive}>{t('Title5')}</a>
+                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="6" onClick={this.changeTitlesActive}>{t('Title6')}</a>
+                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="7" onClick={this.changeTitlesActive}>{t('Title7')}</a>
+                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="8" onClick={this.changeTitlesActive}>{t('Title8')}</a>
+                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="9" onClick={this.changeTitlesActive}>{t('Title9')}</a>
+                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="10" onClick={this.changeTitlesActive}>{t('Title10')}</a>
+                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="11" onClick={this.changeTitlesActive}>{t('Title11')}</a>
+                                                <a id="10" title="Exec. Supreme" className="btnSegmento line-height2" name="12" onClick={this.changeTitlesActive}>{t('Title12')}</a>
+                                                <a id="11" title="Exec. Nacional" className="btnSegmento line-height2" name="13" onClick={this.changeTitlesActive}>{t('Title13')}</a>
+                                                <a id="12" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="14" onClick={this.changeTitlesActive}>{t('Title14')}</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-8 margin-top30">
-                                            <span className="bc-title-text">Status</span><br />
+                                            <span className="bc-title-text">{t('Status')}</span><br />
                                             <div className="segmentoButton">
-                                                <a id="1" title="Ativo" className="btnSegmento line-height2" name="Ativo" onClick={this.changeStatusActive}>Ativa</a>
-                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="Inativa(1)" onClick={this.changeStatusActive}>Inativa (1)</a>
-                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="Inativa(2)" onClick={this.changeStatusActive}>Inativa (2)</a>
-                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="Inativa(3)" onClick={this.changeStatusActive}>Inativa (3)</a>
-                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="Inativa(4)" onClick={this.changeStatusActive}>Inativa (4)</a>
-                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="Inativa(5)" onClick={this.changeStatusActive}>Inativa (5)</a>
-                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="Inativa(6)" onClick={this.changeStatusActive}>Inativa (6)</a>
-                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="Inativa(7)" onClick={this.changeStatusActive}>Inativa (7)</a>
-                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="Inativa(8),Inativa(9)" onClick={this.changeStatusActive}>Possível Cessada</a>
-                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="Cadastrada" onClick={this.changeStatusActive}>Cadastrada</a>
+                                                <a id="1" title="Ativo" className="btnSegmento line-height2" name="Ativo" onClick={this.changeStatusActive}>{t('Active')}</a>
+                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="Inativa(1)" onClick={this.changeStatusActive}>{t('Inactive1')}</a>
+                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="Inativa(2)" onClick={this.changeStatusActive}>{t('Inactive2')}</a>
+                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="Inativa(3)" onClick={this.changeStatusActive}>{t('Inactive3')}</a>
+                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="Inativa(4)" onClick={this.changeStatusActive}>{t('Inactive4')}</a>
+                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="Inativa(5)" onClick={this.changeStatusActive}>{t('Inactive5')}</a>
+                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="Inativa(6)" onClick={this.changeStatusActive}>{t('Inactive6')}</a>
+                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="Inativa(7)" onClick={this.changeStatusActive}>{t('Inactive7')}</a>
+                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="Inativa(8),Inativa(9)" onClick={this.changeStatusActive}>{t('Inactive8-9')}</a>
+                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="Cadastrada" onClick={this.changeStatusActive}>{t('BegunEnrollment')}</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-2 margin-top30">
-                                            <span className="bc-title-text">Data Cadastro</span><br />
+                                            <span className="bc-title-text">{t('EnrollmentDateUTC')}</span><br />
                                             <DatePicker
                                                 name = "JoinDateFrom"
                                                 animation="slide-up"
                                                 calendar={calendar}
                                                 value = { state.JoinDateFrom }
                                                 onChange = { this.onChangeDateFrom }
+                                                locale = {en}
                                             >
                                                 {
                                                     ({ value }) => {
@@ -483,14 +489,14 @@ class BuscarConsultora extends Component {
                                             </DatePicker>
                                         </div>
                                         <div className="col-md-2 margin-top30">
-                                            <span className="bc-title-text">até</span><br />
-                                            
+                                            <span className="bc-title-text">{t('To')}</span><br />
                                             <DatePicker
                                                 name = "JoinDateTo"
                                                 animation="slide-up"
                                                 calendar={calendar}
                                                 value={state.JoinDateTo}
                                                 onChange={this.onChangeDateTo}
+                                                locale = {en}
                                             >
                                                 {
                                                     ({ value }) => {
@@ -509,22 +515,22 @@ class BuscarConsultora extends Component {
                                             </DatePicker>
                                         </div>
                                         <div className="col-md-2 margin-top30">
-                                            <span className="bc-title-text">VP</span><br />
+                                            <span className="bc-title-text">{t('VP')}</span><br />
                                             <input type="text" id="bc-PQVFrom" className="inpBusquedaM" name="PQVFrom" value={this.state.PQVFrom} onChange={this.handleInputChange} />
                                         </div>
                                         <div className="col-md-2 margin-top30">
-                                            <span className="bc-title-text">até</span><br />
+                                            <span className="bc-title-text">{t('To')}</span><br />
                                             <input type="text" id="bc-PQVTo" className="inpBusquedaM" name="PQVTo" value={this.state.PQVTo} onChange={this.handleInputChange} />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="form-group">
                                             <div className="col-md-2 margin-top30">
-                                                <span className="bc-title-text">VO</span><br />
+                                                <span className="bc-title-text">{t('VO')}</span><br />
                                                 <input type="text" id="bc-DQVFrom" className="inpBusquedaM" name="DQVFrom" value={this.state.DQVFrom} onChange={this.handleInputChange} />
                                             </div>
                                             <div className="col-md-2 margin-top30">
-                                                <span className="bc-title-text">até</span><br />
+                                                <span className="bc-title-text">{t('To')}</span><br />
                                                 <input type="text" id="bc-DQVTo" className="inpBusquedaM" name="DQVTo" value={this.state.DQVTo} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
@@ -532,8 +538,8 @@ class BuscarConsultora extends Component {
                                 </div>
                                 <div className="row margin-bottom20">
                                     <div className="col-sm-4">
-                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  
-                                            &nbsp;PESQUISAR
+                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />
+                                            &nbsp;{t('Search')}
                                         </button>
                                         <br />
                                     </div>
@@ -543,20 +549,20 @@ class BuscarConsultora extends Component {
                     </div>
                     <div className="margin-top10"></div>
                     <div className="row">
-                        {   this.state.isDisplayed ? 
-                            ( <GridConsultora 
+                        {   this.state.isDisplayed ?
+                            ( <GridConsultora
                                 data={this.state.items.items}
                                 paging = {this.state.items.paging}
-                                filters = {this.state.filtro} 
-                                stringFilter = { this.state.stringFilter} 
-                                eventBuscar = {this.onBuscar} 
-                                eventChangeOrderBy = {this.onChangeOrderBy} 
-                              /> 
-                            ) 
+                                filters = {this.state.filtro}
+                                stringFilter = { this.state.stringFilter}
+                                eventBuscar = {this.onBuscar}
+                                eventChangeOrderBy = {this.onChangeOrderBy}
+                              />
+                            )
                             :
                             (   <div className="col-sm-12">
                                     <div className="bc-content-body">
-                                        <h2>Nenhum resultado encontrado</h2> 
+                                        <h2>{t('ResultNotFound')}</h2>
                                     </div>
                                 </div>
                             )

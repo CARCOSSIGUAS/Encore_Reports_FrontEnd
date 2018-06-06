@@ -19,18 +19,18 @@ class DataLocalStorage extends Component {
 }
 
     componentDidMount() {
-        //fetch('http://localhost:31832/api/language/language/' + this.props.value)
-        fetch('http://datarequestqas.lbel.com.br/api/language/language/' + this.props.value)
+        fetch('http://localhost:31832/api/language/language/' + this.props.value)
+        //fetch('http://datarequestqas.lbel.com.br/api/language/language/' + this.props.value)
                 .then(response => response.json())
                 .then(translations => this.onSetResult(translations));
     }
 
     onSetResult = (translations) => {
-        console.log(translations)
+        //console.log(translations)
         let data = translations
         localStorage.setItem("key", JSON.stringify(data));
         this.setState({ hits: data });
-        console.log(this.state.hits);
+        //console.log(this.state.hits);
         }
 
     render () {

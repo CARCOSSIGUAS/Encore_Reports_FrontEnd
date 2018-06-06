@@ -9,6 +9,10 @@ import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import TranslateReact from '../translate/TranslateReact.js';
+import { translate, Trans } from 'react-i18next';
+
+import i18n from 'i18next';
+import { I18nextProvider } from 'react-i18next';
 
 class Header extends Component {
 
@@ -16,7 +20,10 @@ class Header extends Component {
         super(props);
 
         const { user } = this.props;
-
+        const { t, i18n } = this.props;
+        const changeLanguage = (lng) => {
+          i18n.changeLanguage(lng);
+        }
 
         this.state = {
             activeSelected: "",
@@ -47,6 +54,10 @@ class Header extends Component {
     }
 
     render() {
+        const { t, i18n } = this.props;
+        const changeLanguage = (lng) => {
+          i18n.changeLanguage(lng);
+        }
         return (
             <header>
                 <Navbar inverse collapseOnSelect>
@@ -59,9 +70,9 @@ class Header extends Component {
                     <Navbar.Collapse>
                         ,    <Nav>
                             <NavItem eventKey={1} href="/" className="upper">
-                                Inicio
+                                {t('Home')}
                             </NavItem>
-                            <NavDropdown eventKey={3} title="RELATÓRIOS" id="basic-nav-dropdown">
+                            <NavDropdown eventKey={3} title={t('Reports')} id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Action</MenuItem>
                                 <MenuItem eventKey={3.2}>Another action</MenuItem>
                                 <MenuItem eventKey={3.3}>Something else here</MenuItem>
@@ -69,7 +80,7 @@ class Header extends Component {
                                 <MenuItem eventKey={3.3}>Separated link</MenuItem>
                             </NavDropdown>
                             <NavItem eventKey={2} href="/buscarConsultora" className="upper">
-                                Pesquisar Consultor
+                                {t('BrowserConsultant')}
                             </NavItem>
                             {/* <NavItem eventKey={3} href="/translates" className="upper">
                                 Translates
@@ -78,7 +89,7 @@ class Header extends Component {
                         <TranslateReact/>
                         <Nav pullRight>
                             <NavItem href="/Login" eventKey={0} className="upper">
-                                Deslogar
+                                {t('LogOut')}
                         </NavItem>
                         </Nav>
 
@@ -111,4 +122,4 @@ function mapStateToProps(state) {
 }
 
 const HeaderPage = connect(mapStateToProps)(Header);
-export default HeaderPage;
+export default translate('translations')(HeaderPage);

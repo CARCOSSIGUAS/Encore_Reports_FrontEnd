@@ -6,6 +6,7 @@ import * as accountHome from '../../actions/accountHomeActions';
 import './ConsultorHeader.css';
 import { DEFAULT_ECDH_CURVE } from 'tls';
 
+import { translate, Trans } from 'react-i18next';
 class ConsultorHeader extends React.Component {
     constructor(props) {
         super(props)
@@ -17,6 +18,11 @@ class ConsultorHeader extends React.Component {
             consultor: {},
             accountID: user.accountID, 
         }
+        const { t, i18n } = this.props;
+
+        const changeLanguage = (lng) => {
+          i18n.changeLanguage(lng);
+        }
     }
 
     componentDidMount() {
@@ -26,9 +32,9 @@ class ConsultorHeader extends React.Component {
     }
 
     render() {
-
+        const { t, i18n } = this.props;
         if (this.props.hasErrored) {
-            return <p>Sorry! There was an error loading the items</p>;
+            return <p>{t('Sorry! There was an error loading the items')}</p>;
         }
 
         // if (this.props.isLoading) {
@@ -44,7 +50,7 @@ class ConsultorHeader extends React.Component {
                             <div className="row">
                                 <div className="col-md-4 col-sm-7 col-xs-16">
                                     <div className="text-md text-primary">
-                                        <strong>Olá , {consultor.account != null ? consultor.account.firstName : ""}</strong>
+                                        <strong>{t('Hello')} , {consultor.account != null ? consultor.account.firstName : ""}</strong>
                                     </div>
                                     <span className="text-primary-xs">
                                         <span>{consultor != null ? consultor.careerTitle_Des : ""}</span>
@@ -53,10 +59,10 @@ class ConsultorHeader extends React.Component {
                                 <div className="col-md-offset-3 col-md-5 col-sm-8">
                                     <div className="main-campana">
                                         <div className="text-ws">
-                                            <span>Campanha</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
+                                            <span>{t('Campaign')}</span> <br /> <span className="text-ws-lg ">{consultor!= null ? consultor.periodDescription : ""}</span>
                                         </div>
                                         <div className="text-ws">
-                                            <span>Fechamento de Campanha</span> <br />
+                                            <span>{t('ClosedDate')}</span> <br />
                                             <span className="text-ws-lg">{consultor!= null ? consultor.cantFinalPeriodo : ""}</span>
                                         </div>
                                     </div>
@@ -86,4 +92,4 @@ function mapStateToProps(state) {
 }
 
 const ConsultorHeaderPage = connect(mapStateToProps)(ConsultorHeader);
-export default ConsultorHeaderPage;
+export default translate('translations')(ConsultorHeaderPage);

@@ -10,14 +10,35 @@ import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 class TranslateReact extends Component {
   constructor(props){
     super(props);
- }
+    var langItem="";
+
+    this.changeTextLng = this.changeTextLng.bind(this);
+    
+    if (localStorage.getItem("languageItem")!="" ||localStorage.getItem("languageItem")!=null) {
+      langItem = localStorage.getItem("languageItem"); 
+      this.state = {
+        lang: langItem
+      }
+    }else{
+      this.state = {
+        lang: "ENGLISH"
+      }
+    }
+  }
+
+  changeTextLng (e) {
+    this.setState({
+      lang:  e.target.name,
+    })
+    localStorage.setItem("languageItem", (e.target.name))
+  }   
 
     render(){
         const { t, i18n } = this.props;
         const changeLanguage = (lng) => {
           i18n.changeLanguage(lng);
         }
-
+        
         let url = window.location.origin + '?backend=locize';
 
         if (document.location.href.indexOf('https://') === 0 && document.location.hostname.indexOf('hashbase.io') > 0) {
@@ -25,22 +46,14 @@ class TranslateReact extends Component {
         }
 
         return (
-            <Nav>
-              <NavItem>
-                <button onClick={() => changeLanguage('de')} className="btn btn-success btn-md">de</button>
-              </NavItem>
-              <NavItem>
-                <button onClick={() => changeLanguage('en')} className="btn btn-info btn-md">en</button>
-              </NavItem>
-              <NavItem>
-                <button onClick={() => changeLanguage('fr')} className="btn btn-warning btn-md">fr</button>
-              </NavItem>
-              {/* <div>{t('AnErrorHasOccurred')}</div>
-              <div>{t('ErrorText')}</div>
-              <div>{t('ReturnToHomePage')}</div>  */}
+            <Nav pullRight>
               <div hidden={true}> <DataLocalStorage value="1"/></div>
+              <NavDropdown title={this.state.lang} id="basic-nav-dropdown">
+                <MenuItem onClick={(e) => {changeLanguage('en'); this.changeTextLng(e)}} name={t('ENGLISH')}>ENGLISH</MenuItem>
+                <MenuItem onClick={(e) => {changeLanguage('es'); this.changeTextLng(e)}} name={t('SPANISH')}>SPANISH</MenuItem>
+                <MenuItem onClick={(e) => {changeLanguage('po'); this.changeTextLng(e)}} name={t('PORTUGUES')}>PORTUGUES</MenuItem>
+              </NavDropdown>
             </Nav>
-              
             )
 }}
 
