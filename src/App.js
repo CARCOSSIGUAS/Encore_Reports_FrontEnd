@@ -15,6 +15,15 @@ import VentaNeta from './components/venta-neta/VentaNeta';
 import LoginPage from './components/LoginPage/LoginPage';
 import TranslateReact from './components/translate/TranslateReact';
 
+import config from 'react-global-configuration';
+import configuration from './config';
+
+if (localStorage.getItem("urlService") != "" && localStorage.getItem("urlService") != null) {
+  config.set(JSON.parse(localStorage.getItem("urlService")), { freeze: false });
+}
+else{
+  config.set(configuration, { freeze: false });
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +47,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </Router>
-        
+
       </div>
     );
   }

@@ -1,17 +1,36 @@
-export function login(token) {
+import config from 'react-global-configuration';
+import configuration from '../config';
 
-    return fetch('http://datarequestqas.lbel.com.br/api/Security/SingleSignOn/?token=' + token)
+export function login(token, country) {
+    
+    config.set(configuration, { freeze: false });
+
+    var urlPath = "";
+
+    if (country == "73")
+        urlPath = config.get('serverUrlApiBRA');
+    else
+        urlPath = config.get('serverUrlApiUSA');
+
+    var confJSON = {
+        serverUrlApi: urlPath
+    };
+
+    config.set(confJSON, { freeze: false });
+    localStorage.setItem('urlService', JSON.stringify(confJSON));
+
+    return fetch(urlPath + 'api/Security/SingleSignOn/?token=' + token)
         .then(response => {
-            if (!response.ok) { 
+            if (!response.ok) {
                 return Promise.reject(response.statusText);
             }
 
             return response.json();
         })
         .then(user => {
-            debugger;
-            
-            if (user && user.accountID ) {
+
+
+            if (user && user.accountID) {
                 // store user details in local storage to keep user logged in between page refreshes
                 user.token = token;
                 localStorage.setItem('user', JSON.stringify(user));

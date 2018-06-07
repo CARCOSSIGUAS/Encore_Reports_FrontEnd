@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from 'react-global-configuration';
 
 import ReactPaginate from 'react-paginate';
 import fontawesome from '@fortawesome/fontawesome'
@@ -18,8 +19,10 @@ class GridConsultora extends Component {
     }
 
     exportAccounts(event) {
+        var urlPath = config.get('serverUrlApi');
+
         var filter = this.props.stringFilter;
-        window.location.href = 'http://datarequestqas.lbel.com.br/api/reportaccount/exportexcel/?' + filter;
+        window.location.href = urlPath + 'api/reportaccount/exportexcel/?' + filter;
     }
 
     activaPanelAccount(event) {
@@ -46,26 +49,26 @@ class GridConsultora extends Component {
                         </span>
                     </a>
                     <br />
-                    <span> <b>{(index + 1) + ((this.props.paging.pageNumber -1) * this.props.paging.pageSize)}</b></span>
+                    <span> <b>{(index + 1) + ((this.props.paging.pageNumber - 1) * this.props.paging.pageSize)}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
-                                <div>CÓDIGO: <b>{ item.accountID }</b></div>
-                                <div>DATA DE INGRESSO: <b>{ item.joinDateToString }</b></div>
+                                <div>CÓDIGO: <b>{item.accountID}</b></div>
+                                <div>DATA DE INGRESSO: <b>{item.joinDateToString}</b></div>
                                 <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
                                 <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
-                                <div>ENDEREÇO:   <b>{ item.mainAddress }  </b></div>
+                                <div>ENDEREÇO:   <b>{item.mainAddress}  </b></div>
                                 <div>EMAIL: <b className="work-break-grid">{item.emailAddress}</b></div>
-                                <div>TELEFONE: <b>{ item.phones }</b></div>
+                                <div>TELEFONE: <b>{item.phones}</b></div>
                             </div>
 
                             <div className="col-md-2 col-lg-2 col-xs-12 line-left">
-                                <div>VP:   <b>{ item.pqv }  </b></div>
-                                <div>VO-T: <b>{ item.dqv }  </b></div>
-                                <div>VO-Q: <b>{ item.dqvt } </b></div>
+                                <div>VP:   <b>{item.pqv}  </b></div>
+                                <div>VO-T: <b>{item.dqv}  </b></div>
+                                <div>VO-Q: <b>{item.dqvt} </b></div>
                                 <div>STATUS: <b>{item.activity}</b></div>
                             </div>
                         </div>
@@ -131,19 +134,19 @@ class GridConsultora extends Component {
             </div>
 
             <div className="col-md-12 col-sm-12 col-xs-12">
-                    <ReactPaginate previousLabel={"previous"}
-                        nextLabel={"next"}
-                        breakLabel={<span>..</span>}
-                        breakClassName={"break-me"}
-                        pageCount={this.props.paging.totalPages}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={2}
-                        onPageChange={this.props.eventBuscar}
-                        containerClassName={"pagination"}
-                        subContainerClassName={"pages pagination"}
-                        activeClassName={"active"} 
-                        forcePage={this.props.paging.pageNumber - 1}
-                    />
+                <ReactPaginate previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={<span>..</span>}
+                    breakClassName={"break-me"}
+                    pageCount={this.props.paging.totalPages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={2}
+                    onPageChange={this.props.eventBuscar}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}
+                    forcePage={this.props.paging.pageNumber - 1}
+                />
             </div>
         </div>);
     }

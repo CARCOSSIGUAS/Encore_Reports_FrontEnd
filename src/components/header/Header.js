@@ -77,7 +77,6 @@ class Header extends Component {
 
                         </Nav>
 
-
                         <Nav pullRight>
                             <NavItem href="/Login" eventKey={0} className="upper">
                                 Deslogar

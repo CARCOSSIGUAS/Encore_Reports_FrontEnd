@@ -8,23 +8,25 @@ import './LoginPage.css';
 class LoginPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        debugger;
+        
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const token = encodeURIComponent(params.get('token'));
+        const country = encodeURIComponent(params.get('countryID'));
 
         this.props.dispatch(userActions.logout());
 
         this.state =
             {
-                token: token
+                token: token,
+                country: country
             }
     };
 
     componentDidMount() {
         const { dispatch } = this.props;
         if (this.state.token && this.state.token.length > 0) {
-            dispatch(userActions.login(this.state.token));
+            dispatch(userActions.login(this.state.token, this.state.country));
         }
     }
 

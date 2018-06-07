@@ -4,6 +4,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import ConsultorHeader from '../../components/header/ConsultorHeader';
 import { faCheckSquare, faCoffee, faPlusCircle } from '@fortawesome/fontawesome-free-solid'
 import { PacmanLoader } from 'react-spinners';
+
+import config from 'react-global-configuration';
 import './VentaNeta.css';
 
 fontawesome.library.add(faCheckSquare, faCoffee, faPlusCircle);
@@ -24,7 +26,10 @@ class VentaNeta extends Component {
   }
 
   componentDidMount() {
-    fetch('http://datarequestqas.lbel.com.br/api/reportperformance/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+
+    var urlPath = config.get('serverUrlApi');
+
+    fetch(urlPath+'api/reportperformance/GetPerformance_Header/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json();
       })
@@ -34,7 +39,7 @@ class VentaNeta extends Component {
         this.setState({ indicadorVentaNeta });
       });
 
-    fetch('http://datarequestqas.lbel.com.br/api/reportperformance/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
+    fetch(urlPath+'api/reportperformance/GetPerformance_Detail/?accountId=' + this.state.codConsultor + '&periodId=' + this.state.periodId)
       .then((response) => {
         return response.json()
       })

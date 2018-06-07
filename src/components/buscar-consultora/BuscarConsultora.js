@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from 'react-global-configuration';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import GridConsultora from '../../components/buscar-consultora/GridConsultora';
@@ -24,9 +25,10 @@ function getFormat() {
 class BuscarConsultora extends Component {
     constructor(props) {
         super(props);
-        
+
         const { user } = this.props;
         const { item } = this.props;
+
 
         this.state = {
             disabled: false,
@@ -51,14 +53,14 @@ class BuscarConsultora extends Component {
                 PQVTo: null,
                 DQVFrom: 0,
                 DQVTo: null,
-                OrderBy : '',
+                OrderBy: '',
                 NumeroPagina: 1,
                 NumeroRegistros: 10
             },
             items: [],
             periodsOptions: [],
             activaClass: 'inactive',
-            stringFilter : ''
+            stringFilter: ''
         };
         this.onBuscar = this.onBuscar.bind(this);
         this.onChangeOrderBy = this.onChangeOrderBy.bind(this);
@@ -70,19 +72,20 @@ class BuscarConsultora extends Component {
         this.changeGenerationActive = this.changeGenerationActive.bind(this);
         this.changeTitlesActive = this.changeTitlesActive.bind(this);
         this.changeStatusActive = this.changeStatusActive.bind(this);
-        
+
     }
 
     componentDidMount() {
-        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/periods')
+        var urlPath = config.get('serverUrlApi');
+        fetch(urlPath + 'api/reportaccount/periods')
             .then((response) => {
-                if (!response.ok) { 
+                if (!response.ok) {
                     return Promise.reject(response.statusText);
                 }
                 return response.json()
             })
             .then((results) => {
-                this.setState({ 
+                this.setState({
                     periodsOptions: results.result,
                 });
             });
@@ -268,14 +271,18 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(event) {
-        const initialSeleted = event.selected ? event.selected + 1: 1;
+
+        var urlPath = config.get('serverUrlApi');
+
+
+        const initialSeleted = event.selected ? event.selected + 1 : 1;
         this.state.filtro.NumeroPagina = initialSeleted;
-        
+
         this.setState({
             activaClass: 'active',
             filtro: this.state.filtro
         });
-        
+
         let params = "accountId=" + this.state.filtro.CodConsultoraLogged +
             "&periodId=" + this.state.filtro.periodId +
             "&accountNumberSearch=" + this.state.filtro.CodConsultoraSearched +
@@ -300,23 +307,22 @@ class BuscarConsultora extends Component {
 
             "&pageSize=" + this.state.filtro.NumeroRegistros +
             "&pageNumber=" + this.state.filtro.NumeroPagina;
-        
-            this.setState({ stringFilter: params});
 
-        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {})
+        this.setState({ stringFilter: params });
+
+        fetch(urlPath + 'api/reportaccount/sponsoreds/?' + params, {})
             .then((response) => {
-                if (!response.ok) { 
+                if (!response.ok) {
                     return Promise.reject(response.statusText);
                 }
                 return response.json()
             })
             .then((items) => {
                 let display = items != null && items.items.length > 0 ? true : false;
-                this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
+                this.setState({ activaClass: 'inactive', items: items, isDisplayed: display });
             })
-            .catch(error => 
-            {
-                this.setState({ activaClass: 'inactive', isDisplayed: false});
+            .catch(error => {
+                this.setState({ activaClass: 'inactive', isDisplayed: false });
             });
     }
 
@@ -351,16 +357,16 @@ class BuscarConsultora extends Component {
                             <div className="bc-content-body">
                                 <div className="col-md-2">
                                     <span className="bc-title-text">Campanha</span><br />
-                                    <DropDown 
-                                        name = "periodId" 
-                                        handleChange={ this.handleInputChange } 
-                                        items = { this.state.periodsOptions }
-                                        defaultOption = "Selecione Campanha"
+                                    <DropDown
+                                        name="periodId"
+                                        handleChange={this.handleInputChange}
+                                        items={this.state.periodsOptions}
+                                        defaultOption="Selecione Campanha"
                                     />
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
@@ -404,7 +410,7 @@ class BuscarConsultora extends Component {
                                     <div className="row">
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">Título</span>
-                                            <select name = "TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
+                                            <select name="TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
                                                 <option value="1">Titulo Carreira</option>
                                                 <option value="2">Desempenho</option>
                                             </select>
@@ -450,11 +456,11 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">Data Cadastro</span><br />
                                             <DatePicker
-                                                name = "JoinDateFrom"
+                                                name="JoinDateFrom"
                                                 animation="slide-up"
                                                 calendar={calendar}
-                                                value = { state.JoinDateFrom }
-                                                onChange = { this.onChangeDateFrom }
+                                                value={state.JoinDateFrom}
+                                                onChange={this.onChangeDateFrom}
                                             >
                                                 {
                                                     ({ value }) => {
@@ -464,7 +470,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value = {value && value.format(getFormat()) || ''}
+                                                                    value={value && value.format(getFormat()) || ''}
                                                                 />
                                                             </span>
                                                         );
@@ -474,9 +480,9 @@ class BuscarConsultora extends Component {
                                         </div>
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">até</span><br />
-                                            
+
                                             <DatePicker
-                                                name = "JoinDateTo"
+                                                name="JoinDateTo"
                                                 animation="slide-up"
                                                 calendar={calendar}
                                                 value={state.JoinDateTo}
@@ -490,7 +496,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value= { value && value.format(getFormat()) || '' }
+                                                                    value={value && value.format(getFormat()) || ''}
                                                                 />
                                                             </span>
                                                         );
@@ -522,7 +528,7 @@ class BuscarConsultora extends Component {
                                 </div>
                                 <div className="row margin-bottom20">
                                     <div className="col-sm-4">
-                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />  
+                                        <button type="button" className="btnBusqueda clearable buttonBuscar" onClick={this.onBuscar}><FontAwesomeIcon icon={faSearch} />
                                             &nbsp;PESQUISAR
                                         </button>
                                         <br />
@@ -533,22 +539,22 @@ class BuscarConsultora extends Component {
                     </div>
                     <div className="margin-top10"></div>
                     <div className="row">
-                        {   this.state.isDisplayed ? 
-                            ( <GridConsultora 
+                        {this.state.isDisplayed ?
+                            (<GridConsultora
                                 data={this.state.items.items}
-                                paging = {this.state.items.paging}
-                                filters = {this.state.filtro} 
-                                stringFilter = { this.state.stringFilter} 
-                                eventBuscar = {this.onBuscar} 
-                                eventChangeOrderBy = {this.onChangeOrderBy} 
-                              /> 
-                            ) 
+                                paging={this.state.items.paging}
+                                filters={this.state.filtro}
+                                stringFilter={this.state.stringFilter}
+                                eventBuscar={this.onBuscar}
+                                eventChangeOrderBy={this.onChangeOrderBy}
+                            />
+                            )
                             :
-                            (   <div className="col-sm-12">
-                                    <div className="bc-content-body">
-                                        <h2>Nenhum resultado encontrado</h2> 
-                                    </div>
+                            (<div className="col-sm-12">
+                                <div className="bc-content-body">
+                                    <h2>Nenhum resultado encontrado</h2>
                                 </div>
+                            </div>
                             )
                         }
                     </div>
