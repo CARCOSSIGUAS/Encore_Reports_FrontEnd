@@ -19,8 +19,7 @@ class DataLocalStorage extends Component {
 }
 
     componentDidMount() {
-        fetch('http://localhost:31832/api/language/language/' + this.props.value)
-        //fetch('http://datarequestqas.lbel.com.br/api/language/language/' + this.props.value)
+        fetch('http://datarequestqas.lbel.com.br/api/language/' + this.props.value)
                 .then(response => response.json())
                 .then(translations => this.onSetResult(translations));
     }
