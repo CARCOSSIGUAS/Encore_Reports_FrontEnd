@@ -53,17 +53,10 @@ class GridConsultora extends Component {
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
-<<<<<<< HEAD
-                                <div>CÓDIGO: <b>{item.accountID}</b></div>
-                                <div>DATA DE INGRESSO: <b>{item.joinDateToString}</b></div>
-                                <div>TIT. CARRERA: <b>{item.careerTitle_Des}</b></div>
-                                <div>TIT. DESEMPENHO: <b>{item.paidAsCurrentMonth_Des}</b></div>
-=======
                                 <div>CÓDIGO: <b>{ item.accountID }</b></div>
                                 <div>DATA DE INGRESSO: <b>{ item.joinDate }</b></div>
                                 <div>TIT. CARRERA: <b>{ item.careerTitle }</b></div>
                                 <div>TIT. DESEMPENHO: <b>{ item.paidAsCurrentMonth }</b></div>
->>>>>>> f6493d194a970004422d938973586ed51495271b
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
