@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from 'react-global-configuration';
 
 import ReactPaginate from 'react-paginate';
 import fontawesome from '@fortawesome/fontawesome'
@@ -23,8 +24,10 @@ class GridConsultora extends Component {
     }
 
     exportAccounts(event) {
+        var urlPath = config.get('serverUrlApi');
+
         var filter = this.props.stringFilter;
-        window.location.href = 'http://datarequestqas.lbel.com.br/api/reportaccount/exportexcel/?' + filter;
+        window.location.href = urlPath + 'api/reportaccount/exportexcel/?' + filter;
     }
 
     activaPanelAccount(event) {
@@ -51,14 +54,14 @@ class GridConsultora extends Component {
                         </span>
                     </a>
                     <br />
-                    <span> <b>{(index + 1) + ((this.props.paging.pageNumber -1) * this.props.paging.pageSize)}</b></span>
+                    <span> <b>{(index + 1) + ((this.props.paging.pageNumber - 1) * this.props.paging.pageSize)}</b></span>
                     <div className="collapse-resumen">
                         <div className="row">
                             <div className="col-md-4 col-lg-4 col-xs-12 line-left">
                                 <div>{t('Code')}: <b>{ item.accountID }</b></div>
-                                <div>{t('DateEnrolled')}: <b>{ item.joinDateToString }</b></div>
-                                <div>{t('CareerTitle')}: <b>{item.careerTitle_Des}</b></div>
-                                <div>{t('PaidAsTitle')}: <b>{item.paidAsCurrentMonth_Des}</b></div>
+                                <div>{t('DateEnrolled')}: <b>{ item.joinDate }</b></div>
+                                <div>{t('CareerTitle')}: <b>{item.careerTitle}</b></div>
+                                <div>{t('PaidAsTitle')}: <b>{item.paidAsCurrentMonth}</b></div>
                             </div>
 
                             <div className="col-md-6 col-lg-5 col-xs-12 line-left">
@@ -137,8 +140,6 @@ class GridConsultora extends Component {
 
             <div className="col-md-12 col-sm-12 col-xs-12">
                     <ReactPaginate 
-                        // previousLabel={"previous"}
-                        // nextLabel={"next"}
                         previousLabel={t('Previous')}
                         nextLabel={t('Next')}
                         breakLabel={<span>..</span>}

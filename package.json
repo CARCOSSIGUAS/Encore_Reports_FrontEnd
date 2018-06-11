@@ -21,6 +21,7 @@
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
+    "react-global-configuration": "^1.2.1",
     "react-i18next": "^7.6.1",
     "react-is": "^16.3.2",
     "react-logger": "^1.1.0",

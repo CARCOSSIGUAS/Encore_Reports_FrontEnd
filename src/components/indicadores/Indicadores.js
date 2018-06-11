@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ConsultorHeader from '../../components/header/ConsultorHeader';
 import './Indicadores.css';
 
+import config from 'react-global-configuration';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import Container from '../../components/container/Container';
@@ -27,7 +28,10 @@ class Indicadores extends Component {
   }
 
   componentDidMount() {
-    fetch('http://datarequestqas.lbel.com.br/api/home/performanceindicator/?accountId=' + this.state.accountID)
+
+    var urlPath = config.get('serverUrlApi');
+    
+    fetch(urlPath+'api/home/performanceindicator/?accountId=' + this.state.accountID)
         .then((response) => {
           if (!response.ok) { 
             return Promise.reject(response.statusText);

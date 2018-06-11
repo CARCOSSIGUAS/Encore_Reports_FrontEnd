@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as accountHome from '../../actions/accountHomeActions';
 
+import config from 'react-global-configuration';
 import './ConsultorHeader.css';
 import { DEFAULT_ECDH_CURVE } from 'tls';
 
@@ -26,8 +27,10 @@ class ConsultorHeader extends React.Component {
     }
 
     componentDidMount() {
+        var urlPath = config.get('serverUrlApi');
+
         const { dispatch } = this.props;
-        let url = 'http://datarequestqas.lbel.com.br/api/home/header/' + this.state.accountID;
+        let url = urlPath+'api/home/header/' + this.state.accountID;
         dispatch(accountHome.accountHomeFetchData(url));
     }
 

@@ -68,7 +68,8 @@ class Header extends Component {
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        ,    <Nav>
+                        ,
+                        {/* <Nav>
                             <NavItem eventKey={1} href="/" className="upper">
                                 {t('Home')}
                             </NavItem>
@@ -84,24 +85,18 @@ class Header extends Component {
                             </NavItem>
                             {/* <NavItem eventKey={3} href="/translates" className="upper">
                                 Translates
-                            </NavItem> */}
-                        </Nav>
+
+                            </NavItem> 
+                            </Nav>
+                        */}
                         <TranslateReact/>
                         <Nav pullRight>
                             <NavItem href="/Login" eventKey={0} className="upper">
                                 {t('LogOut')}
-                        </NavItem>
+                            </NavItem>
                         </Nav>
-
-                        {/* <Nav pullRight>
-                            <NavItem eventKey={1} target="_blank" href={"https://consultorqa.lbel.com.br/Login?token=" + this.state.token} className="upper">
-                                Consultora
-                          </NavItem>
-                        </Nav> */}
-
                     </Navbar.Collapse>
                 </Navbar>
-
             </header >
         );
     }

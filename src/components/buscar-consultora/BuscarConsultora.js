@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from 'react-global-configuration';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import GridConsultora from '../../components/buscar-consultora/GridConsultora';
@@ -36,6 +37,7 @@ class BuscarConsultora extends Component {
         const { user } = this.props;
         const { item } = this.props;
 
+
         this.state = {
             disabled: false,
             JoinDateFrom: '',
@@ -59,15 +61,16 @@ class BuscarConsultora extends Component {
                 PQVTo: null,
                 DQVFrom: 0,
                 DQVTo: null,
-                OrderBy : '',
+                OrderBy: '',
                 NumeroPagina: 1,
                 NumeroRegistros: 10
             },
             items: [],
             periodsOptions: [],
             activaClass: 'inactive',
-            stringFilter : ''
+            stringFilter: ''
         };
+      
         this.onBuscar = this.onBuscar.bind(this);
         this.onChangeOrderBy = this.onChangeOrderBy.bind(this);
 
@@ -78,15 +81,16 @@ class BuscarConsultora extends Component {
         this.changeGenerationActive = this.changeGenerationActive.bind(this);
         this.changeTitlesActive = this.changeTitlesActive.bind(this);
         this.changeStatusActive = this.changeStatusActive.bind(this);
+
         const { t, i18n } = this.props;
 
         const changeLanguage = (lng) => {
           i18n.changeLanguage(lng);
         }
-    }
 
     componentDidMount() {
-        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/periods')
+        var urlPath = config.get('serverUrlApi');
+        fetch(urlPath + 'api/reportaccount/periods')
             .then((response) => {
                 if (!response.ok) {
                     return Promise.reject(response.statusText);
@@ -280,7 +284,11 @@ class BuscarConsultora extends Component {
     }
 
     onBuscar(event) {
-        const initialSeleted = event.selected ? event.selected + 1: 1;
+
+        var urlPath = config.get('serverUrlApi');
+
+
+        const initialSeleted = event.selected ? event.selected + 1 : 1;
         this.state.filtro.NumeroPagina = initialSeleted;
 
         this.setState({
@@ -313,9 +321,10 @@ class BuscarConsultora extends Component {
             "&pageSize=" + this.state.filtro.NumeroRegistros +
             "&pageNumber=" + this.state.filtro.NumeroPagina;
 
-            this.setState({ stringFilter: params});
 
-        fetch('http://datarequestqas.lbel.com.br/api/reportaccount/sponsoreds/?' + params, {})
+        this.setState({ stringFilter: params });
+
+        fetch(urlPath + 'api/reportaccount/sponsoreds/?' + params, {})
             .then((response) => {
                 if (!response.ok) {
                     return Promise.reject(response.statusText);
@@ -324,7 +333,7 @@ class BuscarConsultora extends Component {
             })
             .then((items) => {
                 let display = items != null && items.items.length > 0 ? true : false;
-                this.setState({ activaClass: 'inactive', items: items, isDisplayed: display});
+                this.setState({ activaClass: 'inactive', items: items, isDisplayed: display });
             })
             .catch(error =>
             {
@@ -370,7 +379,6 @@ class BuscarConsultora extends Component {
                                         handleChange={ this.handleInputChange }
                                         items = { this.state.periodsOptions }
                                         defaultOption = {t('ChoiseCampaign')}
-                                        
                                     />
                                 </div>
                             </div>
@@ -465,7 +473,7 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">{t('EnrollmentDateUTC')}</span><br />
                                             <DatePicker
-                                                name = "JoinDateFrom"
+                                                name="JoinDateFrom"
                                                 animation="slide-up"
                                                 calendar={calendar}
                                                 value = { state.JoinDateFrom }
@@ -480,7 +488,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value = {value && value.format(getFormat()) || ''}
+                                                                    value={value && value.format(getFormat()) || ''}
                                                                 />
                                                             </span>
                                                         );
@@ -491,7 +499,7 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">{t('To')}</span><br />
                                             <DatePicker
-                                                name = "JoinDateTo"
+                                                name="JoinDateTo"
                                                 animation="slide-up"
                                                 calendar={calendar}
                                                 value={state.JoinDateTo}
@@ -506,7 +514,7 @@ class BuscarConsultora extends Component {
                                                                     readOnly
                                                                     tabIndex="-1"
                                                                     className="inpBusquedaM clearable"
-                                                                    value= { value && value.format(getFormat()) || '' }
+                                                                    value={value && value.format(getFormat()) || ''}
                                                                 />
                                                             </span>
                                                         );

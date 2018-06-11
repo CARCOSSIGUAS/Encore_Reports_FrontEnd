@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
-
+import Footer from '../../components/footer/Footer';
 import './LoginPage.css';
 
 class LoginPage extends React.Component {
@@ -12,19 +12,21 @@ class LoginPage extends React.Component {
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const token = encodeURIComponent(params.get('token'));
+        const country = encodeURIComponent(params.get('countryID'));
 
         this.props.dispatch(userActions.logout());
 
         this.state =
             {
-                token: token
+                token: token,
+                country: country
             }
     };
 
     componentDidMount() {
         const { dispatch } = this.props;
         if (this.state.token && this.state.token.length > 0) {
-            dispatch(userActions.login(this.state.token));
+            dispatch(userActions.login(this.state.token, this.state.country));
         }
     }
 
@@ -35,10 +37,12 @@ class LoginPage extends React.Component {
                 <div className="backstretch">
                 </div>
                 <div className="container">
-                        <br />
-                        <h1 style={{ color: 'white' }}>Logout</h1>
-                        <span style={{ color: 'white' }}>Try logging in from Encore</span>
-                    </div>
+                    <br />
+                    <h1 style={{ color: 'white' }}>Logout</h1>
+                    <span style={{ color: 'white' }}>Try logging in from Encore</span>
+                </div>
+
+                <Footer />
             </div>
 
         );
