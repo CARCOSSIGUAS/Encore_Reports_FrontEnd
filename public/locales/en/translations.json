@@ -1,0 +1,7 @@
+{
+  "To get started, edit <1>src/App.js</1> and save to reload.": "To get started, edit <1>src/App.js</1> and save to reload.",
+  "Welcome to React": "Welcome to React and react-i18next",
+  "advice": "Try to set the query parameter \"backend\" to memory, xhr or locize i.e. {{url}}",
+  "consultora":"Searchr Consulthor inlges",
+          "ingles":"Item new desde el xhr"
+}

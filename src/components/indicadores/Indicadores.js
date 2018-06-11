@@ -8,6 +8,7 @@ import config from 'react-global-configuration';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import Container from '../../components/container/Container';
+import { translate, Trans } from 'react-i18next';
 
 class Indicadores extends Component {
   constructor(props) {
@@ -20,6 +21,10 @@ class Indicadores extends Component {
       indicatorPerformance: {},
       indicatorSale : {}
     };
+    const { t, i18n } = this.props;
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+  }
   }
 
   componentDidMount() {
@@ -41,7 +46,7 @@ class Indicadores extends Component {
   }
 
   render() {
-
+    const { t, i18n } = this.props;
     const { indicatorPerformance, indicatorSale } = this.state;
 
     return (
@@ -54,7 +59,7 @@ class Indicadores extends Component {
               <div role="tabpanel" className="indicadores">
                 <div className="col-xs-16 col-sm-8 col-sm-offset-1">
                   <div className="section-title-icon-content">
-                    <h2 className="section-title-icon">FAÇA ACOMPANHAMENTO</h2>
+                    <h2 className="section-title-icon">{t('MakeFollowUp')}</h2>
                     <span id="indicadores-breadcrumb" className="text-info mt-5"></span>
                   </div>
                 </div>
@@ -62,13 +67,13 @@ class Indicadores extends Component {
                   <div className="text-right mb-20 mt-10">
                     <ul className="material-tabs tabHome" role="tablist">
                       <li role="presentation" className="active liTabHome">
-                        <a className="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">Resultados</a>
+                        <a className="active" id="lnk-indicadores" href="#tab-indicadores" data-select="tab-indicadores" role="tab" data-toggle="tab">{t('Results')}</a>
                       </li>
                       <li role="presentation" className="liTabHome">
-                        <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">Resumo</a>
+                        <a id="lnk-resumen" href="#tab-resumen" data-select="tab-resumen" role="tab" data-toggle="tab">{t('Summary')}</a>
                       </li>
                       <li role="presentation" className="liTabHome datareport-mobile">
-                        <a id="lnk-datareport" className="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">Descargas</a>
+                        <a id="lnk-datareport" className="letterLong200" href="#tab-datareport" data-select="tab-datareport" role="tab" data-toggle="tab">{t('Download')}</a>
                       </li>
                     </ul>
                   </div>
@@ -77,9 +82,8 @@ class Indicadores extends Component {
                   <div className="tab-pane active" role="tabpanel" id="tab-indicadores">
                     <div className="col-sm-12">
                       <div className="col-lg-3 col-md-4 col-xs-12">
-                        {/* <Link to={`/ventaneta`} > */}
                         <div className="box-data box-yellow">
-                          <h3 className="box-data-title"><a className="box-data-title">DESEMPENHO</a> </h3>
+                          <h3 className="box-data-title"><a className="box-data-title">{t('PaidAsTitle')}</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
 
                            
@@ -103,11 +107,10 @@ class Indicadores extends Component {
                             </div>
                           </div>
                         </div>
-                        {/* </Link> */}
                       </div>
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-blue">
-                          <h3 className="box-data-title"> <a className="box-data-title">BONIFICAÇAO</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">{t('Earnings')}</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                           <div className="box-icon"><img className="icon-width" src={require("../../images/icons/Cobranza.svg")} /></div>
                             <div className="box-data-content">
@@ -132,7 +135,7 @@ class Indicadores extends Component {
                       </div>
                       <div className="col-lg-3 col-md-4 col-xs-12">
                         <div className="box-data box-success">
-                          <h3 className="box-data-title"> <a className="box-data-title">NOVAS</a> </h3>
+                          <h3 className="box-data-title"> <a className="box-data-title">{t('News')}</a> </h3>
                           <div className="box-content" id="VentaNetaDetalle">
                           <div className="box-icon"><img className="icon-width" src={require("../../images/icons/Ciclo Nuevas.svg")} /></div>
                             <div className="box-data-content">
@@ -158,7 +161,7 @@ class Indicadores extends Component {
                       <div className="col-sm-offset-8 col-sm-3">
                         <div className="margin-top-10">
                           <div className="text-right mt-30">
-                            <span className="UltimaActualizacion"> Ultima Actualizaçao 03/04 a las 2:30am</span>
+                            <span className="UltimaActualizacion"> {t('LastUpdated')} 03/04 {t('at')} 2:30am</span>
                             <span className="UltimaActualizacionDetalle"></span>
                           </div>
                         </div>
@@ -183,4 +186,4 @@ function mapStateToProps(state) {
 }
 
 const IndicadoresPage = connect(mapStateToProps)(Indicadores);
-export default IndicadoresPage;
+export default translate('translations')(IndicadoresPage);

@@ -2,42 +2,61 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { translate, Trans } from 'react-i18next';
-
-
+import DataLocalStorage from "./dataTranslations.js";
+import i18n from 'i18next';
+import { BrowserRouter } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 class TranslateReact extends Component {
+  constructor(props){
+    super(props);
+    var langItem="";
+
+    this.changeTextLng = this.changeTextLng.bind(this);
+    
+    if (localStorage.getItem("languageItem")!="" ||localStorage.getItem("languageItem")!=null) {
+      langItem = localStorage.getItem("languageItem"); 
+      this.state = {
+        lang: langItem
+      }
+    }else{
+      this.state = {
+        lang: "ENGLISH"
+      }
+    }
+  }
+
+  changeTextLng (e) {
+    this.setState({
+      lang:  e.target.name,
+    })
+    localStorage.setItem("languageItem", (e.target.name))
+  }   
+
     render(){
         const { t, i18n } = this.props;
-
         const changeLanguage = (lng) => {
           i18n.changeLanguage(lng);
         }
-    
+        
         let url = window.location.origin + '?backend=locize';
-    
+
         if (document.location.href.indexOf('https://') === 0 && document.location.hostname.indexOf('hashbase.io') > 0) {
           url = window.location.origin + '?backend=xhr';
         }
 
         return (
-            <div className="App">
-              <div className="App-header">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                <h2>{t('Welcome to React')}</h2>
-                <button onClick={() => changeLanguage('de')}>de</button>
-                <button onClick={() => changeLanguage('en')}>en</button>
-              </div>
-              <div className="App-intro">
-                <Trans>
-                  To get started, edit <code>src/App.js</code> and save to reload.
-                </Trans>
-              </div>
-              <div style={{margin: 10}}><a href={url} style={{ textDecoration: 'none' }}>{t('advice', { url })}</a></div>
-              <a href="https://github.com/i18next/react-i18next/tree/master/example/dat">GitHub</a>
-            </div>
-          );
-      
-    }
-}
+            <Nav pullRight>
+              <div hidden={true}> <DataLocalStorage value="1"/></div>
+              <NavDropdown title={this.state.lang} id="basic-nav-dropdown">
+                <MenuItem onClick={(e) => {changeLanguage('en'); this.changeTextLng(e)}} name={t('ENGLISH')}>ENGLISH</MenuItem>
+                <MenuItem onClick={(e) => {changeLanguage('es'); this.changeTextLng(e)}} name={t('SPANISH')}>SPANISH</MenuItem>
+                <MenuItem onClick={(e) => {changeLanguage('po'); this.changeTextLng(e)}} name={t('PORTUGUES')}>PORTUGUES</MenuItem>
+              </NavDropdown>
+            </Nav>
+            )
+}}
+
 
 function mapStateToProps(state) {
     const { user } = state.authentication;
@@ -54,5 +73,4 @@ function mapStateToProps(state) {
 }
 
 const TranslateReactPage = connect(mapStateToProps)(TranslateReact);
-// export default TranslateReactPage;
 export default translate('translations')(TranslateReactPage);

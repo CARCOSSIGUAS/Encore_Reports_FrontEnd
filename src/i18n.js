@@ -4,23 +4,34 @@ import XHR from 'i18next-xhr-backend';
 import LocizeBackend from 'i18next-locize-backend';
 import whichBackend from './whichBackend';
 
+import React, { Component } from 'react';
+import DataLocalStorage from "./components/translate/dataTranslations.js";
+
+class Data extends Component {
+  constructor(props){
+  super(props)
+  }
+}
+
+const data = localStorage.getItem("key");
 const options = {
   fallbackLng: 'en',
 
-  // have a common namespace used around the full app
   ns: ['translations'],
   defaultNS: 'translations',
 
-  keySeparator: false, // we use content as keys
+  keySeparator: false, 
 
   interpolation: {
-    escapeValue: false, // not needed for react!!
+    escapeValue: false,
     formatSeparator: ','
   },
 
   react: {
     wait: true
-  }
+  },
+
+  //debug:true
 };
 
 switch (whichBackend()) {
@@ -35,32 +46,16 @@ switch (whichBackend()) {
     break;
 
   case 'xhr':
-    options.backend = {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
-    };
+    options.resources =
+      JSON.parse(data);
     i18n.use(XHR);
     break;
 
   case 'memory':
   default:
-    options.resources = {
-      en: {
-        translations: {
-          "To get started, edit <1>src/App.js</1> and save to reload.": "To get started, edit <1>src/App.js</1> and save to reload.",
-          "Welcome to React": "Welcome to React and react-i18next",
-          "advice": "Try to set the query parameter \"backend\" to memory, xhr or locize i.e. {{url}}"
-        }
-      },
-      de: {
-        translations: {
-          "To get started, edit <1>src/App.js</1> and save to reload.": "Starte in dem du, <1>src/App.js</1> editierst und speicherst.",
-          "Welcome to React": "Willkommen bei React und react-i18next",
-          "advice": "Versuche den query Parameter \"backend\" auf memory, xhr oder locize zu setzen zBsp. {{url}} demo"
-        }
-      }
-    };
-
-}
+    options.resources = 
+    JSON.parse(data);
+ }
 
 export default () => {
   i18n

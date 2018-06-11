@@ -28,8 +28,6 @@ export function login(token, country) {
             return response.json();
         })
         .then(user => {
-
-
             if (user && user.accountID) {
                 // store user details in local storage to keep user logged in between page refreshes
                 user.token = token;
