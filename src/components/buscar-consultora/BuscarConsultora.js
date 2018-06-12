@@ -87,6 +87,7 @@ class BuscarConsultora extends Component {
         const changeLanguage = (lng) => {
           i18n.changeLanguage(lng);
         }
+    }
 
     componentDidMount() {
         var urlPath = config.get('serverUrlApi');
@@ -367,7 +368,7 @@ class BuscarConsultora extends Component {
                 <div className="content-main margin-top30">
                     <div className="row">
                         <div className="bc-backtitle">
-                            <p className="bc-title">{t('SearchConsultants')}</p>
+                            <p className="bc-title">{t('BrowserConsultants')}</p>
                         </div>
 
                         <div className="col-sm-12">
@@ -387,15 +388,15 @@ class BuscarConsultora extends Component {
                         <div className="col-sm-12">
                             <div className="bc-content-body">
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('AccountNumber')}</span><br />
+                                    <span className="bc-title-text">{t('ConsultantCode')}</span><br />
                                     <input type="text" id="bc-codigo" name="CodConsultoraSearched" value={this.state.CodConsultora} onChange={this.handleInputChange} className="inpBusqueda clearable" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('AccountName')}</span><br />
+                                    <span className="bc-title-text">{t('ConsultantName')}</span><br />
                                     <input type="text" id="bc-documento" name="NombreConsultora" value={this.state.NombreConsultora} onChange={this.handleInputChange} className="inpBusqueda" />
                                 </div>
                                 <div className="col-md-3">
-                                    <span className="bc-title-text">{t('SponsorNumber')}</span><br />
+                                    <span className="bc-title-text">{t('SponsorCode')}</span><br />
                                     <input type="text" id="bc-direccion" className="inpBusquedaC" name="CodPatrocinador" value={this.state.CodPatrocinador} onChange={this.handleInputChange} />
                                 </div>
 
@@ -428,27 +429,27 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-2 margin-top30">
                                             <span className="bc-title-text">{t('Title')}</span>
                                             <select name = "TitleType" className="form-control input-sm" onChange={this.handleInputChange}>
-                                                <option value="1">Titulo Carreira</option>
-                                                <option value="2">Desempenho</option>
+                                                <option value="1">{t('CareerTitle')}</option>
+                                                <option value="2">{t('PaidAsTitle')}</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-8">
                                             <div className="segmentoButton">
-                                                <a id="0" title="Consultor" className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>{t('Title1')}</a>
-                                               <a id="1" title="Cons. Senior" className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>{t('Title2')}</a>
-                                                <a id="2" title="Cons. Especialista" className="btnSegmento line-height2" name="4" onClick={this.changeTitlesActive}>{t('Title4')}</a>
-                                                <a id="3" title="Empresario" className="btnSegmento line-height2" name="5" onClick={this.changeTitlesActive}>{t('Title5')}</a>
-                                                <a id="4" title="Empr. Avanzado" className="btnSegmento line-height2" name="6" onClick={this.changeTitlesActive}>{t('Title6')}</a>
-                                                <a id="5" title="Emp. Principal" className="btnSegmento line-height2" name="7" onClick={this.changeTitlesActive}>{t('Title7')}</a>
-                                                <a id="6" title="Executivo" className="btnSegmento line-height2" name="8" onClick={this.changeTitlesActive}>{t('Title8')}</a>
-                                                <a id="7" title="Exec. Prestige" className="btnSegmento line-height2" name="9" onClick={this.changeTitlesActive}>{t('Title9')}</a>
-                                                <a id="8" title="Exec. Elite" className="btnSegmento line-height2" name="10" onClick={this.changeTitlesActive}>{t('Title10')}</a>
-                                                <a id="9" title="Exec. Premium" className="btnSegmento line-height2" name="11" onClick={this.changeTitlesActive}>{t('Title11')}</a>
-                                                <a id="10" title="Exec. Supreme" className="btnSegmento line-height2" name="12" onClick={this.changeTitlesActive}>{t('Title12')}</a>
-                                                <a id="11" title="Exec. Nacional" className="btnSegmento line-height2" name="13" onClick={this.changeTitlesActive}>{t('Title13')}</a>
-                                                <a id="12" title="Gran Exec. Nacional" className="btnSegmento line-height2" name="14" onClick={this.changeTitlesActive}>{t('Title14')}</a>
+                                                <a id="0"  title={t('Title1')}   className="btnSegmento line-height2" name="1" onClick={this.changeTitlesActive}>{t('Title1')}</a>
+                                                <a id="1"  title={t('Title2')}   className="btnSegmento line-height2" name="2" onClick={this.changeTitlesActive}>{t('Title2')}</a>
+                                                <a id="2"  title={t('Title4')}   className="btnSegmento line-height2" name="4" onClick={this.changeTitlesActive}>{t('Title4')}</a>
+                                                <a id="3"  title={t('Title5')}   className="btnSegmento line-height2" name="5" onClick={this.changeTitlesActive}>{t('Title5')}</a>
+                                                <a id="4"  title={t('Title6')}   className="btnSegmento line-height2" name="6" onClick={this.changeTitlesActive}>{t('Title6')}</a>
+                                                <a id="5"  title={t('Title7')}   className="btnSegmento line-height2" name="7" onClick={this.changeTitlesActive}>{t('Title7')}</a>
+                                                <a id="6"  title={t('Title8')}   className="btnSegmento line-height2" name="8" onClick={this.changeTitlesActive}>{t('Title8')}</a>
+                                                <a id="7"  title={t('Title9')}   className="btnSegmento line-height2" name="9" onClick={this.changeTitlesActive}>{t('Title9')}</a>
+                                                <a id="8"  title={t('Title10')}   className="btnSegmento line-height2" name="10" onClick={this.changeTitlesActive}>{t('Title10')}</a>
+                                                <a id="9"  title={t('Title11')}   className="btnSegmento line-height2" name="11" onClick={this.changeTitlesActive}>{t('Title11')}</a>
+                                                <a id="10" title={t('Title12')}   className="btnSegmento line-height2" name="12" onClick={this.changeTitlesActive}>{t('Title12')}</a>
+                                                <a id="11" title={t('Title13')}   className="btnSegmento line-height2" name="13" onClick={this.changeTitlesActive}>{t('Title13')}</a>
+                                                <a id="12" title={t('Title14')}   className="btnSegmento line-height2" name="14" onClick={this.changeTitlesActive}>{t('Title14')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -456,16 +457,16 @@ class BuscarConsultora extends Component {
                                         <div className="col-md-8 margin-top30">
                                             <span className="bc-title-text">{t('Status')}</span><br />
                                             <div className="segmentoButton">
-                                                <a id="1" title="Ativo" className="btnSegmento line-height2" name="Ativo" onClick={this.changeStatusActive}>{t('Active')}</a>
-                                                <a id="0" title="Inativa (1)" className="btnSegmento line-height2" name="Inativa(1)" onClick={this.changeStatusActive}>{t('Inactive1')}</a>
-                                                <a id="0" title="Inativa (2)" className="btnSegmento line-height2" name="Inativa(2)" onClick={this.changeStatusActive}>{t('Inactive2')}</a>
-                                                <a id="0" title="Inativa (3)" className="btnSegmento line-height2" name="Inativa(3)" onClick={this.changeStatusActive}>{t('Inactive3')}</a>
-                                                <a id="0" title="Inativa (4)" className="btnSegmento line-height2" name="Inativa(4)" onClick={this.changeStatusActive}>{t('Inactive4')}</a>
-                                                <a id="0" title="Inativa (5)" className="btnSegmento line-height2" name="Inativa(5)" onClick={this.changeStatusActive}>{t('Inactive5')}</a>
-                                                <a id="0" title="Inativa (6)" className="btnSegmento line-height2" name="Inativa(6)" onClick={this.changeStatusActive}>{t('Inactive6')}</a>
-                                                <a id="0" title="Inativa (7)" className="btnSegmento line-height2" name="Inativa(7)" onClick={this.changeStatusActive}>{t('Inactive7')}</a>
-                                                <a id="0" title="Posible Egreso" className="btnSegmento line-height2" name="Inativa(8),Inativa(9)" onClick={this.changeStatusActive}>{t('Inactive8-9')}</a>
-                                                <a id="0" title="Cadastra" className="btnSegmento line-height2" name="Cadastrada" onClick={this.changeStatusActive}>{t('BegunEnrollment')}</a>
+                                                <a id="1" title={t('Active')}    className="btnSegmento line-height2" name="Ativo" onClick={this.changeStatusActive}>{t('Active')}</a>
+                                                <a id="0" title={t('Inactive1')} className="btnSegmento line-height2" name="Inativa(1)" onClick={this.changeStatusActive}>{t('Inactive1')}</a>
+                                                <a id="0" title={t('Inactive2')} className="btnSegmento line-height2" name="Inativa(2)" onClick={this.changeStatusActive}>{t('Inactive2')}</a>
+                                                <a id="0" title={t('Inactive3')} className="btnSegmento line-height2" name="Inativa(3)" onClick={this.changeStatusActive}>{t('Inactive3')}</a>
+                                                <a id="0" title={t('Inactive4')} className="btnSegmento line-height2" name="Inativa(4)" onClick={this.changeStatusActive}>{t('Inactive4')}</a>
+                                                <a id="0" title={t('Inactive5')} className="btnSegmento line-height2" name="Inativa(5)" onClick={this.changeStatusActive}>{t('Inactive5')}</a>
+                                                <a id="0" title={t('Inactive6')} className="btnSegmento line-height2" name="Inativa(6)" onClick={this.changeStatusActive}>{t('Inactive6')}</a>
+                                                <a id="0" title={t('Inactive7')} className="btnSegmento line-height2" name="Inativa(7)" onClick={this.changeStatusActive}>{t('Inactive7')}</a>
+                                                <a id="0" title={t('Inactive8-9')} className="btnSegmento line-height2" name="Inativa(8),Inativa(9)" onClick={this.changeStatusActive}>{t('Inactive8-9')}</a>
+                                                <a id="0" title={t('BegunEnrollment')} className="btnSegmento line-height2" name="Cadastrada" onClick={this.changeStatusActive}>{t('BegunEnrollment')}</a>
                                             </div>
                                         </div>
                                     </div>

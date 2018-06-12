@@ -22,7 +22,7 @@ class Footer extends React.Component {
                                 </div>
                                 <div id="content_nuestras_marcas" className="col-sm-4 col-xs-12">
                                     <h3>{t('OurBrands')}</h3>
-                                    <a role="menu" region="Footer" parent="Nuestras marcas" title="L’bel" id="lnk-foo-lbel" href="https://www.lbel.com/br/" target="_blank">{('LnkLBel')}</a> <br />
+                                    <a role="menu" region="Footer" parent="Nuestras marcas" title="L’bel" id="lnk-foo-lbel" href="https://www.lbel.com/br/" target="_blank">{t('LnkLBel')}</a> <br />
                                 </div>
                             </div>
                         </div>

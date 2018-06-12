@@ -19,7 +19,7 @@ export function login(token, country) {
     config.set(confJSON, { freeze: false });
     localStorage.setItem('urlService', JSON.stringify(confJSON));
 
-    return fetch(urlPath + 'api/Security/SingleSignOn/?token=' + token)
+    return fetch(urlPath + 'api/security/singlesignon/?token=' + token)
         .then(response => {
             if (!response.ok) {
                 return Promise.reject(response.statusText);

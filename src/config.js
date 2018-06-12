@@ -1,6 +1,6 @@
 const config = {
     serverUrlApiBRA: 'http://datarequestqas.lbel.com.br/',
-    serverUrlApiUSA: 'http://datarequestqas.lbel.com.br2/'
+    serverUrlApiUSA: 'http://10.12.9.169/'
 };
  
 export default config;
