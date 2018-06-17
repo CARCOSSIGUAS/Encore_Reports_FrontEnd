@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import config from 'react-global-configuration';
 
 class DataLocalStorage extends Component {
     constructor(props){
@@ -19,7 +20,9 @@ class DataLocalStorage extends Component {
 }
 
     componentDidMount() {
-        fetch('http://datarequestqas.lbel.com.br/api/language/' + this.props.value)
+        var urlPath = config.get('serverUrlApi');
+
+        fetch(urlPath + 'api/language/' + this.props.value)
                 .then(response => response.json())
                 .then(translations => this.onSetResult(translations));
     }
@@ -30,7 +33,7 @@ class DataLocalStorage extends Component {
         localStorage.setItem("key", JSON.stringify(data));
         this.setState({ hits: data });
         //console.log(this.state.hits);
-        }
+    }
 
     render () {
         const { hits } = this.state;

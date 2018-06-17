@@ -25,9 +25,9 @@ class GridConsultora extends Component {
 
     exportAccounts(event) {
         var urlPath = config.get('serverUrlApi');
-
         var filter = this.props.stringFilter;
-        window.location.href = urlPath + 'api/reportaccount/exportexcel/?' + filter;
+        var language = this.props.i18n.language
+        window.location.href = urlPath + 'api/reportaccount/exportexcel/?' + filter + "&language=" + language;
     }
 
     activaPanelAccount(event) {
